@@ -8,4 +8,10 @@
 | [review-lab](review-lab/SKILL.md) | Người review code: chỉ ra vấn đề, không sửa code |
 | [tien-do](tien-do/SKILL.md) | Người dẫn đường: đồng bộ tiến độ, đề xuất bước tiếp theo |
 
-Skill bên ngoài: đọc kỹ `SKILL.md` và các hook trước khi cài; ưu tiên cài theo project.
+## Skill bên ngoài
+
+| Skill | Nguồn | Ghi chú |
+| --- | --- | --- |
+| [motion-design](motion-design/SKILL.md) | LottieFiles/motion-design-skill (cài bằng `npx skills add`, khóa phiên bản trong `skills-lock.json`) | Chỉ có Markdown. Nằm thật ở `.agents/skills/motion-design`; thư mục ở đây là symlink để Claude Code tìm thấy. Dùng cho thời lượng, easing, checklist hoạt ảnh; quy tắc "hiệu ứng có chủ đích" trong `soan-bai/truc-quan.md` được ưu tiên. |
+
+Cài thêm skill bên ngoài: đọc kỹ `SKILL.md` và các hook trước khi cài; ưu tiên cài theo project.

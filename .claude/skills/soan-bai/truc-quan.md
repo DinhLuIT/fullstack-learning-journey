@@ -35,6 +35,10 @@ Cách nhúng vào handout:
 - Luôn có trạng thái tĩnh đọc được đầy đủ, và tắt hoạt ảnh khi người dùng chọn giảm chuyển động:
   `@media (prefers-reduced-motion: reduce) { * { animation: none !important; } }`
 
+### Nếu skill `motion-design` đã được cài
+
+Dùng bảng thời lượng, easing và checklist chất lượng của skill đó khi viết hoạt ảnh SVG và sơ đồ từng bước. Khi hai nơi khác nhau, quy tắc của file này thắng: chỉ tạo hoạt ảnh có chủ đích, không dùng các mẫu chuyển động trang trí chạy liên tục (ambient, breathing, parallax) trong tài liệu học.
+
 ## Sơ đồ tương tác từng bước (HTML)
 
 - Một file HTML tự chứa (CSS, JS bên trong), không tải gì từ mạng.
