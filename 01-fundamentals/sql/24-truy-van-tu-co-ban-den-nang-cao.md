@@ -11,7 +11,7 @@ tags: [fundamentals, sql, database]
 
 # Bài 24. Truy vấn từ cơ bản đến nâng cao
 
-> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem tài liệu lộ trình, tab Giai đoạn 1.
+> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem [Bài 24 trong curriculum/01-nen-tang.md](../../curriculum/01-nen-tang.md).
 
 ## Mục tiêu
 

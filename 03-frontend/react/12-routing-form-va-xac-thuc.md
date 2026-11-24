@@ -1,5 +1,5 @@
 ---
-title: "Routing, form và xác thực"
+title: "Routing, form, xác thực và đa ngôn ngữ"
 phase: 3
 lesson: 12
 module: "D. React và hệ sinh thái"
@@ -9,9 +9,9 @@ finished:
 tags: [frontend, react]
 ---
 
-# Bài 12. Routing, form và xác thực
+# Bài 12. Routing, form, xác thực và đa ngôn ngữ
 
-> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem tài liệu lộ trình, tab Giai đoạn 3.
+> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem [Bài 12 trong curriculum/03-frontend.md](../../curriculum/03-frontend.md).
 
 ## Mục tiêu
 

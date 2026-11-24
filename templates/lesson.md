@@ -11,7 +11,7 @@ tags: []
 
 # Bài N. Tên bài
 
-> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem tài liệu lộ trình, tab Giai đoạn N.
+> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem `curriculum/` (file của giai đoạn tương ứng).
 
 ## Mục tiêu
 

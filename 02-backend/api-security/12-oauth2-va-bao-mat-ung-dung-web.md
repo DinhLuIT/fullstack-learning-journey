@@ -11,7 +11,7 @@ tags: [backend, api, security]
 
 # Bài 12. OAuth2 và bảo mật ứng dụng web
 
-> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem tài liệu lộ trình, tab Giai đoạn 2.
+> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem [Bài 12 trong curriculum/02-backend.md](../../curriculum/02-backend.md).
 
 ## Mục tiêu
 

@@ -11,7 +11,7 @@ tags: [fundamentals, networking]
 
 # Bài 12. HTTPS, cookie, CORS và giao tiếp thời gian thực
 
-> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem tài liệu lộ trình, tab Giai đoạn 1.
+> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem [Bài 12 trong curriculum/01-nen-tang.md](../../curriculum/01-nen-tang.md).
 
 ## Mục tiêu
 

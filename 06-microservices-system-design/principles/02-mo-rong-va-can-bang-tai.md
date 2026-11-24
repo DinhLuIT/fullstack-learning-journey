@@ -11,7 +11,7 @@ tags: [system-design]
 
 # Bài 2. Mở rộng và cân bằng tải
 
-> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem tài liệu lộ trình, tab Giai đoạn 6.
+> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem [Bài 2 trong curriculum/06-microservices-system-design.md](../../curriculum/06-microservices-system-design.md).
 
 ## Mục tiêu
 

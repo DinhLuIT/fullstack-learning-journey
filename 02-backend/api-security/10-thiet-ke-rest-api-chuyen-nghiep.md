@@ -11,7 +11,7 @@ tags: [backend, api, security]
 
 # Bài 10. Thiết kế REST API chuyên nghiệp
 
-> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem tài liệu lộ trình, tab Giai đoạn 2.
+> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem [Bài 10 trong curriculum/02-backend.md](../../curriculum/02-backend.md).
 
 ## Mục tiêu
 

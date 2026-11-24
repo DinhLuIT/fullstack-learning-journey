@@ -11,7 +11,7 @@ tags: [ai, rag]
 
 # Bài 8. Embedding và tìm kiếm ngữ nghĩa
 
-> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem tài liệu lộ trình, tab Giai đoạn 4.
+> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem [Bài 8 trong curriculum/04-ai-engineering.md](../../curriculum/04-ai-engineering.md).
 
 ## Mục tiêu
 

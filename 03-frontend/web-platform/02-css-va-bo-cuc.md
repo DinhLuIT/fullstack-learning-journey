@@ -11,7 +11,7 @@ tags: [frontend, html, css, browser]
 
 # Bài 2. CSS và bố cục
 
-> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem tài liệu lộ trình, tab Giai đoạn 3.
+> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem [Bài 2 trong curriculum/03-frontend.md](../../curriculum/03-frontend.md).
 
 ## Mục tiêu
 

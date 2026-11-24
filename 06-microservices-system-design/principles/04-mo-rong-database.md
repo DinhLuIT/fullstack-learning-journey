@@ -11,7 +11,7 @@ tags: [system-design]
 
 # Bài 4. Mở rộng database
 
-> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem tài liệu lộ trình, tab Giai đoạn 6.
+> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem [Bài 4 trong curriculum/06-microservices-system-design.md](../../curriculum/06-microservices-system-design.md).
 
 ## Mục tiêu
 

@@ -8,7 +8,7 @@ tags: [interview]
 
 # Bài 6. Sau mỗi buổi phỏng vấn thật
 
-> Đề cương bài: xem tài liệu lộ trình, tab Giai đoạn 7.
+> Đề cương bài: xem [Bài 6 trong curriculum/07-phong-van.md](../curriculum/07-phong-van.md).
 
 ## Ghi chú
 

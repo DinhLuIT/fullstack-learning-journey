@@ -11,7 +11,7 @@ tags: [fundamentals, computer-science]
 
 # Bài 1. Biểu diễn dữ liệu
 
-> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem tài liệu lộ trình, tab Giai đoạn 1.
+> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem [Bài 1 trong curriculum/01-nen-tang.md](../../curriculum/01-nen-tang.md).
 
 ## Mục tiêu
 

@@ -11,7 +11,7 @@ tags: [frontend, react]
 
 # Bài 13. Hiệu năng, kiểm thử và render phía server
 
-> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem tài liệu lộ trình, tab Giai đoạn 3.
+> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem [Bài 13 trong curriculum/03-frontend.md](../../curriculum/03-frontend.md).
 
 ## Mục tiêu
 

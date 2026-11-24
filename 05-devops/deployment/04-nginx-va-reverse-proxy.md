@@ -11,7 +11,7 @@ tags: [devops, nginx, deployment]
 
 # Bài 4. Nginx và reverse proxy
 
-> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem tài liệu lộ trình, tab Giai đoạn 5.
+> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem [Bài 4 trong curriculum/05-devops.md](../../curriculum/05-devops.md).
 
 ## Mục tiêu
 

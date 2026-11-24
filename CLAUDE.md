@@ -5,8 +5,9 @@
 ## Đọc trước khi làm bất cứ việc gì
 
 1. `progress.md`: đang ở giai đoạn nào, bài nào, điểm yếu cần ôn
-2. File ghi chú của bài đang học (`<giai-đoạn>/<chủ-đề>/NN-ten-bai.md`)
-3. `README.md` của chủ đề đó
+2. Đề cương của bài trong `curriculum/` (mục `### Bài N.`): đây là bản chính của lộ trình
+3. File ghi chú của bài đang học (`<giai-đoạn>/<chủ-đề>/NN-ten-bai.md`)
+4. `capstone/README.md` khi bài có phần thực hành trên capstone (mã F-, R-, N- tham chiếu tới file này)
 
 ## Quy tắc quan trọng nhất
 
@@ -14,18 +15,23 @@
 - **Không viết hộ phần "Ghi chú" của bài.** Ghi chú phải bằng lời của Đình. Được phép: chỉ ra chỗ sai, thiếu, hiểu nhầm; đề xuất bổ sung để Đình tự viết lại.
 - **Thẳng thắn khi Đình hiểu sai.** Không khen cho có. Chỉ rõ sai ở đâu và vì sao.
 
-## Khi Đình nói "học bài X"
+## Skill của repo
 
-1. Đọc ghi chú hiện có của bài X và mục tiêu của bài
-2. Hỏi nhanh Đình đã biết gì về chủ đề này (để đi nhanh qua phần đã vững)
-3. Giảng theo thứ tự: vấn đề cần giải quyết → khái niệm → cơ chế bên dưới → ví dụ thực tế → liên hệ capstone
-4. Giao lab, để Đình tự làm
-5. Kết thúc bằng 3 câu tự kiểm tra, chấm câu trả lời, ghi câu chưa chắc vào mục "Cần ôn lại" trong `progress.md`
+| Skill | Dùng khi |
+| --- | --- |
+| `/hoc-bai [N]` | Học một bài: chẩn đoán, giảng theo vòng ngắn, giao lab, tự kiểm tra, cập nhật tiến độ |
+| `/soan-bai [N]` | Soạn tài liệu tham khảo cho một bài vào `handouts/` |
+| `/on-tap [...]` | Ôn điểm yếu, ôn theo chủ đề, phỏng vấn thử kỹ thuật hoặc system design |
+| `/review-lab [đường dẫn]` | Review lab code chay, chỉ ra vấn đề, không sửa code |
+| `/tien-do [tuan]` | Đồng bộ tiến độ, đề xuất buổi học tiếp theo, tổng kết tuần |
+
+Khi Đình nói "học bài X", "ôn bài", "review lab"… mà không gọi skill, vẫn làm theo đúng quy trình trong skill tương ứng.
 
 ## Khi cập nhật tiến độ
 
 - Đổi `status` trong frontmatter của bài: `todo` → `doing` → `done` (hoặc `review` nếu cần ôn)
-- Cập nhật bảng tổng quan và "Hiện tại" trong `progress.md`
+- Chạy `python3 .claude/skills/tien-do/scripts/sync_progress.py` để cập nhật bảng tổng quan và README chủ đề; không sửa các bảng đó bằng tay
+- Cập nhật mục "Hiện tại" trong `progress.md`
 - Hỏi Đình trước khi sửa file ghi chú của Đình; file tiến độ thì được cập nhật trực tiếp
 
 ## Quy ước
@@ -33,5 +39,5 @@
 - Trả lời bằng tiếng Việt, thuật ngữ giữ tiếng Anh
 - Code, tên file, thư mục, commit message bằng tiếng Anh
 - Commit theo Conventional Commits: `docs(scope): ...`, `feat(scope): ...`
-- Ngôn ngữ chính: Java 21 (backend), TypeScript (frontend)
+- Ngôn ngữ chính: Java 21 (backend), TypeScript (frontend); database: PostgreSQL
 - Không đưa thông tin nội bộ của công ty Đình đang làm vào repo (repo công khai)

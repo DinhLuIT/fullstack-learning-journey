@@ -11,7 +11,7 @@ tags: [microservices]
 
 # Bài 7. Khi nào và tách thế nào
 
-> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem tài liệu lộ trình, tab Giai đoạn 6.
+> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem [Bài 7 trong curriculum/06-microservices-system-design.md](../../curriculum/06-microservices-system-design.md).
 
 ## Mục tiêu
 

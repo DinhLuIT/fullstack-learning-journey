@@ -11,7 +11,7 @@ tags: [devops, nginx, deployment]
 
 # Bài 5. Tên miền, HTTPS và chiến lược triển khai
 
-> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem tài liệu lộ trình, tab Giai đoạn 5.
+> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem [Bài 5 trong curriculum/05-devops.md](../../curriculum/05-devops.md).
 
 ## Mục tiêu
 

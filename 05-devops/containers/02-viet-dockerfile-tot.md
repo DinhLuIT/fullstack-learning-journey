@@ -11,7 +11,7 @@ tags: [devops, docker]
 
 # Bài 2. Viết Dockerfile tốt
 
-> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem tài liệu lộ trình, tab Giai đoạn 5.
+> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem [Bài 2 trong curriculum/05-devops.md](../../curriculum/05-devops.md).
 
 ## Mục tiêu
 

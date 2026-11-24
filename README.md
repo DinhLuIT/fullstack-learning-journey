@@ -23,12 +23,13 @@ Hành trình học lại FullStack từ nền tảng: từ cách máy tính ho�
 | [7. Phỏng vấn](07-interview/README.md) | CV, kể dự án, behavioral, phỏng vấn thử | 6 | 2 tuần + duy trì |
 | [DSA](dsa/README.md) | 14 pattern, chạy song song suốt lộ trình | 15 | 3–4 giờ/tuần |
 
-Tiến độ hiện tại: xem [progress.md](progress.md).
+Đề cương chi tiết từng bài: [curriculum/](curriculum/README.md). Tiến độ hiện tại: [progress.md](progress.md).
 
 ## Cấu trúc repo
 
 ```
 ├── progress.md           # đang học gì, đã xong gì, cần ôn gì
+├── curriculum/           # đề cương chi tiết 114 bài
 ├── 00-setup/ ... 07-interview/
 │   └── <chủ-đề>/
 │       ├── NN-ten-bai.md # ghi chú từng bài

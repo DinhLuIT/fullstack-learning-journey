@@ -8,7 +8,7 @@ tags: [interview]
 
 # Bài 4. Ôn tập kỹ thuật tổng hợp
 
-> Đề cương bài: xem tài liệu lộ trình, tab Giai đoạn 7.
+> Đề cương bài: xem [Bài 4 trong curriculum/07-phong-van.md](../curriculum/07-phong-van.md).
 
 ## Ghi chú
 

@@ -11,7 +11,7 @@ tags: [backend, http]
 
 # Bài 1. Tự viết HTTP server
 
-> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem tài liệu lộ trình, tab Giai đoạn 2.
+> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem [Bài 1 trong curriculum/02-backend.md](../../curriculum/02-backend.md).
 
 ## Mục tiêu
 

@@ -8,7 +8,7 @@ tags: [interview]
 
 # Bài 1. CV và GitHub profile
 
-> Đề cương bài: xem tài liệu lộ trình, tab Giai đoạn 7.
+> Đề cương bài: xem [Bài 1 trong curriculum/07-phong-van.md](../curriculum/07-phong-van.md).
 
 ## Ghi chú
 

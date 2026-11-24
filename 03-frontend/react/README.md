@@ -7,7 +7,7 @@ Giai đoạn 3 · Module D
 | [9. React bên dưới](09-react-ben-duoi.md) | todo |
 | [10. Hooks và các lỗi thường gặp](10-hooks-va-cac-loi-thuong-gap.md) | todo |
 | [11. Quản lý state và dữ liệu từ server](11-quan-ly-state-va-du-lieu-tu-server.md) | todo |
-| [12. Routing, form và xác thực](12-routing-form-va-xac-thuc.md) | todo |
+| [12. Routing, form, xác thực và đa ngôn ngữ](12-routing-form-va-xac-thuc.md) | todo |
 | [13. Hiệu năng, kiểm thử và render phía server](13-hieu-nang-kiem-thu-va-render-phia-server.md) | todo |
 
 ## Cấu trúc

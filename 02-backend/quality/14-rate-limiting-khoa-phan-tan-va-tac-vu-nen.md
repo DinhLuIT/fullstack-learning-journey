@@ -11,7 +11,7 @@ tags: [backend, redis, testing]
 
 # Bài 14. Rate limiting, khóa phân tán và tác vụ nền
 
-> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem tài liệu lộ trình, tab Giai đoạn 2.
+> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem [Bài 14 trong curriculum/02-backend.md](../../curriculum/02-backend.md).
 
 ## Mục tiêu
 

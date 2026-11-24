@@ -11,7 +11,7 @@ tags: [backend, redis, testing]
 
 # Bài 13. Redis và caching
 
-> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem tài liệu lộ trình, tab Giai đoạn 2.
+> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem [Bài 13 trong curriculum/02-backend.md](../../curriculum/02-backend.md).
 
 ## Mục tiêu
 

@@ -11,7 +11,7 @@ tags: [ai, llm]
 
 # Bài 1. LLM hoạt động thế nào
 
-> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem tài liệu lộ trình, tab Giai đoạn 4.
+> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem [Bài 1 trong curriculum/04-ai-engineering.md](../../curriculum/04-ai-engineering.md).
 
 ## Mục tiêu
 

@@ -8,7 +8,7 @@ tags: [interview]
 
 # Bài 3. Câu hỏi hành vi (behavioral)
 
-> Đề cương bài: xem tài liệu lộ trình, tab Giai đoạn 7.
+> Đề cương bài: xem [Bài 3 trong curriculum/07-phong-van.md](../curriculum/07-phong-van.md).
 
 ## Ghi chú
 

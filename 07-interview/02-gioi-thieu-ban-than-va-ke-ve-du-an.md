@@ -8,7 +8,7 @@ tags: [interview]
 
 # Bài 2. Giới thiệu bản thân và kể về dự án
 
-> Đề cương bài: xem tài liệu lộ trình, tab Giai đoạn 7.
+> Đề cương bài: xem [Bài 2 trong curriculum/07-phong-van.md](../curriculum/07-phong-van.md).
 
 ## Ghi chú
 

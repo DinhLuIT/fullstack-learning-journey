@@ -11,7 +11,7 @@ tags: [frontend, typescript]
 
 # Bài 8. TypeScript từ cơ bản đến nâng cao
 
-> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem tài liệu lộ trình, tab Giai đoạn 3.
+> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem [Bài 8 trong curriculum/03-frontend.md](../../curriculum/03-frontend.md).
 
 ## Mục tiêu
 

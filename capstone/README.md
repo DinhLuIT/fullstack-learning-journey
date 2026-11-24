@@ -87,7 +87,7 @@ Mỗi chức năng có mã để tham chiếu trong issue, commit và test. Cộ
 | Mã | Chức năng | Từ |
 | --- | --- | --- |
 | F-40 | Quản lý cơ sở, sân, giờ mở cửa | v1 |
-| F-41 | Quản lý bảng giá theo môn, cơ sở, giờ thường và giờ cao điểm | v1 |
+| F-41 | Quản lý bảng giá: giá gốc theo môn và cơ sở, kèm tỉ lệ tăng giờ cao điểm | v1 |
 | F-42 | Báo cáo doanh thu và tỉ lệ lấp đầy theo cơ sở, theo ngày, theo khung giờ | v2 |
 | F-43 | Ẩn đánh giá vi phạm | v2 |
 
@@ -120,12 +120,13 @@ Mỗi chức năng có mã để tham chiếu trong issue, commit và test. Cộ
 | R-02 | Chỉ đặt được trong giờ mở cửa của cơ sở và trong vòng 14 ngày tới |
 | R-03 | Giữ chỗ hết hạn sau 10 phút nếu chưa thanh toán |
 | R-04 | Một người chơi có tối đa 2 giữ chỗ chưa thanh toán cùng lúc |
-| R-05 | Giờ cao điểm: 17:00–22:00 các ngày trong tuần, cả ngày thứ Bảy và Chủ nhật |
+| R-05 | Giờ cao điểm: 17:00–22:00 các ngày trong tuần, cả ngày thứ Bảy và Chủ nhật. Giá cao điểm = giá gốc × (1 + tỉ lệ), tỉ lệ đặt theo cơ sở và môn, mặc định 30% |
 | R-06 | Chính sách hủy: trước giờ chơi từ 24 tiếng trở lên hoàn 100%; từ 6 đến dưới 24 tiếng hoàn 50%; dưới 6 tiếng không hoàn |
 | R-07 | Đơn định kỳ gồm các đơn con độc lập; hủy một buổi không ảnh hưởng các buổi khác |
 | R-08 | Nhân viên chỉ thao tác trên cơ sở mình được gán |
 | R-09 | Đặt định kỳ theo nguyên tắc toàn bộ hoặc không: chỉ cần một buổi trong chuỗi đã kín thì từ chối cả chuỗi, báo rõ buổi nào bị trùng |
 | R-10 | Chỉ người đặt đơn, và chỉ khi đơn đã check-in, mới được đánh giá; trong vòng 7 ngày sau giờ chơi |
+| R-11 | Đơn vắt qua mốc giờ cao điểm được tính tiền theo từng khung 30 phút: mỗi khung lấy giá của chính nó rồi cộng dồn |
 
 ## 6. Yêu cầu phi chức năng
 
@@ -184,10 +185,12 @@ Thiết kế schema chi tiết (ERD, khóa, ràng buộc, index) là phần th�
 | 2026-11-25 | Đặt định kỳ: toàn bộ hoặc không (R-09) | Đơn giản, đúng; luyện tính nguyên tử của transaction. Hướng nâng cấp: đặt các buổi còn trống và báo buổi bị bỏ qua |
 | 2026-11-25 | Thanh toán qua interface `PaymentGateway` | Giả lập trước, thêm VietQR sau mà không sửa logic đặt sân |
 | 2026-11-25 | Thêm đánh giá sân và giao diện song ngữ | Đánh giá có quy tắc phân quyền đáng làm; song ngữ phục vụ ứng tuyển công ty nước ngoài |
+| 2026-11-25 | Giá cao điểm = giá gốc + tỉ lệ phần trăm (R-05) | Quản trị viên chỉ cần đặt giá gốc và một tỉ lệ, không phải nhập hai bảng giá |
+| 2026-11-25 | Đơn vắt mốc cao điểm tính theo từng khung 30 phút (R-11) | Chính xác, công bằng cho cả khách và chủ sân, dễ viết unit test |
 
 ## 11. Câu hỏi còn mở
 
-- Giá giờ cao điểm áp dụng thế nào khi một đơn vắt qua mốc 17:00?
+Chưa có. Câu hỏi mới phát sinh khi làm lab thì ghi vào đây.
 
 ## Hành trình tiến hóa
 

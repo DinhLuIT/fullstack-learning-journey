@@ -11,7 +11,7 @@ tags: [ai, rag]
 
 # Bài 10. Nâng cấp RAG và chuyển sang Spring AI
 
-> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem tài liệu lộ trình, tab Giai đoạn 4.
+> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem [Bài 10 trong curriculum/04-ai-engineering.md](../../curriculum/04-ai-engineering.md).
 
 ## Mục tiêu
 

@@ -11,7 +11,7 @@ tags: [ai, evaluation, security]
 
 # Bài 12. Bảo mật, chi phí và vận hành
 
-> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem tài liệu lộ trình, tab Giai đoạn 4.
+> Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem [Bài 12 trong curriculum/04-ai-engineering.md](../../curriculum/04-ai-engineering.md).
 
 ## Mục tiêu
 
