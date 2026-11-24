@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mã hóa UTF-8 từng bước</title>
+<style>
+  :root {
+    --bg: #eef3f7; --surface: #f8fbfd; --line: #c9d6e2; --text: #0f2133;
+    --muted: #4b6075; --accent: #0b5fa8; --code-bg: #e4ecf3;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #07111c; --surface: #0d1a28; --line: #1e3247; --text: #d3dce5;
+      --muted: #8fa3b6; --accent: #5cb4f0; --code-bg: #0d1a28;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #07111c; --surface: #0d1a28; --line: #1e3247; --text: #d3dce5;
+    --muted: #8fa3b6; --accent: #5cb4f0; --code-bg: #0d1a28;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 16px; background: var(--bg); color: var(--text);
+    font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 15px;
+  }
+  .stage {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+    padding: 20px 16px; min-height: 230px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 14px;
+  }
+  .glyph { font-size: 44px; line-height: 1; }
+  .label { color: var(--muted); font-size: 13px; }
+  .row { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+  .group { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .bits { display: flex; gap: 2px; }
+  .bit {
+    width: 22px; height: 30px; display: grid; place-items: center;
+    background: var(--code-bg); border: 1px solid var(--line); border-radius: 3px;
+  }
+  .bit.fixed { color: var(--muted); }
+  .bit.hot { border-color: var(--accent); color: var(--accent); font-weight: 700; }
+  .hex { font-size: 22px; color: var(--accent); font-weight: 700; }
+  table { border-collapse: collapse; font-size: 13px; }
+  td, th { border: 1px solid var(--line); padding: 4px 8px; text-align: left; }
+  tr.hot td { color: var(--accent); font-weight: 700; border-color: var(--accent); }
+  .explain { margin: 14px 2px; min-height: 66px; line-height: 1.5; }
+  .controls { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  button {
+    font: inherit; font-size: 14px; padding: 8px 14px; border-radius: 6px; cursor: pointer;
+    background: var(--surface); color: var(--text); border: 1px solid var(--line);
+  }
+  button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  button:disabled { opacity: .45; cursor: default; }
+  .counter { color: var(--muted); margin-left: auto; }
+  .fade { animation: fade .2s ease-out; }
+  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+</style>
+</head>
+<body>
+<div class="stage" id="stage" aria-live="polite"></div>
+<p class="explain" id="explain"></p>
+<div class="controls">
+  <button id="prev">← Bước trước</button>
+  <button id="next">Bước sau →</button>
+  <button id="reset">Làm lại</button>
+  <span class="counter" id="counter"></span>
+</div>
+<script>
+  const params = new URLSearchParams(location.search);
+  const theme = params.get("theme");
+  if (theme === "dark" || theme === "light") document.documentElement.dataset.theme = theme;
+
+  const bitsHtml = (s, cls) => '<div class="bits">' + [...s].map(c =>
+    '<span class="bit ' + (typeof cls === "function" ? cls(c) : cls) + '">' + c + '</span>').join("") + '</div>';
+  const group = (inner, label) => '<div class="group">' + inner + (label ? '<span class="label">' + label + '</span>' : '') + '</div>';
+  const filled = (prefix, payload) => '<div class="bits">' +
+    [...prefix].map(c => '<span class="bit fixed">' + c + '</span>').join("") +
+    [...payload].map(c => '<span class="bit hot">' + c + '</span>').join("") + '</div>';
+
+  const table = hot => '<table><tr><th>Code point</th><th>Số byte</th><th>Mẫu bit</th></tr>' +
+    [["U+0000..U+007F", "1", "0xxxxxxx"],
+     ["U+0080..U+07FF", "2", "110xxxxx 10xxxxxx"],
+     ["U+0800..U+FFFF", "3", "1110xxxx 10xxxxxx 10xxxxxx"],
+     ["U+10000..U+10FFFF", "4", "11110xxx 10xxxxxx 10xxxxxx 10xxxxxx"]]
+    .map((r, i) => '<tr' + (i === hot ? ' class="hot"' : '') + '><td>' + r.join("</td><td>") + '</td></tr>').join("") + '</table>';
+
+  const steps = [
+    { html: '<div class="glyph">ệ</div><div class="hex">U+1EC7</div><span class="label">= 7879 ở hệ thập phân</span>',
+      text: 'Bắt đầu từ một ký tự: chữ "ệ". Unicode gán cho nó code point U+1EC7. Code point chỉ là một con số, chưa phải byte nào cả.' },
+    { html: group(bitsHtml("0001111011000111", "hot"), "1EC7 viết dưới dạng 16 bit") ,
+      text: 'Đổi con số sang nhị phân. Mỗi chữ số hex ứng với đúng 4 bit: 1 = 0001, E = 1110, C = 1100, 7 = 0111.' },
+    { html: table(2),
+      text: 'Tra bảng của RFC 3629: U+1EC7 nằm trong khoảng U+0800..U+FFFF, nên cần 3 byte với mẫu 1110xxxx 10xxxxxx 10xxxxxx. Mẫu có đúng 4 + 6 + 6 = 16 chỗ trống x.' },
+    { html: '<div class="row">' + group(bitsHtml("0001", "hot"), "4 bit") + group(bitsHtml("111011", "hot"), "6 bit") + group(bitsHtml("000111", "hot"), "6 bit") + '</div>',
+      text: 'Chia 16 bit thành 3 nhóm 4 | 6 | 6, đi từ trái sang phải, để khớp với số chỗ trống trong từng byte của mẫu.' },
+    { html: '<div class="row">' + group(filled("1110", "0001"), "byte 1") + group(filled("10", "111011"), "byte 2") + group(filled("10", "000111"), "byte 3") + '</div>',
+      text: 'Điền từng nhóm vào mẫu. Bit mờ là phần cố định của mẫu, bit đậm là bit của code point.' },
+    { html: '<div class="row">' + group('<span class="hex">E1</span>', "1110 0001") + group('<span class="hex">BB</span>', "1011 1011") + group('<span class="hex">87</span>', "1000 0111") + '</div>',
+      text: 'Đổi mỗi byte sang hex: E1 BB 87. Đây đúng là 3 byte Java in ra khi gọi "ệ".getBytes(UTF_8).' },
+    { html: '<div class="row">' + group(filled("1110", "0001"), "1110… : ký tự dài 3 byte") + group(filled("10", "111011"), "10… : byte tiếp nối") + group(filled("10", "000111"), "10… : byte tiếp nối") + '</div>',
+      text: 'Chiều ngược lại: bộ giải mã nhìn các bit đầu của byte thứ nhất (1110) là biết ký tự dài 3 byte; byte bắt đầu bằng 10 chỉ có thể là byte tiếp nối. Vì các mẫu không trùng nhau nên đọc từ giữa chuỗi vẫn tìm được đầu ký tự.' }
+  ];
+
+  let i = 0;
+  const stage = document.getElementById("stage");
+  const explain = document.getElementById("explain");
+  const counter = document.getElementById("counter");
+  const prev = document.getElementById("prev");
+  const next = document.getElementById("next");
+
+  function render() {
+    stage.innerHTML = steps[i].html;
+    stage.classList.remove("fade"); void stage.offsetWidth; stage.classList.add("fade");
+    explain.textContent = steps[i].text;
+    counter.textContent = "Bước " + (i + 1) + "/" + steps.length;
+    prev.disabled = i === 0;
+    next.disabled = i === steps.length - 1;
+  }
+  prev.onclick = () => { if (i > 0) { i--; render(); } };
+  next.onclick = () => { if (i < steps.length - 1) { i++; render(); } };
+  document.getElementById("reset").onclick = () => { i = 0; render(); };
+  document.addEventListener("keydown", e => {
+    if (e.key === "ArrowRight") next.click();
+    if (e.key === "ArrowLeft") prev.click();
+  });
+  render();
+</script>
+</body>
+</html>
