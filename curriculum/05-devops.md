@@ -2,6 +2,8 @@
 
 9 bài, 4 module, đưa capstone lên môi trường thật trên VPS với tên miền, HTTPS, CI/CD và giám sát. Chạy song song với khóa DevOps Fundamentals và dùng lại kiến thức Linux, mạng ở Giai đoạn 1.
 
+**Vì sao học:** Một sản phẩm chỉ chạy trên máy mình thì chưa xong. Docker, CI/CD và deploy lên server thật giúp capstone có địa chỉ để đưa vào CV, và giúp hiểu điều gì xảy ra sau khi code được merge.
+
 | Module | Bài | Thời lượng |
 | --- | --- | --- |
 | A. Container | 1–3 | 1 tuần |

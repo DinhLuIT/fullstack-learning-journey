@@ -23,6 +23,8 @@ Hành trình học lại FullStack từ nền tảng: từ cách máy tính ho�
 | [7. Phỏng vấn](07-interview/README.md) | CV, kể dự án, behavioral, phỏng vấn thử | 6 | 2 tuần + duy trì |
 | [DSA](dsa/README.md) | Đệ quy, sắp xếp và tìm kiếm, 14 pattern, chạy song song suốt lộ trình | 17 | 3–4 giờ/tuần |
 
+**Learning hub:** https://dinhluit.github.io/fullstack-learning-journey/ (đề cương, tài liệu có nguồn và hình minh họa, đề bài lab).
+
 Đề cương chi tiết từng bài: [curriculum/](curriculum/README.md). Thời lượng là mức tối đa cho người học mới; phần đã biết thì đi nhanh. Tiến độ hiện tại: [progress.md](progress.md).
 
 ## Cấu trúc repo
@@ -39,7 +41,7 @@ Hành trình học lại FullStack từ nền tảng: từ cách máy tính ho�
 ├── dsa/                  # lời giải theo pattern
 ├── capstone/             # dự án xuyên suốt
 ├── templates/            # mẫu bài học, mẫu lab
-└── site/                 # learning hub (Astro), làm sau
+└── site/                 # learning hub: node site/build.mjs
 ```
 
 ## Mỗi bài học gồm

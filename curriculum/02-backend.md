@@ -2,6 +2,8 @@
 
 28 bài, 7 module. Module A phân tích và thiết kế capstone trước khi viết dòng code nào. Module B và C tạo phiên bản v1 bằng Java thuần; module D đến G chuyển sang Spring Boot và hoàn thiện thành v2.
 
+**Vì sao học:** Tự viết lại HTTP server và JDBC trước khi dùng Spring giúp thấy rõ framework đang làm hộ những gì, nên dùng Spring Boot, JPA, Spring Security đúng cách và tránh được các lỗi kinh điển như N+1 hay `@Transactional` không có tác dụng.
+
 Thời lượng là mức tối đa cho người học mới. Phần đã vững thì làm "Tự kiểm tra" trước, đạt thì chỉ làm lab rồi chuyển bài.
 
 | Module | Bài | Thời lượng tối đa |

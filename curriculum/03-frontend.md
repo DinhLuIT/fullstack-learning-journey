@@ -2,6 +2,8 @@
 
 21 bài, 6 module. Đi từ nền tảng web và JavaScript core (phần hay bị hỏi xoáy) đến React, Redux Toolkit và các tính năng dự án thực tế.
 
+**Vì sao học:** Frontend hiện đại đứng trên JavaScript core và cách trình duyệt hoạt động. Nắm event loop, closure, quá trình render trước rồi mới tới React và Redux Toolkit thì code ít lỗi hơn và trả lời được những câu hỏi xoáy.
+
 Thời lượng là mức tối đa cho người học mới. Phần đã vững thì làm "Tự kiểm tra" trước, đạt thì chỉ làm lab rồi chuyển bài.
 
 | Module | Bài | Thời lượng tối đa |

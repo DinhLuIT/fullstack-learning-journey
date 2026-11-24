@@ -2,6 +2,8 @@
 
 17 bài, chạy xuyên suốt khoảng 32 tuần, 3–4 giờ mỗi tuần. Ba bài đầu là nền tảng (độ phức tạp, đệ quy, tìm kiếm và sắp xếp); các bài sau học theo pattern. Mỗi bài: học cấu trúc dữ liệu hoặc kỹ thuật, tự cài đặt bằng Java, rồi giải 5–10 bài luyện từ Easy lên Medium.
 
+**Vì sao học:** Vòng code của phần lớn công ty vẫn kiểm tra cấu trúc dữ liệu và giải thuật. Luyện đều mỗi tuần theo pattern hiệu quả hơn dồn vào trước khi đi phỏng vấn.
+
 **Quy ước cho mỗi bài giải trong `dsa/`:** đề tóm tắt, ý tưởng, độ phức tạp thời gian và bộ nhớ, code, và một dòng "dấu hiệu nhận dạng". Bài nào phải xem lời giải thì đánh dấu và giải lại sau một tuần.
 
 ### Bài 1. Độ phức tạp thuật toán

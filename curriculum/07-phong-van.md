@@ -2,6 +2,8 @@
 
 6 bài, biến những gì đã học thành thứ nhà tuyển dụng nhìn thấy và nghe thấy. Bài 1–3 bắt đầu ngay khi xong Giai đoạn 4, vì đó là lúc bắt đầu nộp CV.
 
+**Vì sao học:** Kiến thức chỉ có giá trị khi trình bày được. CV, câu chuyện về dự án và phỏng vấn thử biến những gì đã học thành thứ nhà tuyển dụng nhìn thấy và nghe thấy.
+
 ### Bài 1. CV và GitHub profile
 
 **Mục tiêu:** CV vượt qua vòng lọc hồ sơ trong 30 giây đầu.

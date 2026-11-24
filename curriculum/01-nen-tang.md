@@ -2,6 +2,8 @@
 
 38 bài, 6 module, đi từ cách máy tính hoạt động đến Linux, mạng, Git, công cụ build, Java Core và SQL. Module A là nền móng cho mọi thứ phía sau: thread, bộ nhớ, cache, I/O đều quay lại đây.
 
+**Vì sao học:** Phỏng vấn hỏi nhiều nhất về những thứ nằm dưới framework: HashMap chạy thế nào, transaction và isolation, thread và deadlock, gõ URL thì chuyện gì xảy ra. Hiểu tầng này thì học framework nào cũng nhanh và debug được lỗi khó.
+
 Thời lượng là mức tối đa cho người học mới. Phần đã vững thì làm "Tự kiểm tra" trước, đạt thì chỉ làm lab rồi chuyển bài.
 
 | Module | Bài | Thời lượng tối đa |

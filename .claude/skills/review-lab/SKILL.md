@@ -18,9 +18,10 @@ git status --short -- '*/labs/*'; git log -5 --name-only --format='' -- '*/labs/
 
 Đọc:
 
-1. `README.md` của lab: mục tiêu, cách chạy, kết quả, điều rút ra
-2. Toàn bộ code của lab
-3. File ghi chú của bài chứa lab, và mục `### Bài N.` trong `curriculum/` (phần "Thực hành" là yêu cầu gốc)
+1. `DE-BAI.md` của lab: đây là yêu cầu chính thức để chấm "đạt" hay "chưa đạt"
+2. `README.md` của lab (do Đình viết): cách chạy, kết quả, điều rút ra
+3. Toàn bộ code của lab
+4. Mục `### Bài N.` trong `curriculum/` (phần "Thực hành" là yêu cầu gốc nếu lab chưa có `DE-BAI.md`)
 
 ## 2. Chạy thử
 

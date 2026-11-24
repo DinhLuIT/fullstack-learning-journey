@@ -22,7 +22,7 @@ Tìm file ghi chú của bài bằng frontmatter:
 grep -rl --include='*.md' -E '^lesson: 18$' 01-*/ | xargs grep -l '^phase: 1$'
 ```
 
-Đề cương của bài nằm trong `curriculum/`, mục `### Bài N.` của file giai đoạn tương ứng.
+Đề cương của bài nằm trong `curriculum/`, mục `### Bài N.` của file giai đoạn tương ứng. Nếu bài đã có tài liệu (`handouts/`), mở đầu buổi học bằng link tới trang bài trên learning hub để Đình xem hình và sơ đồ trong lúc nghe giảng.
 
 ## 2. Đọc trước khi nói
 
@@ -58,11 +58,17 @@ Quy tắc khi giảng:
 
 ## 5. Giao lab
 
-Lấy phần "Thực hành" trong đề cương, viết lại thành:
+Lấy phần "Thực hành" trong đề cương, viết thành file đề bài `labs/<ten-lab>/DE-BAI.md` theo `templates/lab-DE-BAI.md`:
 
-- Yêu cầu cụ thể và tiêu chí "xong" có thể kiểm chứng
-- Vị trí: `labs/<ten-lab>/`, kèm `README.md` theo `templates/lab-README.md`
-- Câu hỏi mà lab phải trả lời được (đo được gì, quan sát được gì)
+- Frontmatter có `title`, `phase`, `lesson` (để learning hub gắn đề bài vào đúng bài)
+- Bối cảnh: lab này chứng minh điều gì, liên hệ capstone ra sao
+- Yêu cầu cụ thể dạng checklist, tiêu chí "xong" kiểm chứng được
+- Câu hỏi mà lab phải trả lời (đo được gì, quan sát được gì)
+- Nếu cần hình dung: một sơ đồ Mermaid hoặc SVG minh họa đề bài (theo `.claude/skills/soan-bai/truc-quan.md`), không minh họa lời giải
+
+`README.md` trong cùng thư mục là của Đình (cách chạy, kết quả, điều rút ra) theo `templates/lab-README.md`; không viết vào đó.
+
+Sau khi ghi đề bài, đưa Đình link trên learning hub theo quy ước trong `CLAUDE.md` (mục Learning hub), kèm lưu ý trang chỉ có sau lần push tiếp theo; trước đó gửi đường dẫn file trong repo.
 
 **Tuyệt đối không viết code lab.** Khi Đình bị kẹt, gợi ý theo thang, mỗi lần chỉ lên một bậc:
 
@@ -74,16 +80,18 @@ Khi Đình làm xong, đề nghị dùng skill `review-lab`.
 
 ## 6. Kết thúc buổi
 
-1. Hỏi lần lượt các câu trong phần "Tự kiểm tra" của đề cương. Chấm mỗi câu: **2** đúng và giải thích được cơ chế, **1** đúng ý nhưng thiếu cơ chế, **0** sai hoặc không trả lời.
-2. Câu dưới 2 điểm: thêm một dòng vào bảng "Cần ôn lại" trong `progress.md` (bài, điểm yếu, ngày hôm nay, "chưa").
-3. Cập nhật frontmatter của file ghi chú bài:
+1. Hỏi lần lượt các câu trong phần "Tự kiểm tra" của đề cương, từng câu một. Chấm mỗi câu: **2** đúng và giải thích được cơ chế, **1** đúng ý nhưng thiếu cơ chế, **0** sai hoặc không trả lời.
+2. Sau mỗi câu, ghi vào mục `## Tự kiểm tra` của file ghi chú bài: câu trả lời nguyên văn của Đình, đánh giá, và câu trả lời hoàn chỉnh có nguồn, theo đúng định dạng trong `.claude/skills/on-tap/ghi-cau-tra-loi.md`.
+3. Câu dưới 2 điểm: thêm một dòng vào bảng "Cần ôn lại" trong `progress.md` (bài, điểm yếu, ngày hôm nay, "chưa").
+4. Cập nhật frontmatter của file ghi chú bài:
    - `status`: `doing` nếu còn lab, `done` nếu xong cả lab và tự kiểm tra, `review` nếu có câu 0 điểm
    - `started` và `finished` theo ngày thực tế
-4. Chạy `python3 .claude/skills/tien-do/scripts/sync_progress.py` để cập nhật bảng tiến độ, rồi sửa mục "Hiện tại" trong `progress.md`.
-5. Nhắc Đình viết mục "Ghi chú" bằng lời của mình, và gợi ý một commit message, ví dụ `docs(java-core): notes on HashMap internals`.
+5. Chạy `python3 .claude/skills/tien-do/scripts/sync_progress.py` để cập nhật bảng tiến độ, rồi sửa mục "Hiện tại" trong `progress.md`.
+6. Nhắc Đình viết mục "Ghi chú" bằng lời của mình, và gợi ý một commit message, ví dụ `docs(java-core): notes on HashMap internals`.
 
 ## Không được làm
 
-- Viết hoặc sửa mục "Ghi chú", "Sai lầm và hiểu nhầm" trong file bài học. Chỉ được nhận xét và chỉ ra chỗ sai.
+- Viết hoặc sửa mục "Ghi chú", "Sai lầm và hiểu nhầm" trong file bài học. Chỉ được nhận xét và chỉ ra chỗ sai. (Mục "Tự kiểm tra" thì được ghi, nhưng chỉ sau khi Đình đã trả lời.)
+- Đưa câu trả lời hoàn chỉnh trước khi Đình tự trả lời.
 - Viết code trong `labs/`.
 - Khen chung chung. Ghi nhận đúng chỗ Đình làm tốt, chỉ thẳng chỗ sai.

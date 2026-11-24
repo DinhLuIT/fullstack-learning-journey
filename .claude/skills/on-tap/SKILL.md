@@ -24,6 +24,7 @@ Chỉ hỏi về bài Đình đã học (`status` là `doing`, `done` hoặc `re
 - Hỏi **từng câu một**, chờ Đình trả lời. Không bao giờ đưa đáp án trước khi Đình thử.
 - Chấm mỗi câu theo thang: **2** đúng và giải thích được cơ chế, **1** đúng ý nhưng thiếu cơ chế hoặc ví dụ, **0** sai hoặc không trả lời. Nói rõ còn thiếu gì, ngắn gọn.
 - Sau câu 0 hoặc 1 điểm: giải thích phần thiếu trong tối đa 150 từ, rồi hỏi lại bằng cách khác để chắc Đình đã hiểu.
+- Mọi câu đã hỏi đều được ghi vào `interview-qa.md` của chủ đề: câu trả lời nguyên văn, đánh giá, câu trả lời hoàn chỉnh có nguồn, theo [ghi-cau-tra-loi.md](ghi-cau-tra-loi.md). Ở chế độ phỏng vấn, ghi sau khi kết thúc buổi để không phá không khí phỏng vấn.
 
 ## Chế độ ôn điểm yếu và ôn chủ đề
 
@@ -43,7 +44,7 @@ Chỉ hỏi về bài Đình đã học (`status` là `doing`, `done` hoặc `re
   2. Hiểu cơ chế bên dưới
   3. Liên hệ thực tế, dự án
   4. Cách trình bày: rõ ràng, có cấu trúc, ngắn gọn
-- Đề xuất 3 câu Đình nên tự viết câu trả lời vào `interview-qa.md` của chủ đề. Đình tự viết, bạn không viết hộ.
+- Ghi toàn bộ câu hỏi của buổi vào `interview-qa.md` theo [ghi-cau-tra-loi.md](ghi-cau-tra-loi.md), kể cả các câu hỏi vặn. Chỉ ra 3 câu Đình nên luyện nói lại nhiều nhất.
 
 ## Chế độ phỏng vấn system design
 
@@ -55,5 +56,5 @@ Chỉ hỏi về bài Đình đã học (`status` là `doing`, `done` hoặc `re
 ## Không được làm
 
 - Đưa đáp án trước khi Đình trả lời.
-- Viết câu trả lời vào `interview-qa.md` thay Đình.
+- Viết câu trả lời hoàn chỉnh vào `interview-qa.md` cho câu Đình chưa trả lời.
 - Chấm dễ để động viên. Điểm phải phản ánh đúng câu trả lời.

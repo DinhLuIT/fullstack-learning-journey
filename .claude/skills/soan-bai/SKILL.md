@@ -41,7 +41,7 @@ Ghi rõ phiên bản mục tiêu ngay từ đầu: Java 21, Spring Boot 3.x, Pos
 
 ## Bước 3. Viết tài liệu
 
-Lưu ở `<giai-đoạn>/<chủ-đề>/handouts/NN-<slug>.md`, cùng slug với file ghi chú của bài. Nếu file đã tồn tại, hỏi Đình trước khi ghi đè.
+Lưu ở `<giai-đoạn>/<chủ-đề>/handouts/NN-<slug>.md`, cùng slug với file ghi chú của bài (DSA: `dsa/NN-<slug>/handout.md`). Hình ở `handouts/assets/`, sơ đồ tương tác ở `handouts/diagrams/` (DSA: `assets/` và `diagrams/` trong thư mục của bài). Nếu file đã tồn tại, hỏi Đình trước khi ghi đè.
 
 Dòng đầu tiên của file:
 
@@ -52,12 +52,12 @@ Dòng đầu tiên của file:
 ### Cấu trúc
 
 1. **Tóm tắt** (3–4 câu): bài này giải quyết vấn đề gì, học xong làm được gì.
-2. **Vì sao cần học:** một tình huống thực tế khi thiếu kiến thức này, ưu tiên tình huống trong capstone.
+2. **Vì sao cần học:** mở bằng một tình huống thực tế, tốt nhất là một lỗi có thể xảy ra trong capstone, và một câu hỏi "đoán trước" (đáp án trong `<details>`).
 3. **Kiến thức nền:** link tới bài trước cần nắm.
 4. **Nội dung chính:** mỗi gạch đầu dòng của đề cương thành một mục:
    - Đi từ ví dụ cụ thể đến khái niệm trừu tượng
    - Giải thích cơ chế bên dưới, không dừng ở cách dùng
-   - Sơ đồ Mermaid khi có luồng, tầng, trạng thái hoặc quan hệ
+   - Hình minh họa theo Bước 3b (Mermaid, SVG, sơ đồ tương tác)
    - Cuối mỗi mục: một câu "dừng lại và tự hỏi"
 5. **Hiểu nhầm thường gặp:** 3–5 hiểu nhầm, mỗi cái kèm lý do vì sao sai **và nguồn chứng minh**.
 6. **Liên hệ capstone:** kiến thức này dùng ở đâu trong hệ thống đặt sân, gắn mã F-, R-, N- nếu có.
@@ -79,6 +79,15 @@ Dòng đầu tiên của file:
 - **Phải chạy thử** trước khi đưa vào (Java: `java File.java` hoặc `jshell`; JavaScript: `node`; SQL: chạy trên PostgreSQL nếu có). Ghi kết quả chạy thật ngay dưới đoạn code.
 - Không chạy được (thiếu môi trường) thì ghi rõ `Chưa chạy thử` ngay trên đoạn code.
 
+## Bước 3b. Trực quan hóa và làm bài học sống động
+
+Làm theo [truc-quan.md](truc-quan.md):
+
+- Chọn 2–4 hình cho bài: Mermaid cho luồng đơn giản, SVG vẽ tay cho cấu trúc trong không gian, SVG có hoạt ảnh ngắn cho một thay đổi có chủ đích, sơ đồ tương tác từng bước (HTML) cho quá trình nhiều trạng thái người học cần tự điều khiển. Dùng Archify nếu đã cài.
+- Lưu SVG ở `handouts/assets/`, sơ đồ tương tác ở `handouts/diagrams/`, nhúng vào handout bằng cú pháp trong `truc-quan.md`.
+- Mở bài bằng một tình huống thật; thêm câu hỏi "đoán trước khi đọc" và một thí nghiệm "thử ngay 5 phút" khi phù hợp.
+- Hình và hiệu ứng phải có chủ đích: mỗi cái trả lời được câu "người học hiểu điều gì nhanh hơn nhờ nó?". Không trang trí.
+
 ## Bước 4. Kiểm chứng (bắt buộc, trước khi giao)
 
 1. Đi lại từng câu có `[n]`: đối chiếu với phiếu nghiên cứu. Khẳng định nào không khớp với điều nguồn thực sự nói thì sửa hoặc bỏ.
@@ -94,11 +103,12 @@ Dòng đầu tiên của file:
    - Đánh dấu chưa kiểm chứng: Z (liệt kê)
    - Gạch đầu dòng của đề cương chưa có nguồn: (liệt kê hoặc "không có")
    - Code đã chạy thử: m / n đoạn
+   - Hình: x SVG, y sơ đồ tương tác, z Mermaid; đã đối chiếu nhãn và số liệu trong hình với nguồn
    ```
 
 ## Bước 5. Báo lại cho Đình
 
-- Đường dẫn file tài liệu và phiếu nghiên cứu
+- Link trang bài trên learning hub theo quy ước trong `CLAUDE.md` (mục Learning hub), kèm lưu ý trang cập nhật sau lần push tiếp theo; đường dẫn file tài liệu và phiếu nghiên cứu trong repo
 - Tóm tắt 2–3 câu những gì tài liệu phủ
 - Nói thẳng những phần chưa có nguồn hoặc chưa kiểm chứng, để Đình biết chỗ nào cần tự đối chiếu
 - Gợi ý bắt đầu buổi học bằng `/hoc-bai N`

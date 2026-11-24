@@ -2,6 +2,8 @@
 
 13 bài, 4 module, đưa capstone lên v4 có trợ lý AI. Trọng tâm là tích hợp LLM vào sản phẩm một cách đáng tin cậy, không phải huấn luyện model. Từ cuối giai đoạn này bắt đầu nộp CV.
 
+**Vì sao học:** Tích hợp LLM vào sản phẩm đang trở thành kỹ năng bình thường của lập trình viên. Biết gọi API, RAG, tool calling, đánh giá và vận hành một cách có kiểm soát là điểm khác biệt lớn khi đi phỏng vấn.
+
 | Module | Bài | Thời lượng tối đa |
 | --- | --- | --- |
 | A. LLM và gọi API | 1–4 | 1 tuần |

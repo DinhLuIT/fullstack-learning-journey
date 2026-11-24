@@ -31,3 +31,7 @@ dist/
 
 # Logs
 *.log
+
+# Learning hub (build output)
+site/dist/
+_site/

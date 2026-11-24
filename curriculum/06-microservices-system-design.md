@@ -2,6 +2,8 @@
 
 17 bài, 3 module. Module A học các khối xây dựng của hệ thống lớn, module B áp dụng chúng để tách capstone thành microservices với hệ sinh thái Spring Cloud, module C luyện phỏng vấn system design theo case.
 
+**Vì sao học:** Câu hỏi system design và kinh nghiệm với hệ thống phân tán là thứ phân biệt Junior với Mid. Tách chính capstone thành microservices cho trải nghiệm thật về đánh đổi, không chỉ lý thuyết.
+
 Thời lượng là mức tối đa cho người học mới. Phần đã vững thì làm "Tự kiểm tra" trước, đạt thì chỉ làm lab rồi chuyển bài.
 
 | Module | Bài | Thời lượng tối đa |
