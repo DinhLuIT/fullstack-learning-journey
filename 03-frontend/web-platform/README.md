@@ -1,6 +1,6 @@
 # Nền tảng web
 
-Giai đoạn 3 · Module A
+Giai đoạn 3 · A. Nền tảng web
 
 | Bài | Trạng thái |
 | --- | --- |

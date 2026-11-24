@@ -13,14 +13,14 @@
 
 | Giai đoạn | Xong / Tổng |
 | --- | --- |
-| 1. Nền tảng | 0 / 28 |
-| 2. Backend | 0 / 16 |
-| 3. Frontend | 0 / 13 |
-| 4. AI Engineering | 0 / 12 |
+| 1. Nền tảng | 0 / 38 |
+| 2. Backend | 0 / 28 |
+| 3. Frontend | 0 / 21 |
+| 4. AI Engineering | 0 / 13 |
 | 5. DevOps | 0 / 9 |
-| 6. Microservices và System Design | 0 / 15 |
+| 6. Microservices và System Design | 0 / 17 |
 | 7. Phỏng vấn | 0 / 6 |
-| DSA | 0 / 15 |
+| DSA | 0 / 17 |
 
 ## Cần ôn lại
 
@@ -37,3 +37,4 @@
 ### Tuần 2026-11-23
 
 - Tạo repo, dựng cấu trúc thư mục và ghi chú cho 114 bài
+- Mở rộng lộ trình lên 149 bài sau khi đối chiếu với các khóa đã học

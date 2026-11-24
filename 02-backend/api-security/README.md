@@ -1,12 +1,15 @@
 # API và bảo mật
 
-Giai đoạn 2 · Module D
+Giai đoạn 2 · E. API và bảo mật
 
 | Bài | Trạng thái |
 | --- | --- |
-| [10. Thiết kế REST API chuyên nghiệp](10-thiet-ke-rest-api-chuyen-nghiep.md) | todo |
-| [11. Xác thực và phân quyền](11-xac-thuc-va-phan-quyen.md) | todo |
-| [12. OAuth2 và bảo mật ứng dụng web](12-oauth2-va-bao-mat-ung-dung-web.md) | todo |
+| [15. Thiết kế REST API chuyên nghiệp](15-thiet-ke-rest-api-chuyen-nghiep.md) | todo |
+| [16. Spring Security: kiến trúc và xác thực](16-spring-security-kien-truc-va-xac-thuc.md) | todo |
+| [17. JWT, refresh token và resource server](17-jwt-refresh-token-va-resource-server.md) | todo |
+| [18. Phân quyền: theo role, theo method và theo dữ liệu](18-phan-quyen-theo-role-theo-method-va-theo-du-lieu.md) | todo |
+| [19. CORS, CSRF, xử lý lỗi bảo mật và kiểm thử security](19-cors-csrf-xu-ly-loi-bao-mat-va-kiem-thu-security.md) | todo |
+| [20. OAuth2 và OpenID Connect: đăng nhập bằng Google](20-oauth2-va-openid-connect-dang-nhap-bang-google.md) | todo |
 
 ## Cấu trúc
 

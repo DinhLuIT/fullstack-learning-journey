@@ -1,6 +1,6 @@
 # Máy tính hoạt động thế nào
 
-Giai đoạn 1 · Module A
+Giai đoạn 1 · A. Máy tính hoạt động thế nào
 
 | Bài | Trạng thái |
 | --- | --- |

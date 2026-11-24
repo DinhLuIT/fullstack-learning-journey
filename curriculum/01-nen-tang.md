@@ -1,15 +1,17 @@
 # Giai đoạn 1: Nền tảng
 
-28 bài, 6 module, đi từ cách máy tính hoạt động đến Linux, mạng, Git, Java Core và SQL. Module A là nền móng cho mọi thứ phía sau: thread, bộ nhớ, cache, I/O đều quay lại đây.
+38 bài, 6 module, đi từ cách máy tính hoạt động đến Linux, mạng, Git, công cụ build, Java Core và SQL. Module A là nền móng cho mọi thứ phía sau: thread, bộ nhớ, cache, I/O đều quay lại đây.
 
-| Module | Bài | Thời lượng |
+Thời lượng là mức tối đa cho người học mới. Phần đã vững thì làm "Tự kiểm tra" trước, đạt thì chỉ làm lab rồi chuyển bài.
+
+| Module | Bài | Thời lượng tối đa |
 | --- | --- | --- |
 | A. Máy tính hoạt động thế nào | 1–3 | 4–5 buổi |
 | B. Linux | 4–8 | 1 tuần |
 | C. Networking | 9–12 | 1 tuần |
-| D. Git | 13 | 2 buổi |
-| E. Java Core | 14–22 | 2 tuần |
-| F. SQL và cơ sở dữ liệu | 23–28 | 1,5 tuần |
+| D. Git và công cụ build | 13–14 | 3 buổi |
+| E. Java Core | 15–31 | 3 tuần |
+| F. SQL và cơ sở dữ liệu | 32–38 | 1,5 tuần |
 
 ## Module A. Máy tính hoạt động thế nào
 
@@ -203,7 +205,7 @@
 
 **Tự kiểm tra:** CORS chặn ở phía nào, trình duyệt hay server? Khi nào chọn SSE thay WebSocket?
 
-## Module D. Git
+## Module D. Git và công cụ build
 
 ### Bài 13. Git từ bên trong và quy trình nhóm
 
@@ -221,9 +223,26 @@
 
 **Tự kiểm tra:** merge khác rebase thế nào, khi nào không nên rebase? `revert` khác `reset` ra sao?
 
+### Bài 14. Maven và Gradle
+
+**Mục tiêu:** hiểu công cụ build làm gì và tự cấu hình được dự án Java nhiều module.
+
+**Nội dung**
+
+- Vì sao cần công cụ build: quản lý dependency, biên dịch, chạy test, đóng gói
+- Maven: `pom.xml`, tọa độ (groupId, artifactId, version), scope của dependency, vòng đời và phase (`compile`, `test`, `package`, `install`)
+- Dependency bắc cầu, xung đột phiên bản, `dependency:tree`, BOM và `dependencyManagement`
+- Dự án nhiều module (parent và module con)
+- Gradle ở mức đọc hiểu: `build.gradle`, task, so sánh với Maven
+- Maven Wrapper và Gradle Wrapper: vì sao nên commit wrapper vào repo
+
+**Thực hành:** tạo dự án Maven hai module (`core` và `app`) cho capstone; cố ý tạo xung đột phiên bản một thư viện và đọc `dependency:tree` để tìm nguyên nhân.
+
+**Tự kiểm tra:** scope `provided` khác `runtime` thế nào? Hai thư viện kéo về hai phiên bản khác nhau của cùng một dependency thì Maven chọn bản nào?
+
 ## Module E. Java Core
 
-### Bài 14. Java chạy thế nào và kiểu dữ liệu
+### Bài 15. Java chạy thế nào và kiểu dữ liệu
 
 **Mục tiêu:** hiểu đường đi từ file `.java` đến lệnh chạy trên CPU và cách Java lưu biến.
 
@@ -233,13 +252,14 @@
 - Kiểu nguyên thủy và kiểu tham chiếu; wrapper class, autoboxing và cache `Integer` (-128 đến 127)
 - Stack và heap; Java luôn truyền tham trị (pass-by-value), kể cả với object
 - `String` bất biến, String pool, `==` và `equals`; `StringBuilder`
+- Regex: cú pháp cơ bản, `Pattern` và `Matcher`, kiểm tra định dạng (email, số điện thoại)
 - `static`, `final`, khối khởi tạo, thứ tự khởi tạo object
 
-**Thực hành:** dùng `javac` và `javap -c` xem bytecode; viết ví dụ chứng minh pass-by-value; so sánh `Integer` 127 và 128 bằng `==`.
+**Thực hành:** dùng `javac` và `javap -c` xem bytecode; viết ví dụ chứng minh pass-by-value; so sánh `Integer` 127 và 128 bằng `==`; viết regex kiểm tra số điện thoại Việt Nam.
 
 **Tự kiểm tra:** Java pass-by-value hay pass-by-reference? Vì sao `String` được thiết kế bất biến?
 
-### Bài 15. Lập trình hướng đối tượng
+### Bài 16. Lập trình hướng đối tượng
 
 **Mục tiêu:** thiết kế class đúng, không chỉ thuộc định nghĩa.
 
@@ -254,23 +274,73 @@
 
 **Tự kiểm tra:** khi nào dùng interface, khi nào dùng abstract class? Vì sao composition thường tốt hơn inheritance?
 
-### Bài 16. SOLID và design pattern
+### Bài 17. Nguyên lý SOLID và thiết kế hướng đối tượng
 
-**Mục tiêu:** nhận ra pattern trong code thật, đặc biệt trong Spring.
+**Mục tiêu:** đánh giá được một thiết kế class tốt hay xấu và sửa được thiết kế xấu.
 
 **Nội dung**
 
+- Phân tích và thiết kế hướng đối tượng (OOAD): từ yêu cầu đến class và trách nhiệm
 - 5 nguyên lý SOLID, mỗi nguyên lý một ví dụ vi phạm và cách sửa
-- Nhóm khởi tạo: Singleton (kèm thread-safe), Factory, Builder
-- Nhóm cấu trúc: Adapter, Decorator, Proxy, Facade
-- Nhóm hành vi: Strategy, Observer, Template Method, Chain of Responsibility
-- Pattern nào xuất hiện ở đâu trong Spring (Proxy trong AOP, Template trong `JdbcTemplate`, Chain trong filter của Security)
+- Coupling và cohesion; "program to an interface"
+- Dependency Inversion khác Dependency Injection thế nào
+- Design pattern là gì, vì sao cần, ba nhóm khởi tạo, cấu trúc, hành vi
 
-**Thực hành:** viết lại một đoạn tính giảm giá nhiều `if-else` bằng Strategy; viết Singleton thread-safe theo 3 cách.
+**Thực hành:** lấy một class "làm mọi thứ" (kiểm tra giờ trống, tính giá, lưu đơn, gửi email cho capstone), chỉ ra các nguyên lý bị vi phạm và tách lại.
 
-**Tự kiểm tra:** Dependency Inversion khác Dependency Injection thế nào? Proxy khác Decorator ra sao?
+**Tự kiểm tra:** Open/Closed nghĩa là gì trong thực tế? Liskov Substitution bị vi phạm thì gây lỗi gì?
 
-### Bài 17. Exception và Generics
+### Bài 18. Design pattern nhóm khởi tạo
+
+**Mục tiêu:** chọn đúng cách tạo object cho từng tình huống.
+
+**Nội dung**
+
+- Singleton: các cách cài đặt, cách nào an toàn đa luồng, vì sao Singleton thường bị coi là anti-pattern khi lạm dụng
+- Factory Method và Abstract Factory
+- Builder: khi object có nhiều tham số tùy chọn
+- Prototype ở mức khái niệm
+- Pattern khởi tạo xuất hiện ở đâu trong JDK và Spring (ví dụ bean scope singleton, `BeanFactory`)
+
+**Thực hành:** viết Singleton thread-safe theo 3 cách; dùng Builder tạo đối tượng đơn đặt sân; dùng Factory chọn cách tính giá theo môn.
+
+**Tự kiểm tra:** singleton bean của Spring khác Singleton pattern ở đâu? Khi nào Builder tốt hơn constructor nhiều tham số?
+
+### Bài 19. Design pattern nhóm cấu trúc
+
+**Mục tiêu:** ghép các object lại với nhau mà không làm code cứng nhắc.
+
+**Nội dung**
+
+- Adapter: nối hai interface không khớp nhau
+- Decorator: thêm hành vi mà không sửa class gốc (liên hệ `java.io`)
+- Proxy: kiểm soát truy cập, nền tảng của AOP trong Spring
+- Facade: một cửa vào đơn giản cho hệ thống phức tạp
+- Composite ở mức khái niệm
+- So sánh Proxy và Decorator
+
+**Thực hành:** dùng Adapter bọc một cổng thanh toán giả lập vào interface `PaymentGateway` của capstone; dùng Decorator thêm ghi log và đo thời gian cho một service.
+
+**Tự kiểm tra:** Proxy khác Decorator ở đâu? Vì sao `@Transactional` của Spring dựa trên Proxy?
+
+### Bài 20. Design pattern nhóm hành vi
+
+**Mục tiêu:** tổ chức logic thay đổi theo tình huống mà không cần chuỗi `if-else` dài.
+
+**Nội dung**
+
+- Strategy: thay thuật toán lúc chạy
+- Observer: thông báo khi trạng thái thay đổi (liên hệ event trong Spring)
+- Template Method (liên hệ `JdbcTemplate`)
+- Chain of Responsibility (liên hệ filter chain của Spring Security)
+- State: đối tượng đổi hành vi theo trạng thái
+- Command ở mức khái niệm
+
+**Thực hành:** dùng Strategy cho chính sách hủy và tính giá cao điểm (R-05, R-06, R-11); dùng State cho vòng đời đơn đặt (giữ chỗ, đã xác nhận, đã check-in, không đến, đã hủy).
+
+**Tự kiểm tra:** Strategy khác State thế nào? Observer có rủi ro gì khi có nhiều listener?
+
+### Bài 21. Exception và Generics
 
 **Mục tiêu:** xử lý lỗi đúng cách và viết code dùng lại được với generics.
 
@@ -284,7 +354,7 @@
 
 **Tự kiểm tra:** checked và unchecked exception khác nhau thế nào, Spring rollback với loại nào? Type erasure gây hạn chế gì?
 
-### Bài 18. Collections từ bên trong
+### Bài 22. Collections từ bên trong
 
 **Mục tiêu:** chọn đúng cấu trúc dữ liệu và giải thích được cách nó hoạt động.
 
@@ -300,22 +370,108 @@
 
 **Tự kiểm tra:** điều gì xảy ra khi hai key trùng hash? Vì sao key của `HashMap` nên bất biến?
 
-### Bài 19. Java hiện đại và lập trình hàm
+### Bài 23. Java 8: lambda, Stream, Optional và java.time
 
-**Mục tiêu:** viết Java gọn và đúng kiểu của các phiên bản mới.
+**Mục tiêu:** viết Java theo phong cách hàm, đúng và dễ đọc.
 
 **Nội dung**
 
-- Lambda, functional interface (`Function`, `Predicate`, `Supplier`, `Consumer`), method reference
-- Stream API: tính lười, intermediate và terminal operation, `Collectors.groupingBy`, `flatMap`; parallel stream và khi nào không nên dùng
-- `Optional` dùng đúng và dùng sai
-- `record`, `sealed`, pattern matching cho `instanceof` và `switch`, text block
+- Lambda, functional interface (`Function`, `Predicate`, `Supplier`, `Consumer`, `BiFunction`), method reference
+- Default method và static method trong interface
+- Stream API: tính lười, intermediate và terminal operation, `Collectors` (`groupingBy`, `partitioningBy`, `toMap`, `joining`), `flatMap`, `reduce`; parallel stream và khi nào không nên dùng
+- `Optional`: dùng đúng và dùng sai
+- `java.time`: `LocalDate`, `LocalDateTime`, `Instant`, `ZonedDateTime`, `Duration`, `Period`; vì sao thay `Date` và `Calendar`
 
-**Thực hành:** từ danh sách đơn hàng, dùng Stream tính doanh thu theo tháng và top 3 khách hàng.
+**Thực hành:** từ danh sách đơn đặt sân, dùng Stream tính doanh thu theo cơ sở và theo tháng, top 3 khách đặt nhiều nhất; viết hàm sinh các khung 30 phút của một ngày bằng `java.time`, xử lý đúng múi giờ Việt Nam.
 
-**Tự kiểm tra:** vì sao nói Stream là lười? `map` khác `flatMap` thế nào?
+**Tự kiểm tra:** vì sao nói Stream là lười? `map` khác `flatMap` thế nào? Lưu thời gian đặt sân nên dùng `LocalDateTime` hay `Instant`, vì sao?
 
-### Bài 20. Concurrency phần 1: thread và đồng bộ
+### Bài 24. Java 9 đến 17: những gì dự án hiện đại dùng
+
+**Mục tiêu:** dùng được các tính năng ngôn ngữ mà dự án Spring Boot 3 (yêu cầu tối thiểu Java 17) hay gặp.
+
+**Nội dung**
+
+- Factory method cho collection không đổi (`List.of`, `Map.of`) và khác biệt với `Collections.unmodifiableList`
+- Hệ thống module (JPMS) ở mức khái niệm
+- `var` cho biến cục bộ: khi nào nên và không nên dùng
+- HTTP Client mới (`java.net.http`)
+- Các method mới hay dùng của `String`, `Stream`, `Optional`
+- Switch expression, text block
+- `record`: khi nào dùng thay class, giới hạn của record
+- Pattern matching cho `instanceof`
+- `sealed` class và interface
+
+**Thực hành:** viết lại các DTO của capstone bằng `record`; mô hình hóa kết quả đặt sân (thành công, khung giờ đã kín, vi phạm quy tắc) bằng `sealed interface` và xử lý bằng switch expression.
+
+**Tự kiểm tra:** record có phù hợp làm JPA entity không, vì sao? `sealed` giúp gì khi viết switch?
+
+### Bài 25. Java 21
+
+**Mục tiêu:** biết các tính năng của bản LTS Java 21 và dùng được trong code.
+
+**Nội dung**
+
+- Pattern matching cho `switch` và record pattern
+- Sequenced collections: thứ tự phần tử có định nghĩa rõ ràng
+- Virtual thread: ý tưởng và khi nào dùng (đi sâu ở bài Concurrency phần 2)
+- Các tính năng còn ở dạng preview: biết tên và trạng thái, không dùng trong code production
+- Cách đọc JEP để biết một tính năng ra đời ở phiên bản nào và đã chính thức hay chưa
+
+**Thực hành:** viết lại phần xử lý kết quả đặt sân ở bài trước bằng pattern matching cho `switch` kết hợp record pattern; tra JEP của từng tính năng đã dùng và ghi phiên bản vào ghi chú.
+
+**Tự kiểm tra:** pattern matching cho `switch` giúp gì so với chuỗi `if-instanceof`? Vì sao không nên dùng tính năng preview trong production?
+
+### Bài 26. I/O và NIO.2
+
+**Mục tiêu:** đọc, ghi file và luồng dữ liệu đúng cách, không rò tài nguyên.
+
+**Nội dung**
+
+- Byte stream và character stream; buffering; charset khi đọc ghi văn bản (nối với bài 1)
+- try-with-resources với stream
+- NIO.2: `Path`, `Files` (đọc, ghi, duyệt thư mục), thao tác file an toàn
+- Đọc file lớn theo dòng thay vì đọc hết vào bộ nhớ
+- Serialization của Java và vì sao các dự án hiện đại thường dùng JSON thay thế
+
+**Thực hành:** viết công cụ đọc một file CSV lịch đặt sân lớn theo từng dòng, thống kê số đơn theo cơ sở, xuất kết quả ra file mới; so sánh bộ nhớ dùng khi đọc theo dòng và đọc toàn bộ.
+
+**Tự kiểm tra:** vì sao phải chỉ định charset khi đọc file văn bản? Đọc file 2 GB thế nào để không hết bộ nhớ?
+
+### Bài 27. Reflection và annotation
+
+**Mục tiêu:** hiểu cơ chế mà Spring, JPA, Jackson dùng để "tự động" làm việc với class của bạn.
+
+**Nội dung**
+
+- `Class`, `Field`, `Method`, `Constructor`; tạo object và gọi method lúc chạy
+- Annotation: khai báo, `@Retention`, `@Target`, đọc annotation lúc chạy
+- Quét class trong một package
+- Chi phí và rủi ro của reflection; khi nào không nên dùng
+- Liên hệ: Spring tìm `@Component`, Jackson đọc field, JPA đọc `@Entity` thế nào
+
+**Thực hành:** viết annotation `@Validate(min, max)` và một validator dùng reflection để kiểm tra object; đây là bước chuẩn bị cho lab tự viết IoC container ở Giai đoạn 2.
+
+**Tự kiểm tra:** `RetentionPolicy.RUNTIME` khác `SOURCE` thế nào, annotation nào của Spring cần `RUNTIME`? Reflection chậm ở chỗ nào?
+
+### Bài 28. Kiểm thử đơn vị với JUnit 5
+
+**Mục tiêu:** viết unit test cho mọi lab từ đây trở đi.
+
+**Nội dung**
+
+- Vì sao viết test; unit test là gì và không là gì
+- JUnit 5: `@Test`, assertion, `@BeforeEach`, `@DisplayName`, test có tham số
+- AssertJ cho assertion dễ đọc
+- Cấu trúc Given–When–Then; đặt tên test
+- Chạy test bằng Maven, đọc báo cáo
+- Test-first ở mức cơ bản
+
+**Thực hành:** viết test cho bộ tính giá của capstone (giờ thường, giờ cao điểm, đơn vắt mốc theo R-11) và chính sách hủy (R-06) trước, rồi mới viết code cho test chạy qua.
+
+**Tự kiểm tra:** một unit test tốt có những đặc điểm gì? Vì sao test chỉ nên kiểm tra một hành vi?
+
+### Bài 29. Concurrency phần 1: thread và đồng bộ
 
 **Mục tiêu:** hiểu vì sao code đa luồng sai và sửa bằng các công cụ cơ bản.
 
@@ -330,7 +486,7 @@
 
 **Tự kiểm tra:** `volatile` giải quyết vấn đề gì và không giải quyết vấn đề gì? Vì sao `count++` không an toàn?
 
-### Bài 21. Concurrency phần 2: công cụ cấp cao
+### Bài 30. Concurrency phần 2: công cụ cấp cao
 
 **Mục tiêu:** dùng đúng công cụ đồng thời trong code thật.
 
@@ -346,7 +502,7 @@
 
 **Tự kiểm tra:** thread pool đầy queue thì chuyện gì xảy ra? Virtual thread phù hợp với loại tác vụ nào?
 
-### Bài 22. JVM: bộ nhớ và garbage collection
+### Bài 31. JVM: bộ nhớ và garbage collection
 
 **Mục tiêu:** đọc được tình trạng bộ nhớ của ứng dụng và xử lý được lỗi hết bộ nhớ.
 
@@ -364,14 +520,15 @@
 
 ## Module F. SQL và cơ sở dữ liệu
 
-Capstone dùng PostgreSQL. Khi học các bài 25–27, ghi thêm điểm khác nhau với MySQL InnoDB.
+Capstone dùng PostgreSQL. Khi học các bài 34–36, ghi thêm điểm khác nhau với MySQL InnoDB.
 
-### Bài 23. Mô hình quan hệ và thiết kế schema
+### Bài 32. Mô hình quan hệ và thiết kế schema
 
 **Mục tiêu:** tự thiết kế được database cho capstone.
 
 **Nội dung**
 
+- Nhóm lệnh DDL: `CREATE`, `ALTER`, `DROP`; kiểu dữ liệu
 - Bảng, khóa chính, khóa ngoại, ràng buộc; quan hệ 1-1, 1-n, n-n
 - Vẽ ERD; chọn kiểu dữ liệu (đặc biệt tiền tệ và thời gian, múi giờ)
 - Chuẩn hóa 1NF, 2NF, 3NF; khi nào phi chuẩn hóa
@@ -381,12 +538,13 @@ Capstone dùng PostgreSQL. Khi học các bài 25–27, ghi thêm điểm khác 
 
 **Tự kiểm tra:** quan hệ n-n cài đặt thế nào? Khi nào chấp nhận dữ liệu lặp?
 
-### Bài 24. Truy vấn từ cơ bản đến nâng cao
+### Bài 33. Truy vấn từ cơ bản đến nâng cao
 
 **Mục tiêu:** viết được truy vấn báo cáo phức tạp mà không phải xử lý trong code Java.
 
 **Nội dung**
 
+- Nhóm lệnh DML: `INSERT`, `UPDATE`, `DELETE`; `INSERT ... ON CONFLICT` của PostgreSQL
 - Thứ tự thực thi logic của một câu SELECT
 - INNER, LEFT, RIGHT, FULL, CROSS, SELF JOIN
 - `GROUP BY`, `HAVING`, hàm tổng hợp; subquery, `EXISTS` và `IN`
@@ -398,7 +556,7 @@ Capstone dùng PostgreSQL. Khi học các bài 25–27, ghi thêm điểm khác 
 
 **Tự kiểm tra:** `WHERE` khác `HAVING` thế nào? `RANK` khác `DENSE_RANK` ra sao?
 
-### Bài 25. Index và tối ưu truy vấn
+### Bài 34. Index và tối ưu truy vấn
 
 **Mục tiêu:** tìm và sửa được truy vấn chậm.
 
@@ -414,7 +572,7 @@ Capstone dùng PostgreSQL. Khi học các bài 25–27, ghi thêm điểm khác 
 
 **Tự kiểm tra:** index `(a, b, c)` có dùng được cho `WHERE b = ?` không? Vì sao không nên đánh index mọi cột?
 
-### Bài 26. Transaction, ACID và isolation
+### Bài 35. Transaction, ACID và isolation
 
 **Mục tiêu:** hiểu dữ liệu bị sai thế nào khi nhiều người cùng thao tác, và cách database ngăn điều đó.
 
@@ -429,7 +587,7 @@ Capstone dùng PostgreSQL. Khi học các bài 25–27, ghi thêm điểm khác 
 
 **Tự kiểm tra:** Repeatable Read có chặn được phantom read trong MySQL không? Lost update là gì?
 
-### Bài 27. Lock và xử lý đồng thời trong database
+### Bài 36. Lock và xử lý đồng thời trong database
 
 **Mục tiêu:** chống đặt trùng, trừ kho sai trong hệ thống thật.
 
@@ -445,7 +603,23 @@ Capstone dùng PostgreSQL. Khi học các bài 25–27, ghi thêm điểm khác 
 
 **Tự kiểm tra:** khi nào dùng optimistic, khi nào dùng pessimistic locking?
 
-### Bài 28. Vận hành database và NoSQL
+### Bài 37. View, function, stored procedure và trigger
+
+**Mục tiêu:** biết các đối tượng lập trình phía database, dùng được và biết khi nào **không** nên dùng.
+
+**Nội dung**
+
+- View và materialized view: khác nhau thế nào, khi nào dùng
+- Function và stored procedure trong PostgreSQL (PL/pgSQL); so sánh với MySQL
+- Trigger: chạy khi nào, ví dụ ghi lịch sử thay đổi
+- Gọi stored procedure từ Java (`CallableStatement`, nối với bài JDBC ở Giai đoạn 2)
+- Đánh đổi khi đặt logic nghiệp vụ trong database: hiệu năng, khó test, khó version, khó đọc
+
+**Thực hành:** tạo view báo cáo doanh thu theo cơ sở; viết trigger ghi lịch sử mỗi lần đơn đặt đổi trạng thái; viết một function tính tỉ lệ lấp đầy của một sân trong ngày.
+
+**Tự kiểm tra:** view có lưu dữ liệu không? Vì sao nhiều dự án hạn chế đặt logic nghiệp vụ trong stored procedure?
+
+### Bài 38. Vận hành database và NoSQL
 
 **Mục tiêu:** biết database vận hành thế nào ở mức cần cho backend, và chọn đúng loại database.
 

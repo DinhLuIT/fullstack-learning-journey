@@ -1,6 +1,6 @@
 # RAG
 
-Giai đoạn 4 · Module C
+Giai đoạn 4 · C. RAG
 
 | Bài | Trạng thái |
 | --- | --- |

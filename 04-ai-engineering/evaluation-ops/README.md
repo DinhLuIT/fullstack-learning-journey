@@ -1,11 +1,12 @@
-# Đánh giá và vận hành
+# Đánh giá, LLMOps và vận hành
 
-Giai đoạn 4 · Module D
+Giai đoạn 4 · D. Đánh giá, LLMOps và vận hành
 
 | Bài | Trạng thái |
 | --- | --- |
 | [11. Đánh giá hệ thống AI](11-danh-gia-he-thong-ai.md) | todo |
-| [12. Bảo mật, chi phí và vận hành](12-bao-mat-chi-phi-va-van-hanh.md) | todo |
+| [12. LLMOps, Langfuse và LangChain4j](12-llmops-langfuse-va-langchain4j.md) | todo |
+| [13. Bảo mật, chi phí và vận hành](13-bao-mat-chi-phi-va-van-hanh.md) | todo |
 
 ## Cấu trúc
 

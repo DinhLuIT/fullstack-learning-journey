@@ -1,6 +1,6 @@
 # Linux
 
-Giai đoạn 1 · Module B
+Giai đoạn 1 · B. Linux
 
 | Bài | Trạng thái |
 | --- | --- |

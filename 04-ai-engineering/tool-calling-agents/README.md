@@ -1,6 +1,6 @@
 # Tool calling, agent và MCP
 
-Giai đoạn 4 · Module B
+Giai đoạn 4 · B. Tool calling, agent và MCP
 
 | Bài | Trạng thái |
 | --- | --- |

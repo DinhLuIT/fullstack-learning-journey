@@ -1,14 +1,14 @@
-# React và hệ sinh thái
+# React
 
-Giai đoạn 3 · Module D
+Giai đoạn 3 · D. React
 
 | Bài | Trạng thái |
 | --- | --- |
-| [9. React bên dưới](09-react-ben-duoi.md) | todo |
-| [10. Hooks và các lỗi thường gặp](10-hooks-va-cac-loi-thuong-gap.md) | todo |
-| [11. Quản lý state và dữ liệu từ server](11-quan-ly-state-va-du-lieu-tu-server.md) | todo |
-| [12. Routing, form, xác thực và đa ngôn ngữ](12-routing-form-va-xac-thuc.md) | todo |
-| [13. Hiệu năng, kiểm thử và render phía server](13-hieu-nang-kiem-thu-va-render-phia-server.md) | todo |
+| [10. Vite, cấu trúc dự án và công cụ](10-vite-cau-truc-du-an-va-cong-cu.md) | todo |
+| [11. React bên dưới](11-react-ben-duoi.md) | todo |
+| [12. Hooks và các lỗi thường gặp](12-hooks-va-cac-loi-thuong-gap.md) | todo |
+| [13. UI framework và Tailwind](13-ui-framework-va-tailwind.md) | todo |
+| [14. Routing và form](14-routing-va-form.md) | todo |
 
 ## Cấu trúc
 

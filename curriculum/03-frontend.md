@@ -1,13 +1,17 @@
 # Giai đoạn 3: Frontend, từ code chay đến React + TypeScript
 
-13 bài, 4 module. Trọng tâm là nền tảng web và JavaScript core, vì đây là phần hay bị hỏi xoáy; React và TypeScript đã vững nên có thể đi nhanh.
+21 bài, 6 module. Đi từ nền tảng web và JavaScript core (phần hay bị hỏi xoáy) đến React, Redux Toolkit và các tính năng dự án thực tế.
 
-| Module | Bài | Thời lượng |
+Thời lượng là mức tối đa cho người học mới. Phần đã vững thì làm "Tự kiểm tra" trước, đạt thì chỉ làm lab rồi chuyển bài.
+
+| Module | Bài | Thời lượng tối đa |
 | --- | --- | --- |
 | A. Nền tảng web: HTML, CSS, trình duyệt | 1–3 | 3–4 buổi |
 | B. JavaScript core | 4–7 | 1 tuần |
-| C. TypeScript | 8 | 2 buổi |
-| D. React và hệ sinh thái | 9–13 | 1 tuần |
+| C. TypeScript | 8–9 | 3 buổi |
+| D. React | 10–14 | 1 tuần |
+| E. Dữ liệu, state và xác thực | 15–20 | 1,5 tuần |
+| F. Hiệu năng và kiểm thử | 21 | 2 buổi |
 
 ## Module A. Nền tảng web
 
@@ -121,24 +125,56 @@
 
 ## Module C. TypeScript
 
-### Bài 8. TypeScript từ cơ bản đến nâng cao
+### Bài 8. TypeScript cơ bản và kiểu nâng cao
 
 **Mục tiêu:** dùng hệ thống kiểu để bắt lỗi trước khi chạy.
 
 **Nội dung**
 
-- `type` và `interface`; union, intersection, literal type
-- Type narrowing, discriminated union, `unknown` và `any`, `never`
-- Generics và ràng buộc; utility type (`Partial`, `Pick`, `Omit`, `Record`, `ReturnType`)
-- Cấu hình `strict`; kiểm tra dữ liệu lúc chạy bằng Zod
+- Kiểu cơ bản, `type` và `interface`, kiểu hàm, optional và readonly
+- Union, intersection, literal type, enum và các lựa chọn thay thế enum
+- Type narrowing, discriminated union, `unknown`, `any`, `never`
+- Utility type: `Partial`, `Required`, `Pick`, `Omit`, `Record`, `ReturnType`
+- Cấu hình `tsconfig` với `strict`; kiểm tra dữ liệu lúc chạy bằng Zod
 
-**Thực hành:** chuyển frontend vanilla sang TypeScript; định nghĩa kiểu cho mọi response API và validate bằng Zod.
+**Thực hành:** chuyển frontend vanilla sang TypeScript; định nghĩa kiểu cho mọi response API của capstone và validate bằng Zod; mô hình hóa trạng thái đơn đặt bằng discriminated union.
 
-**Tự kiểm tra:** `unknown` khác `any` thế nào? Vì sao TypeScript không đủ để đảm bảo dữ liệu từ API là đúng?
+**Tự kiểm tra:** `unknown` khác `any` thế nào? `type` khác `interface` ở đâu? Vì sao TypeScript không đủ để đảm bảo dữ liệu từ API là đúng?
 
-## Module D. React và hệ sinh thái
+### Bài 9. OOP và Generics trong TypeScript
 
-### Bài 9. React bên dưới
+**Mục tiêu:** viết code TypeScript dùng lại được và đúng kiểu.
+
+**Nội dung**
+
+- Class, access modifier (`public`, `private`, `protected`, `#private`), `readonly`, abstract class
+- `implements` interface; so sánh OOP trong TypeScript với Java
+- Generics cho hàm, interface, class; ràng buộc với `extends`; giá trị mặc định
+- Generics trong thực tế: kiểu response API dùng chung, hook và component generic
+- Mapped type và conditional type ở mức đọc hiểu
+
+**Thực hành:** viết kiểu `ApiResponse<T>` và `Paginated<T>` dùng chung cho mọi API capstone; viết một hàm `groupBy<T, K>` có kiểu chặt chẽ.
+
+**Tự kiểm tra:** `private` của TypeScript khác `#private` thế nào? Khi nào cần ràng buộc generic bằng `extends`?
+
+## Module D. React
+
+### Bài 10. Vite, cấu trúc dự án và công cụ
+
+**Mục tiêu:** dựng một dự án React + TypeScript theo cách các nhóm thật làm.
+
+**Nội dung**
+
+- Vite: dev server, build production, biến môi trường (và quy tắc tiền tố để lộ ra client), alias đường dẫn
+- Cấu trúc theo tính năng (feature-based) và cấu trúc theo loại file; khi nào chọn cái nào
+- ESLint, Prettier; Husky và lint-staged để kiểm tra trước khi commit
+- Quản lý cấu hình theo môi trường (dev, staging, production)
+
+**Thực hành:** dựng lại frontend capstone bằng Vite + React + TypeScript với cấu trúc theo tính năng (`venues`, `booking`, `auth`, `admin`), ESLint, Prettier, Husky.
+
+**Tự kiểm tra:** vì sao không được đặt secret vào biến môi trường của frontend? Cấu trúc theo tính năng giúp gì khi dự án lớn lên?
+
+### Bài 11. React bên dưới
 
 **Mục tiêu:** giải thích được khi nào và vì sao component render lại.
 
@@ -153,7 +189,7 @@
 
 **Tự kiểm tra:** vì sao dùng index làm `key` gây lỗi? `setCount(count + 1)` gọi ba lần liên tiếp cho kết quả gì?
 
-### Bài 10. Hooks và các lỗi thường gặp
+### Bài 12. Hooks và các lỗi thường gặp
 
 **Mục tiêu:** dùng hooks đúng, tránh effect thừa và closure cũ.
 
@@ -164,42 +200,143 @@
 - `useMemo`, `useCallback`, `React.memo`: khi nào có ích, khi nào thừa
 - Custom hook
 
-**Thực hành:** viết lại frontend capstone bằng React + TypeScript; tự viết `useFetch` có loading, error và hủy request bằng `AbortController`.
+**Thực hành:** chuyển các trang của capstone sang component React; tự viết `useFetch` có loading, error và hủy request bằng `AbortController`.
 
 **Tự kiểm tra:** stale closure trong `useEffect` là gì? Khi nào `useMemo` làm chậm hơn?
 
-### Bài 11. Quản lý state và dữ liệu từ server
+### Bài 13. UI framework và Tailwind
 
-**Mục tiêu:** chọn đúng nơi đặt state cho từng loại dữ liệu.
-
-**Nội dung**
-
-- Phân loại state: local, chia sẻ, URL, server state
-- Lifting state, Context và vấn đề render lại
-- Zustand hoặc Redux Toolkit cho client state
-- TanStack Query cho server state: cache, refetch, invalidate, optimistic update
-
-**Thực hành:** dùng TanStack Query cho danh sách đơn đặt, cập nhật lạc quan khi hủy đơn và hoàn tác khi API lỗi.
-
-**Tự kiểm tra:** server state khác client state thế nào, vì sao không nên bỏ hết vào Redux?
-
-### Bài 12. Routing, form, xác thực và đa ngôn ngữ
-
-**Mục tiêu:** hoàn thiện các luồng người dùng thật của capstone.
+**Mục tiêu:** dựng giao diện nhanh, nhất quán mà vẫn mang phong cách riêng.
 
 **Nội dung**
 
-- React Router: route lồng, layout, bảo vệ route theo role
-- React Hook Form kết hợp Zod
-- Luồng JWT: lưu access token trong bộ nhớ, refresh token trong cookie `HttpOnly`, tự refresh khi hết hạn
-- Error boundary, trạng thái loading và trống
-- i18n: tách chuỗi giao diện, chuyển tiếng Việt và tiếng Anh (F-70)
+- Thư viện component (MUI, Ant Design) và bộ component sở hữu mã nguồn (shadcn/ui); đánh đổi
+- Tailwind CSS: utility-first, cấu hình theme, design token
+- Theme sáng và tối; responsive
+- Accessibility khi dùng thư viện component (nối với bài 1)
+- Tránh giao diện "na ná nhau": tùy biến token thay vì dùng mặc định
 
-**Thực hành:** hoàn thiện đăng nhập, phân quyền giao diện cho ba role, form đặt sân có validation, giao diện song ngữ.
+**Thực hành:** chọn một bộ component, cấu hình theme theo màu và font riêng; dựng các trang danh sách cơ sở, chi tiết sân, lưới lịch trống.
 
-**Tự kiểm tra:** nhiều request cùng gặp lỗi 401 cùng lúc thì xử lý refresh token ra sao để chỉ gọi refresh một lần?
+**Tự kiểm tra:** thư viện component cài qua npm khác bộ component chép mã nguồn vào dự án thế nào? Design token giúp gì khi đổi giao diện?
 
-### Bài 13. Hiệu năng, kiểm thử và render phía server
+### Bài 14. Routing và form
+
+**Mục tiêu:** xây các luồng nhiều trang và form nhập liệu chuẩn.
+
+**Nội dung**
+
+- React Router: route lồng, layout, tham số đường dẫn và query, điều hướng bằng code, trang 404
+- Lazy load theo route
+- React Hook Form kết hợp Zod: validate, hiển thị lỗi, form nhiều bước
+- Form có điều khiển và không điều khiển; hiệu năng khi form lớn
+- Error boundary, trạng thái loading và trạng thái trống
+
+**Thực hành:** luồng đặt sân nhiều bước (chọn cơ sở, chọn sân và giờ, xác nhận); form đặt định kỳ có validate theo R-01, R-02.
+
+**Tự kiểm tra:** controlled và uncontrolled input khác nhau thế nào? Vì sao React Hook Form ít render lại hơn cách tự quản lý state?
+
+## Module E. Dữ liệu, state và xác thực
+
+### Bài 15. Tầng gọi API với Axios
+
+**Mục tiêu:** gom mọi lời gọi API về một chỗ, xử lý lỗi và token nhất quán.
+
+**Nội dung**
+
+- Axios instance: base URL, timeout, header mặc định
+- Interceptor cho request và response: gắn access token, chuẩn hóa lỗi
+- Tự làm mới token khi gặp 401 và xếp hàng các request đang chờ để chỉ gọi refresh một lần
+- Hủy request bằng `AbortController`
+- So sánh Axios với `fetch`
+
+**Thực hành:** xây module `api/` cho capstone: client dùng chung, interceptor gắn token và tự refresh, chuẩn hóa lỗi theo định dạng Problem Details của backend.
+
+**Tự kiểm tra:** 5 request cùng nhận 401 cùng lúc thì làm sao để chỉ gọi refresh token một lần?
+
+### Bài 16. Redux core
+
+**Mục tiêu:** hiểu nguyên lý của Redux trước khi dùng Redux Toolkit.
+
+**Nội dung**
+
+- Vì sao cần store toàn cục; luồng dữ liệu một chiều
+- Store, action, reducer, `dispatch`; reducer phải là hàm thuần
+- Bất biến (immutability) và vì sao quan trọng
+- Middleware: Redux chạy middleware thế nào; thunk là gì
+- `react-redux`: `Provider`, `useSelector`, `useDispatch`; selector và render lại
+
+**Thực hành:** tự viết một hàm `createStore` tối giản có `subscribe` và hỗ trợ middleware; dùng nó quản lý giỏ đặt sân (nhiều khung giờ chưa thanh toán).
+
+**Tự kiểm tra:** vì sao reducer không được sửa trực tiếp state cũ? Middleware nằm ở đâu trong luồng dispatch?
+
+### Bài 17. Redux Toolkit
+
+**Mục tiêu:** dùng Redux theo cách được khuyến nghị hiện nay.
+
+**Nội dung**
+
+- `configureStore`; `createSlice` và cách Immer cho phép "viết như sửa trực tiếp"
+- `createAsyncThunk`: trạng thái pending, fulfilled, rejected
+- `createEntityAdapter` cho dữ liệu dạng danh sách
+- `createSelector` và memoization
+- Kiểu TypeScript cho `RootState`, `AppDispatch`, hook có kiểu
+- Tổ chức slice theo tính năng
+
+**Thực hành:** viết lại giỏ đặt sân của bài trước bằng Redux Toolkit; slice `auth` lưu thông tin người dùng; slice `booking` dùng entity adapter.
+
+**Tự kiểm tra:** vì sao trong `createSlice` có thể viết `state.items.push(x)` mà vẫn bất biến? Selector được memoize để làm gì?
+
+### Bài 18. RTK Query và server state
+
+**Mục tiêu:** tách dữ liệu từ server khỏi state của giao diện và để thư viện lo cache.
+
+**Nội dung**
+
+- Phân loại state: local, chia sẻ, URL, server state; vì sao không nên tự lưu dữ liệu server vào slice
+- RTK Query: `createApi`, `fetchBaseQuery` (hoặc base query dùng Axios của bài 15), endpoint query và mutation
+- Cache, tag và invalidation; refetch khi focus, polling
+- Optimistic update và hoàn tác khi lỗi
+- So sánh với TanStack Query; Context và vấn đề render lại
+
+**Thực hành:** chuyển toàn bộ lời gọi API của capstone sang RTK Query; hủy đơn với cập nhật lạc quan và hoàn tác khi API lỗi; danh sách đơn tự làm mới sau khi đặt sân thành công.
+
+**Tự kiểm tra:** server state khác client state thế nào? Tag invalidation hoạt động ra sao?
+
+### Bài 19. Xác thực, phân quyền giao diện và đa ngôn ngữ
+
+**Mục tiêu:** hoàn thiện trải nghiệm đăng nhập và hiển thị đúng theo vai trò, ngôn ngữ.
+
+**Nội dung**
+
+- Luồng đăng nhập với backend: access token trong bộ nhớ, refresh token trong cookie `HttpOnly`, khôi phục phiên khi tải lại trang
+- Bảo vệ route và ẩn chức năng theo role; nhớ rằng phân quyền thật nằm ở backend
+- Đăng nhập bằng Google từ phía frontend
+- i18n: tách chuỗi giao diện, chuyển tiếng Việt và tiếng Anh, định dạng ngày giờ và tiền theo ngôn ngữ
+
+**Thực hành:** hoàn thiện đăng nhập, đăng xuất, giao diện cho ba role; giao diện song ngữ (F-70).
+
+**Tự kiểm tra:** ẩn nút "Xóa" ở frontend có đủ để bảo mật không? Khôi phục phiên đăng nhập sau khi tải lại trang thế nào khi access token chỉ nằm trong bộ nhớ?
+
+### Bài 20. Upload file từ trình duyệt
+
+**Mục tiêu:** upload file với trải nghiệm tốt và không làm quá tải backend.
+
+**Nội dung**
+
+- `<input type="file">`, kéo thả, xem trước ảnh
+- Kiểm tra kích thước và loại file phía client (chỉ để trải nghiệm tốt, backend vẫn phải kiểm tra)
+- Thanh tiến độ upload, hủy upload
+- Upload qua backend và upload thẳng lên storage bằng URL ký sẵn (nối với Giai đoạn 2, bài 22)
+- Upload lên dịch vụ ảnh như Cloudinary: cách ký request an toàn
+
+**Thực hành:** trang quản trị upload nhiều ảnh cho một cơ sở, có xem trước, thanh tiến độ, upload thẳng bằng presigned URL.
+
+**Tự kiểm tra:** vì sao không được đặt API secret của dịch vụ lưu trữ trong code frontend?
+
+## Module F. Hiệu năng và kiểm thử
+
+### Bài 21. Hiệu năng, kiểm thử và render phía server
 
 **Mục tiêu:** đưa frontend đến mức sẵn sàng cho production.
 

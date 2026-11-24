@@ -1,12 +1,12 @@
 # Luyện case system design
 
-Giai đoạn 6 · Module C
+Giai đoạn 6 · C. Luyện case system design
 
 | Bài | Trạng thái |
 | --- | --- |
-| [13. Bộ case nền tảng](13-bo-case-nen-tang.md) | todo |
-| [14. Bộ case thời gian thực và dữ liệu lớn](14-bo-case-thoi-gian-thuc-va-du-lieu-lon.md) | todo |
-| [15. Bộ case giao dịch và AI](15-bo-case-giao-dich-va-ai.md) | todo |
+| [15. Bộ case nền tảng](15-bo-case-nen-tang.md) | todo |
+| [16. Bộ case thời gian thực và dữ liệu lớn](16-bo-case-thoi-gian-thuc-va-du-lieu-lon.md) | todo |
+| [17. Bộ case giao dịch và AI](17-bo-case-giao-dich-va-ai.md) | todo |
 
 ## Cấu trúc
 

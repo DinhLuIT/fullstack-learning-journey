@@ -11,25 +11,25 @@ Hành trình học lại FullStack từ nền tảng: từ cách máy tính ho�
 
 ## Lộ trình
 
-| Giai đoạn | Nội dung | Số bài | Thời lượng |
+| Giai đoạn | Nội dung | Số bài | Thời lượng tối đa |
 | --- | --- | --- | --- |
 | [0. Khởi động](00-setup/README.md) | Dựng repo, môi trường, đề tài capstone | – | 4 tuần, học nhẹ |
-| [1. Nền tảng](01-fundamentals/README.md) | Máy tính và hệ điều hành, Linux, mạng, Git, Java Core, SQL | 28 | 6 tuần |
-| [2. Backend](02-backend/README.md) | HTTP server và JDBC thuần, Spring bên dưới, bảo mật, Redis, kiểm thử | 16 | 5 tuần |
-| [3. Frontend](03-frontend/README.md) | HTML/CSS, trình duyệt, JavaScript core, TypeScript, React | 13 | 3 tuần |
-| [4. AI Engineering](04-ai-engineering/README.md) | LLM API, prompt, tool calling, agent, MCP, RAG, đánh giá | 12 | 4 tuần |
+| [1. Nền tảng](01-fundamentals/README.md) | Máy tính và hệ điều hành, Linux, mạng, Git, Maven, Java Core (OOP, design pattern, Java 8–21, concurrency, JVM), SQL | 38 | 7 tuần |
+| [2. Backend](02-backend/README.md) | Phân tích thiết kế (UML, SRS), HTTP server và JDBC thuần, Spring bên dưới, JPA, Spring Security, tính năng dự án thực tế, Redis, kiểm thử | 28 | 8 tuần |
+| [3. Frontend](03-frontend/README.md) | HTML/CSS, trình duyệt, JavaScript core, TypeScript, React, Redux Toolkit, RTK Query | 21 | 5 tuần |
+| [4. AI Engineering](04-ai-engineering/README.md) | LLM API, prompt, tool calling, agent, MCP, RAG, đánh giá, LLMOps | 13 | 4,5 tuần |
 | [5. DevOps](05-devops/README.md) | Container, Nginx, HTTPS, CI/CD, giám sát | 9 | 3 tuần |
-| [6. Microservices và System Design](06-microservices-system-design/README.md) | Nguyên lý, microservices, 9 case luyện tập | 15 | 5 tuần |
+| [6. Microservices và System Design](06-microservices-system-design/README.md) | Nguyên lý, Spring Cloud, Kafka, WebFlux, Saga, 9 case luyện tập | 17 | 5,5 tuần |
 | [7. Phỏng vấn](07-interview/README.md) | CV, kể dự án, behavioral, phỏng vấn thử | 6 | 2 tuần + duy trì |
-| [DSA](dsa/README.md) | 14 pattern, chạy song song suốt lộ trình | 15 | 3–4 giờ/tuần |
+| [DSA](dsa/README.md) | Đệ quy, sắp xếp và tìm kiếm, 14 pattern, chạy song song suốt lộ trình | 17 | 3–4 giờ/tuần |
 
-Đề cương chi tiết từng bài: [curriculum/](curriculum/README.md). Tiến độ hiện tại: [progress.md](progress.md).
+Đề cương chi tiết từng bài: [curriculum/](curriculum/README.md). Thời lượng là mức tối đa cho người học mới; phần đã biết thì đi nhanh. Tiến độ hiện tại: [progress.md](progress.md).
 
 ## Cấu trúc repo
 
 ```
 ├── progress.md           # đang học gì, đã xong gì, cần ôn gì
-├── curriculum/           # đề cương chi tiết 114 bài
+├── curriculum/           # đề cương chi tiết 149 bài
 ├── 00-setup/ ... 07-interview/
 │   └── <chủ-đề>/
 │       ├── NN-ten-bai.md # ghi chú từng bài

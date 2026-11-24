@@ -1,6 +1,6 @@
 # Nguyên lý system design
 
-Giai đoạn 6 · Module A
+Giai đoạn 6 · A. Nguyên lý system design
 
 | Bài | Trạng thái |
 | --- | --- |

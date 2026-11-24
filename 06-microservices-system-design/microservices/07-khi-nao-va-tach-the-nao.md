@@ -6,7 +6,7 @@ module: "B. Microservices"
 status: todo        # todo | doing | done | review
 started:
 finished:
-tags: [microservices]
+tags: [microservices, spring-cloud]
 ---
 
 # Bài 7. Khi nào và tách thế nào

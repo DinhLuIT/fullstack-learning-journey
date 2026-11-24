@@ -1,6 +1,6 @@
 # Networking
 
-Giai đoạn 1 · Module C
+Giai đoạn 1 · C. Networking
 
 | Bài | Trạng thái |
 | --- | --- |

@@ -1,6 +1,6 @@
 # 1. Độ phức tạp thuật toán
 
-Chạy cùng: Giai đoạn 0
+Chạy cùng: Giai đoạn 0 · Đề cương: [curriculum/dsa.md](../../curriculum/dsa.md)
 
 ## Dấu hiệu nhận dạng
 

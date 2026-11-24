@@ -1,6 +1,6 @@
 # Git
 
-Giai đoạn 1 · Module D
+Giai đoạn 1 · D. Git và công cụ build
 
 | Bài | Trạng thái |
 | --- | --- |

@@ -1,10 +1,11 @@
 # TypeScript
 
-Giai đoạn 3 · Module C
+Giai đoạn 3 · C. TypeScript
 
 | Bài | Trạng thái |
 | --- | --- |
-| [8. TypeScript từ cơ bản đến nâng cao](08-typescript-tu-co-ban-den-nang-cao.md) | todo |
+| [8. TypeScript cơ bản và kiểu nâng cao](08-typescript-co-ban-va-kieu-nang-cao.md) | todo |
+| [9. OOP và Generics trong TypeScript](09-oop-va-generics-trong-typescript.md) | todo |
 
 ## Cấu trúc
 

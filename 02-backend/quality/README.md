@@ -1,13 +1,13 @@
 # Cache, kiểm thử, chất lượng
 
-Giai đoạn 2 · Module E
+Giai đoạn 2 · G. Cache, kiểm thử, chất lượng
 
 | Bài | Trạng thái |
 | --- | --- |
-| [13. Redis và caching](13-redis-va-caching.md) | todo |
-| [14. Rate limiting, khóa phân tán và tác vụ nền](14-rate-limiting-khoa-phan-tan-va-tac-vu-nen.md) | todo |
-| [15. Kiểm thử](15-kiem-thu.md) | todo |
-| [16. Logging, tài liệu và chất lượng code](16-logging-tai-lieu-va-chat-luong-code.md) | todo |
+| [25. Redis và caching](25-redis-va-caching.md) | todo |
+| [26. Rate limiting và khóa phân tán](26-rate-limiting-va-khoa-phan-tan.md) | todo |
+| [27. Kiểm thử](27-kiem-thu.md) | todo |
+| [28. Logging, tài liệu và chất lượng code](28-logging-tai-lieu-va-chat-luong-code.md) | todo |
 
 ## Cấu trúc
 

@@ -1,6 +1,6 @@
 # JavaScript core
 
-Giai đoạn 3 · Module B
+Giai đoạn 3 · B. JavaScript core
 
 | Bài | Trạng thái |
 | --- | --- |

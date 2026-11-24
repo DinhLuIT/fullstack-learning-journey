@@ -2,11 +2,11 @@
 title: "Đánh giá hệ thống AI"
 phase: 4
 lesson: 11
-module: "D. Đánh giá và vận hành"
+module: "D. Đánh giá, LLMOps và vận hành"
 status: todo        # todo | doing | done | review
 started:
 finished:
-tags: [ai, evaluation, security]
+tags: [ai, evaluation, llmops]
 ---
 
 # Bài 11. Đánh giá hệ thống AI

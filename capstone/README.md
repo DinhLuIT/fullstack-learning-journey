@@ -134,20 +134,20 @@ Mỗi yêu cầu gắn với bài học sẽ giải quyết nó trong lộ trìn
 
 | Mã | Yêu cầu | Bài học liên quan |
 | --- | --- | --- |
-| N-01 | **Không đặt trùng:** 100 request đồng thời cùng đặt một khung giờ thì đúng 1 request thành công | GĐ1 bài 26–27, GĐ2 bài 5, 9 |
-| N-02 | **Idempotent:** người chơi bấm "đặt" hai lần hoặc mạng gửi lại request thì không tạo hai đơn | GĐ2 bài 10 |
-| N-03 | **Phân quyền đúng:** người chơi không xem được đơn của người khác; nhân viên không thao tác được cơ sở khác | GĐ2 bài 11–12 |
-| N-04 | **Mật khẩu và phiên đăng nhập:** mật khẩu băm bằng BCrypt; access token ngắn hạn, refresh token thu hồi được | GĐ2 bài 11 |
-| N-05 | **Chống dò mật khẩu:** tối đa 5 lần đăng nhập sai mỗi phút cho một tài khoản | GĐ2 bài 14 |
-| N-06 | **Hiệu năng:** tra lịch trống có p95 dưới 300 ms với dữ liệu 50 cơ sở, 500 sân, một năm đơn đặt | GĐ1 bài 25, GĐ2 bài 13 |
-| N-07 | **Tiền và thời gian:** tiền lưu bằng số nguyên VND, không dùng số thực; thời gian lưu theo UTC, hiển thị theo giờ Việt Nam | GĐ1 bài 1, 23 |
-| N-08 | **Truy vết:** mọi request có request ID xuất hiện trong log của mọi tầng (và mọi service từ v6) | GĐ2 bài 16, GĐ6 bài 12 |
+| N-01 | **Không đặt trùng:** 100 request đồng thời cùng đặt một khung giờ thì đúng 1 request thành công | GĐ1 bài 35–36, GĐ2 bài 9, 13 |
+| N-02 | **Idempotent:** người chơi bấm "đặt" hai lần hoặc mạng gửi lại request thì không tạo hai đơn | GĐ2 bài 15 |
+| N-03 | **Phân quyền đúng:** người chơi không xem được đơn của người khác; nhân viên không thao tác được cơ sở khác | GĐ2 bài 18 |
+| N-04 | **Mật khẩu và phiên đăng nhập:** mật khẩu băm bằng BCrypt; access token ngắn hạn, refresh token thu hồi được | GĐ2 bài 16–17 |
+| N-05 | **Chống dò mật khẩu:** tối đa 5 lần đăng nhập sai mỗi phút cho một tài khoản | GĐ2 bài 26 |
+| N-06 | **Hiệu năng:** tra lịch trống có p95 dưới 300 ms với dữ liệu 50 cơ sở, 500 sân, một năm đơn đặt | GĐ1 bài 34, GĐ2 bài 25 |
+| N-07 | **Tiền và thời gian:** tiền lưu bằng số nguyên VND, không dùng số thực; thời gian lưu theo UTC, hiển thị theo giờ Việt Nam | GĐ1 bài 1, 32 |
+| N-08 | **Truy vết:** mọi request có request ID xuất hiện trong log của mọi tầng (và mọi service từ v6) | GĐ2 bài 28, GĐ6 bài 14 |
 | N-09 | **Giao diện:** ưu tiên điện thoại (mobile-first), dùng được bằng bàn phím, tương phản đạt WCAG AA | GĐ3 bài 1–2 |
-| N-10 | **Kiểm thử:** logic đặt sân có unit test; chống đặt trùng có integration test với database thật | GĐ2 bài 15 |
+| N-10 | **Kiểm thử:** logic đặt sân có unit test; chống đặt trùng có integration test với database thật | GĐ2 bài 27 |
 | N-11 | **Triển khai:** từ v5, mỗi lần merge tự động test và deploy; health check thất bại thì tự rollback | GĐ5 bài 7 |
-| N-12 | **Chịu lỗi:** từ v6, trợ lý AI hoặc dịch vụ thông báo bị chậm hay chết thì vẫn đặt sân bình thường | GĐ6 bài 10 |
-| N-13 | **Đặt định kỳ nguyên tử:** kiểm tra và giữ mọi buổi trong cùng một transaction; thiếu một buổi thì không buổi nào được tạo | GĐ1 bài 26, GĐ2 bài 5 |
-| N-14 | **Webhook thanh toán idempotent:** cùng một giao dịch gửi lại nhiều lần chỉ được ghi nhận một lần | GĐ2 bài 10, GĐ6 bài 11 |
+| N-12 | **Chịu lỗi:** từ v6, trợ lý AI hoặc dịch vụ thông báo bị chậm hay chết thì vẫn đặt sân bình thường | GĐ6 bài 12 |
+| N-13 | **Đặt định kỳ nguyên tử:** kiểm tra và giữ mọi buổi trong cùng một transaction; thiếu một buổi thì không buổi nào được tạo | GĐ1 bài 35, GĐ2 bài 9 |
+| N-14 | **Webhook thanh toán idempotent:** cùng một giao dịch gửi lại nhiều lần chỉ được ghi nhận một lần | GĐ2 bài 15, GĐ6 bài 13 |
 
 ## 7. Ngoài phạm vi
 
@@ -163,7 +163,7 @@ Những thứ **cố ý không làm**, để giữ dự án tập trung vào bà
 
 Các thực thể dự kiến: người dùng, vai trò, cơ sở, giờ mở cửa, môn, sân, bảng giá, giữ chỗ, đơn đặt, đơn định kỳ, thanh toán, đánh giá, khóa sân bảo trì.
 
-Thiết kế schema chi tiết (ERD, khóa, ràng buộc, index) là phần thực hành của **Giai đoạn 1, Bài 23**: tự thiết kế, không làm sẵn ở đây.
+Thiết kế schema chi tiết (ERD, khóa, ràng buộc, index) là phần thực hành của **Giai đoạn 1, Bài 32**: tự thiết kế, không làm sẵn ở đây.
 
 ## 9. Lộ trình phiên bản
 

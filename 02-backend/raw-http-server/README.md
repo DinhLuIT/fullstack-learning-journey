@@ -1,12 +1,12 @@
 # HTTP server bằng Java thuần
 
-Giai đoạn 2 · Module A
+Giai đoạn 2 · B. HTTP server bằng Java thuần
 
 | Bài | Trạng thái |
 | --- | --- |
-| [1. Tự viết HTTP server](01-tu-viet-http-server.md) | todo |
-| [2. Router, JSON và xử lý lỗi](02-router-json-va-xu-ly-loi.md) | todo |
-| [3. Middleware và cấu hình](03-middleware-va-cau-hinh.md) | todo |
+| [5. Tự viết HTTP server](05-tu-viet-http-server.md) | todo |
+| [6. Router, JSON và xử lý lỗi](06-router-json-va-xu-ly-loi.md) | todo |
+| [7. Middleware và cấu hình](07-middleware-va-cau-hinh.md) | todo |
 
 ## Cấu trúc
 

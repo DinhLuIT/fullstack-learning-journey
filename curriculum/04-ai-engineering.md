@@ -1,13 +1,13 @@
 # Giai đoạn 4: AI Engineering
 
-12 bài, 4 module, đưa capstone lên v4 có trợ lý AI. Trọng tâm là tích hợp LLM vào sản phẩm một cách đáng tin cậy, không phải huấn luyện model. Từ cuối giai đoạn này bắt đầu nộp CV.
+13 bài, 4 module, đưa capstone lên v4 có trợ lý AI. Trọng tâm là tích hợp LLM vào sản phẩm một cách đáng tin cậy, không phải huấn luyện model. Từ cuối giai đoạn này bắt đầu nộp CV.
 
-| Module | Bài | Thời lượng |
+| Module | Bài | Thời lượng tối đa |
 | --- | --- | --- |
 | A. LLM và gọi API | 1–4 | 1 tuần |
 | B. Tool calling, agent và MCP | 5–7 | 1 tuần |
 | C. RAG | 8–10 | 1 tuần |
-| D. Đánh giá và vận hành | 11–12 | 1 tuần |
+| D. Đánh giá, LLMOps và vận hành | 11–13 | 1,5 tuần |
 
 ## Module A. LLM và gọi API
 
@@ -166,7 +166,7 @@
 
 **Tự kiểm tra:** vì sao câu hỏi tiếp nối như "còn sân kia giá bao nhiêu?" làm RAG tìm sai, xử lý ra sao?
 
-## Module D. Đánh giá và vận hành
+## Module D. Đánh giá, LLMOps và vận hành
 
 ### Bài 11. Đánh giá hệ thống AI
 
@@ -183,7 +183,23 @@
 
 **Tự kiểm tra:** làm sao biết đổi prompt làm hệ thống tốt hơn hay tệ hơn?
 
-### Bài 12. Bảo mật, chi phí và vận hành
+### Bài 12. LLMOps, Langfuse và LangChain4j
+
+**Mục tiêu:** quan sát và quản lý được hệ thống AI trong suốt vòng đời, và biết các framework thay thế Spring AI.
+
+**Nội dung**
+
+- LLMOps là gì: theo dõi, quản lý prompt có phiên bản, bộ dữ liệu đánh giá, chi phí, trong suốt vòng đời sản phẩm AI
+- Tracing một lời gọi LLM và một chuỗi nhiều bước (RAG, agent gọi tool): mỗi bước là một span
+- Langfuse: tracing, quản lý prompt, dataset và chấm điểm; tự host bằng Docker; cách tích hợp với ứng dụng Java theo tài liệu chính thức của Langfuse
+- LangChain (Python, JavaScript) và LangChain4j (Java): các khái niệm chung như chat model, memory, tool, retriever
+- So sánh LangChain4j với Spring AI; khi nào chọn cái nào
+
+**Thực hành:** tự host Langfuse bằng Docker; gửi trace của trợ lý capstone (từng bước tìm kiếm, gọi tool, sinh câu trả lời) và theo dõi độ trễ, chi phí; viết lại tính năng hỏi đáp về chính sách hủy bằng LangChain4j để so sánh với bản Spring AI.
+
+**Tự kiểm tra:** vì sao log thông thường không đủ để tìm lỗi một agent nhiều bước? Spring AI và LangChain4j giống và khác nhau ở đâu?
+
+### Bài 13. Bảo mật, chi phí và vận hành
 
 **Mục tiêu:** đưa tính năng AI lên production một cách an toàn.
 

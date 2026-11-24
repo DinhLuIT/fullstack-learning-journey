@@ -1,12 +1,14 @@
 # Giai đoạn 6: Microservices và System Design
 
-15 bài, 3 module. Module A học các khối xây dựng của hệ thống lớn, module B áp dụng chúng để tách capstone thành microservices, module C luyện phỏng vấn system design theo case.
+17 bài, 3 module. Module A học các khối xây dựng của hệ thống lớn, module B áp dụng chúng để tách capstone thành microservices với hệ sinh thái Spring Cloud, module C luyện phỏng vấn system design theo case.
 
-| Module | Bài | Thời lượng |
+Thời lượng là mức tối đa cho người học mới. Phần đã vững thì làm "Tự kiểm tra" trước, đạt thì chỉ làm lab rồi chuyển bài.
+
+| Module | Bài | Thời lượng tối đa |
 | --- | --- | --- |
 | A. Nguyên lý system design | 1–6 | 1,5 tuần |
-| B. Microservices | 7–12 | 2 tuần |
-| C. Luyện case system design | 13–15 | 1,5 tuần, sau đó duy trì |
+| B. Microservices | 7–14 | 2,5 tuần |
+| C. Luyện case system design | 15–17 | 1,5 tuần, sau đó duy trì |
 
 ## Module A. Nguyên lý system design
 
@@ -116,36 +118,71 @@
 
 **Tự kiểm tra:** khi nào không nên dùng microservices? "Distributed monolith" là gì?
 
-### Bài 8. Giao tiếp giữa các service
+### Bài 8. Spring Cloud: cấu hình tập trung và service discovery
+
+**Mục tiêu:** cho nhiều service dùng chung cấu hình và tìm thấy nhau mà không cấu hình địa chỉ cứng.
+
+**Nội dung**
+
+- Vì sao cần cấu hình tập trung khi có nhiều service và nhiều môi trường
+- Spring Cloud Config Server: lưu cấu hình trong Git, profile, làm mới cấu hình khi đang chạy; không đặt secret dạng văn bản thường trong kho cấu hình
+- Service registry và discovery: đăng ký, heartbeat, client-side discovery
+- Eureka server và client
+- So sánh với discovery dựa trên DNS của Docker Compose và Kubernetes; khi nào không cần Eureka
+
+**Thực hành:** dựng Config Server đọc cấu hình từ một repo Git và Eureka server; các service của capstone (auth, booking, payment giả lập, notification, AI assistant) đăng ký và tìm nhau qua Eureka.
+
+**Tự kiểm tra:** một service chết thì registry biết bằng cách nào? Trên Kubernetes có còn cần Eureka không, vì sao?
+
+### Bài 9. Giao tiếp giữa các service
 
 **Mục tiêu:** chọn đúng kiểu giao tiếp cho từng tình huống.
 
 **Nội dung**
 
-- Đồng bộ: REST, gRPC (Protocol Buffers, HTTP/2)
-- Bất đồng bộ: event qua Kafka; event notification và event-carried state transfer
+- Đồng bộ qua HTTP: OpenFeign (khai báo client bằng interface), kết hợp với service discovery và load balancing phía client
+- gRPC: Protocol Buffers, HTTP/2; khi nào đáng dùng thay REST
+- Bất đồng bộ qua Kafka: event notification và event-carried state transfer
 - Thiết kế event: tên, schema, version; tương thích ngược
+- Timeout cho mọi lời gọi giữa các service (đi tiếp ở bài 12)
 
-**Thực hành:** booking service gọi auth service qua gRPC để kiểm tra người dùng; phát event `BookingConfirmed` qua Kafka cho notification service.
+**Thực hành:** booking service gọi auth service qua OpenFeign để kiểm tra người dùng; viết lại lời gọi đó bằng gRPC và so sánh; phát event `BookingConfirmed` qua Kafka cho notification service.
 
-**Tự kiểm tra:** khi nào gọi đồng bộ, khi nào phát event? gRPC nhanh hơn REST vì sao?
+**Tự kiểm tra:** khi nào gọi đồng bộ, khi nào phát event? OpenFeign khác `RestClient` ở đâu? gRPC nhanh hơn REST vì sao?
 
-### Bài 9. API Gateway, service discovery và cấu hình
+### Bài 10. API Gateway và cân bằng tải
 
-**Mục tiêu:** cho client một điểm vào duy nhất và để các service tìm thấy nhau.
+**Mục tiêu:** cho client một điểm vào duy nhất và phân tải đều giữa các instance.
 
 **Nội dung**
 
-- API Gateway: định tuyến, xác thực tập trung, rate limit; Spring Cloud Gateway
+- API Gateway: định tuyến, filter, xác thực tập trung, rate limit; Spring Cloud Gateway
 - Backend for Frontend (BFF)
-- Service discovery phía client và phía server; DNS của Docker/Kubernetes so với Eureka/Consul
-- Cấu hình tập trung
+- Cân bằng tải phía server (Nginx, load balancer của hạ tầng) và phía client (Spring Cloud LoadBalancer)
+- Truyền thông tin người dùng từ gateway xuống service an toàn
 
-**Thực hành:** đặt Spring Cloud Gateway trước các service, kiểm tra JWT tại gateway và chuyển thông tin người dùng xuống service qua header.
+**Thực hành:** đặt Spring Cloud Gateway trước các service; kiểm tra JWT tại gateway và chuyển thông tin người dùng xuống qua header; chạy 2 instance booking service và quan sát tải được chia.
 
-**Tự kiểm tra:** nên kiểm tra JWT ở gateway hay ở từng service, hay cả hai?
+**Tự kiểm tra:** nên kiểm tra JWT ở gateway hay ở từng service, hay cả hai? Cân bằng tải phía client khác phía server thế nào?
 
-### Bài 10. Chịu lỗi (resilience)
+### Bài 11. Lập trình reactive với Spring WebFlux
+
+**Mục tiêu:** hiểu mô hình reactive, biết khi nào dùng và khi nào không.
+
+**Nội dung**
+
+- Vì sao có lập trình reactive: phục vụ nhiều kết nối I/O với ít thread (nối với Giai đoạn 1, bài 3)
+- Reactive Streams, backpressure; Project Reactor với `Mono` và `Flux`, các toán tử thường dùng
+- Spring WebFlux trên event loop; `WebClient`
+- Truy cập database theo kiểu reactive ở mức khái niệm (R2DBC)
+- WebFlux và Spring MVC kết hợp virtual thread: đánh đổi về độ phức tạp, debug, hệ sinh thái
+- Lỗi kinh điển: gọi code chặn (blocking) trong luồng reactive
+
+**Thực hành:** viết AI assistant service bằng WebFlux, stream câu trả lời của LLM tới frontend qua SSE; cố ý gọi một hàm chặn trong luồng reactive và quan sát hậu quả.
+
+**Tự kiểm tra:** backpressure là gì? Vì sao gọi JDBC trong một handler WebFlux là sai? Khi nào chọn Spring MVC + virtual thread thay vì WebFlux?
+
+### Bài 12. Chịu lỗi (resilience)
 
 **Mục tiêu:** một service chết không kéo sập cả hệ thống.
 
@@ -160,7 +197,7 @@
 
 **Tự kiểm tra:** retry không có jitter gây vấn đề gì? Circuit breaker có những trạng thái nào?
 
-### Bài 11. Giao dịch phân tán
+### Bài 13. Giao dịch phân tán
 
 **Mục tiêu:** giữ dữ liệu nhất quán khi một nghiệp vụ đi qua nhiều service.
 
@@ -175,7 +212,7 @@
 
 **Tự kiểm tra:** vì sao ghi database rồi gửi lên Kafka trong cùng một method vẫn có thể mất event? Outbox giải quyết ra sao?
 
-### Bài 12. Observability cho hệ thống phân tán
+### Bài 14. Observability cho hệ thống phân tán
 
 **Mục tiêu:** lần theo một request đi qua nhiều service.
 
@@ -193,7 +230,7 @@
 
 Mỗi case viết thành một file trong `06-microservices-system-design/cases/`, đi đủ 6 bước của bài 1, có sơ đồ kiến trúc. Sau khi tự làm, đối chiếu với lời giải tham khảo và ghi lại chỗ mình thiếu.
 
-### Bài 13. Bộ case nền tảng
+### Bài 15. Bộ case nền tảng
 
 - **URL shortener:** sinh mã ngắn, đọc nhiều hơn ghi, cache, thống kê lượt bấm
 - **Rate limiter phân tán:** thuật toán, lưu trạng thái ở Redis, xử lý nhiều gateway
@@ -201,7 +238,7 @@ Mỗi case viết thành một file trong `06-microservices-system-design/cases/
 
 **Tự kiểm tra:** trình bày mỗi case trong 35 phút, có bấm giờ.
 
-### Bài 14. Bộ case thời gian thực và dữ liệu lớn
+### Bài 16. Bộ case thời gian thực và dữ liệu lớn
 
 - **Ứng dụng chat:** WebSocket, lưu tin nhắn, trạng thái online, nhóm
 - **News feed:** fan-out khi ghi và khi đọc, người dùng có nhiều người theo dõi
@@ -209,7 +246,7 @@ Mỗi case viết thành một file trong `06-microservices-system-design/cases/
 
 **Tự kiểm tra:** giải thích được vì sao fan-out khi ghi không phù hợp với tài khoản có hàng triệu người theo dõi.
 
-### Bài 15. Bộ case giao dịch và AI
+### Bài 17. Bộ case giao dịch và AI
 
 - **Hệ thống đặt chỗ (vé, phòng, sân):** chống đặt trùng khi tải cao, giữ chỗ tạm thời có hết hạn — liên hệ trực tiếp với capstone
 - **Thanh toán và ví:** idempotency, sổ cái (ledger), đối soát
