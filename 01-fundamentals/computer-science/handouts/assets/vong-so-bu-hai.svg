@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 550" role="img" aria-labelledby="t d">
+  <title id="t">Vòng số bù hai 8 bit</title>
+  <desc id="d">256 mẫu bit của một byte xếp thành vòng tròn. Đi theo chiều kim đồng hồ là cộng 1. Từ 0111 1111 (127) cộng 1 sang 1000 0000 (-128): đó là tràn số.</desc>
+  <style>
+    .bg { fill: var(--bg, #eef3f7); }
+    .ring { fill: none; stroke: var(--line, #c9d6e2); stroke-width: 10; }
+    .half-pos { fill: none; stroke: var(--surface, #f8fbfd); stroke-width: 4; }
+    .dot { fill: var(--text, #0f2133); }
+    .dot-hot { fill: var(--accent, #0b5fa8); }
+    text { font-family: "JetBrains Mono", ui-monospace, monospace; fill: var(--text, #0f2133); font-size: 14px; }
+    .muted { fill: var(--muted, #4b6075); font-size: 13px; }
+    .hot { fill: var(--accent, #0b5fa8); font-weight: 700; }
+    .arc-hot { fill: none; stroke: var(--accent, #0b5fa8); stroke-width: 4; }
+    .arrow { fill: var(--accent, #0b5fa8); }
+    .dir { fill: none; stroke: var(--muted, #4b6075); stroke-width: 1.5; }
+    .dir-head { fill: var(--muted, #4b6075); }
+    .divider { stroke: var(--line, #c9d6e2); stroke-dasharray: 4 6; }
+  </style>
+  <rect class="bg" x="0" y="0" width="680" height="550" rx="12"/>
+
+  <!-- đường chia đôi: nửa phải bit đầu 0, nửa trái bit đầu 1 -->
+  <line class="divider" x1="340" y1="40" x2="340" y2="470"/>
+  <text class="muted" x="560" y="60" text-anchor="middle">bit đầu = 0</text>
+  <text class="muted" x="560" y="78" text-anchor="middle">số không âm</text>
+  <text class="muted" x="120" y="60" text-anchor="middle">bit đầu = 1</text>
+  <text class="muted" x="120" y="78" text-anchor="middle">số âm</text>
+
+  <circle class="ring" cx="340" cy="255" r="170"/>
+
+  <!-- chiều cộng 1 -->
+  <path class="dir" d="M 448 128 A 140 140 0 0 1 478 190"/>
+  <polygon class="dir-head" points="478,190 470,178 484,180"/>
+  <text class="muted" x="404" y="158">+1</text>
+
+  <!-- 0 và -1 ở đỉnh -->
+  <circle class="dot" cx="357.8" cy="85.9" r="6"/>
+  <text x="372" y="62">0000 0000 = 0</text>
+  <circle class="dot" cx="322.2" cy="85.9" r="6"/>
+  <text x="308" y="62" text-anchor="end">-1 = 1111 1111</text>
+
+  <!-- 64 và -64 hai bên -->
+  <circle class="dot" cx="510" cy="255" r="6"/>
+  <text x="524" y="260">0100 0000 = 64</text>
+  <circle class="dot" cx="170" cy="255" r="6"/>
+  <text x="156" y="260" text-anchor="end">-64 = 1100 0000</text>
+
+  <!-- 127 và -128 ở đáy: chỗ tràn số -->
+  <path class="arc-hot" d="M 357.8 424.1 A 170 170 0 0 1 328 424.6"/>
+  <polygon class="arrow" points="324,424.8 336,417 336,432"/>
+  <circle class="dot-hot" cx="357.8" cy="424.1" r="7"/>
+  <circle class="dot-hot" cx="322.2" cy="424.1" r="7"/>
+  <text class="hot" x="372" y="452">0111 1111 = 127</text>
+  <text class="hot" x="308" y="452" text-anchor="end">-128 = 1000 0000</text>
+  <text class="hot" x="340" y="490" text-anchor="middle">127 + 1 → -128: tràn số, không báo lỗi</text>
+  <text class="muted" x="340" y="514" text-anchor="middle">Khoảng cách giữa các điểm kề nhau được phóng to cho dễ đọc.</text>
+  <text class="muted" x="340" y="532" text-anchor="middle">int giống hệt, chỉ là vòng 2^32 điểm.</text>
+</svg>

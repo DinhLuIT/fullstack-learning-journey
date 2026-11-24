@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 400" role="img" aria-labelledby="t d">
+  <title id="t">Chuỗi "Việt" trong UTF-8</title>
+  <desc id="d">4 ký tự thành 6 byte. V, i, t là ký tự ASCII nên mỗi ký tự một byte. ệ là U+1EC7 nên cần 3 byte E1 BB 87.</desc>
+  <style>
+    .bg { fill: var(--bg, #eef3f7); }
+    .box { fill: var(--surface, #f8fbfd); stroke: var(--line, #c9d6e2); stroke-width: 1.5; }
+    .box-hot { fill: var(--surface, #f8fbfd); stroke: var(--accent, #0b5fa8); stroke-width: 2.5; }
+    .byte { fill: var(--code-bg, #e4ecf3); stroke: var(--line, #c9d6e2); stroke-width: 1.5; }
+    .byte-hot { fill: var(--code-bg, #e4ecf3); stroke: var(--accent, #0b5fa8); stroke-width: 2.5; }
+    .link { stroke: var(--line, #c9d6e2); stroke-width: 1.5; }
+    .link-hot { stroke: var(--accent, #0b5fa8); stroke-width: 2; }
+    text { font-family: "JetBrains Mono", ui-monospace, monospace; fill: var(--text, #0f2133); font-size: 14px; }
+    .big { font-size: 26px; }
+    .muted { fill: var(--muted, #4b6075); font-size: 13px; }
+    .hot { fill: var(--accent, #0b5fa8); font-weight: 700; }
+  </style>
+  <rect class="bg" x="0" y="0" width="680" height="400" rx="12"/>
+
+  <text class="muted" x="20" y="34">Ký tự (code point)</text>
+  <text class="muted" x="20" y="226">Byte UTF-8 (hex)</text>
+
+  <!-- hàng ký tự -->
+  <rect class="box" x="100" y="50" width="80" height="60" rx="6"/>
+  <text class="big" x="140" y="90" text-anchor="middle">V</text>
+  <text class="muted" x="140" y="132" text-anchor="middle">U+0056</text>
+
+  <rect class="box" x="190" y="50" width="80" height="60" rx="6"/>
+  <text class="big" x="230" y="90" text-anchor="middle">i</text>
+  <text class="muted" x="230" y="132" text-anchor="middle">U+0069</text>
+
+  <rect class="box-hot" x="370" y="50" width="80" height="60" rx="6"/>
+  <text class="big hot" x="410" y="90" text-anchor="middle">ệ</text>
+  <text class="hot" x="410" y="132" text-anchor="middle">U+1EC7</text>
+
+  <rect class="box" x="550" y="50" width="80" height="60" rx="6"/>
+  <text class="big" x="590" y="90" text-anchor="middle">t</text>
+  <text class="muted" x="590" y="132" text-anchor="middle">U+0074</text>
+
+  <!-- nối ký tự với byte -->
+  <line class="link" x1="140" y1="140" x2="140" y2="240"/>
+  <line class="link" x1="230" y1="140" x2="230" y2="240"/>
+  <line class="link-hot" x1="410" y1="140" x2="320" y2="240"/>
+  <line class="link-hot" x1="410" y1="140" x2="410" y2="240"/>
+  <line class="link-hot" x1="410" y1="140" x2="500" y2="240"/>
+  <line class="link" x1="590" y1="140" x2="590" y2="240"/>
+
+  <!-- hàng byte -->
+  <rect class="byte" x="100" y="240" width="80" height="50" rx="4"/>
+  <text x="140" y="271" text-anchor="middle">56</text>
+  <rect class="byte" x="190" y="240" width="80" height="50" rx="4"/>
+  <text x="230" y="271" text-anchor="middle">69</text>
+  <rect class="byte-hot" x="280" y="240" width="80" height="50" rx="4"/>
+  <text class="hot" x="320" y="271" text-anchor="middle">E1</text>
+  <rect class="byte-hot" x="370" y="240" width="80" height="50" rx="4"/>
+  <text class="hot" x="410" y="271" text-anchor="middle">BB</text>
+  <rect class="byte-hot" x="460" y="240" width="80" height="50" rx="4"/>
+  <text class="hot" x="500" y="271" text-anchor="middle">87</text>
+  <rect class="byte" x="550" y="240" width="80" height="50" rx="4"/>
+  <text x="590" y="271" text-anchor="middle">74</text>
+
+  <text class="muted" x="140" y="312" text-anchor="middle">0xxxxxxx</text>
+  <text class="muted" x="230" y="312" text-anchor="middle">0xxxxxxx</text>
+  <text class="hot" x="410" y="312" text-anchor="middle">1110xxxx 10xxxxxx 10xxxxxx</text>
+  <text class="muted" x="590" y="312" text-anchor="middle">0xxxxxxx</text>
+
+  <text x="340" y="352" text-anchor="middle">4 ký tự → 6 byte. "Việt".length() trong Java = 4</text>
+  <text class="muted" x="340" y="376" text-anchor="middle">ASCII giữ nguyên 1 byte; U+0800..U+FFFF cần 3 byte</text>
+</svg>
