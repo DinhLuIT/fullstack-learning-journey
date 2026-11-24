@@ -1,6 +1,6 @@
 ---
 name: hoc-bai
-description: Dẫn Đình học một bài trong lộ trình theo kiểu gia sư một kèm một. Dùng khi Đình nói "học bài N", "hôm nay học gì", hoặc gọi /hoc-bai.
+description: 'Dẫn Đình học một bài trong lộ trình theo kiểu gia sư một kèm một. Dùng khi Đình nói "học bài N", "hôm nay học gì", hoặc gọi /hoc-bai.'
 argument-hint: "[số bài, ví dụ 18 hoặc gd2 5; bỏ trống = bài tiếp theo]"
 ---
 
@@ -54,7 +54,7 @@ Quy tắc khi giảng:
 
 - Mỗi lượt trả lời ngắn, tối đa khoảng 250 từ. Không giảng một mạch hết bài.
 - Đình trả lời sai: không đưa đáp án ngay. Hỏi một câu dẫn dắt; sai lần hai mới giải thích.
-- Không chắc một chi tiết (phiên bản, giá trị mặc định, hành vi cụ thể của một thư viện): nói rõ là không chắc và chỉ cách kiểm chứng, không đoán.
+- Chi tiết cụ thể (phiên bản, giá trị mặc định, con số, hành vi của một thư viện) phải có nguồn: lấy từ mục "Nguồn" của handout nếu bài đã có `handouts/`, hoặc tra tài liệu chính thống theo `.claude/skills/soan-bai/nguon-chinh-thong.md` và đưa link đã mở. Không tra được thì nói rõ là chưa kiểm chứng, không đoán.
 
 ## 5. Giao lab
 

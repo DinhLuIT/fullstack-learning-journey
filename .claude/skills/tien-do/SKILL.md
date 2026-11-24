@@ -1,6 +1,6 @@
 ---
 name: tien-do
-description: Đồng bộ và báo cáo tiến độ học của Đình, đề xuất buổi học tiếp theo, viết phần dữ kiện cho nhật ký tuần. Dùng khi Đình gọi /tien-do, hỏi đang ở đâu trong lộ trình, nên học gì tiếp, hoặc muốn tổng kết tuần.
+description: 'Đồng bộ và báo cáo tiến độ học của Đình, đề xuất buổi học tiếp theo, viết phần dữ kiện cho nhật ký tuần. Dùng khi Đình gọi /tien-do, hỏi đang ở đâu trong lộ trình, nên học gì tiếp, hoặc muốn tổng kết tuần.'
 argument-hint: "[trống | tuan]"
 ---
 

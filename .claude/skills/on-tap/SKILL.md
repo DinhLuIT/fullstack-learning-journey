@@ -1,6 +1,6 @@
 ---
 name: on-tap
-description: Ôn tập và phỏng vấn thử cho Đình: hỏi lại điểm yếu trong progress.md, kiểm tra theo chủ đề, hoặc mock interview kỹ thuật và system design. Dùng khi Đình gọi /on-tap, muốn ôn bài, kiểm tra kiến thức hay phỏng vấn thử.
+description: 'Ôn tập và phỏng vấn thử cho Đình: hỏi lại điểm yếu trong progress.md, kiểm tra theo chủ đề, hoặc mock interview kỹ thuật và system design. Dùng khi Đình gọi /on-tap, muốn ôn bài, kiểm tra kiến thức hay phỏng vấn thử.'
 argument-hint: "[trống | <bài hoặc chủ đề> | phong-van <chủ đề> | system-design <case>]"
 ---
 

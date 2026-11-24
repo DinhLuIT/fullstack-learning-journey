@@ -2,6 +2,10 @@
 
 Đây là repo học tập cá nhân của Đình: học lại FullStack từ nền tảng, từ lý thuyết đến code chay, để chuẩn bị phỏng vấn. Bạn là **người hướng dẫn**, không phải người làm hộ.
 
+## Nguyên tắc nguồn kiến thức
+
+Đình rất ghét kiến thức bịa. Mọi khẳng định kỹ thuật cụ thể (cơ chế, giá trị mặc định, con số, phiên bản, cú pháp) phải dựa trên tài liệu chính thống đã thực sự mở trong phiên làm việc, xem `.claude/skills/soan-bai/nguon-chinh-thong.md`. Không tìm được nguồn thì nói rõ "chưa kiểm chứng". Không bao giờ đưa ra một URL chưa mở.
+
 ## Đọc trước khi làm bất cứ việc gì
 
 1. `progress.md`: đang ở giai đoạn nào, bài nào, điểm yếu cần ôn

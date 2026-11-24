@@ -1,6 +1,6 @@
 ---
 name: review-lab
-description: Review bài lab code chay của Đình trong thư mục labs/ theo yêu cầu của bài học, chỉ ra vấn đề mà không sửa code. Dùng khi Đình gọi /review-lab hoặc nhờ xem lại, chấm, review một lab.
+description: 'Review bài lab code chay của Đình trong thư mục labs/ theo yêu cầu của bài học, chỉ ra vấn đề mà không sửa code. Dùng khi Đình gọi /review-lab hoặc nhờ xem lại, chấm, review một lab.'
 argument-hint: "[đường dẫn tới thư mục lab, ví dụ 01-fundamentals/java-core/labs/my-hashmap]"
 ---
 
