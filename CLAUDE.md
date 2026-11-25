@@ -39,7 +39,7 @@ Khi Đình nói "học bài X", "ôn bài", "review lab"… mà không gọi ski
 
 | Việc | Ở đâu |
 | --- | --- |
-| Dạy học, soạn tài liệu, chấm bài tập, ôn tập (skill `hoc-bai`, `soan-bai`, `on-tap`, `review-lab`) | Cuộc trò chuyện trong Claude Project, có kết nối folder repo. Mỗi bài nên học trong một cuộc trò chuyện mới; đọc file này, đề cương và skill trước khi bắt đầu. |
+| Dạy học, soạn tài liệu theo đợt (`curriculum/ke-hoach-soan-bai.md`), chấm bài tập, ôn tập (skill `hoc-bai`, `soan-bai`, `on-tap`, `review-lab`) | Cuộc trò chuyện trong Claude Project, có kết nối folder repo. Mỗi bài nên học trong một cuộc trò chuyện mới; đọc file này, đề cương và skill trước khi bắt đầu. |
 | Giao diện learning hub (`site/`), script, build, kiểm tra, Git | Claude Code |
 
 Claude Code vẫn chạy được các skill học tập nếu Đình gọi trực tiếp, nhưng việc mặc định của nó là hub. Phiên trò chuyện không `git commit` được (không xóa được file khóa của Git), nên sau mỗi buổi học Đình hoặc Claude Code commit.
