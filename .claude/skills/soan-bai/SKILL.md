@@ -22,6 +22,10 @@ Tài liệu là tài liệu tham khảo để Đình đọc trước hoặc sau 
 2. Mục `### Bài N-1.` để biết kiến thức nền.
 3. `capstone/README.md` để lấy ví dụ từ hệ thống đặt sân.
 
+**Phạm vi kiến thức:** tài liệu chỉ dùng kiến thức của bài này và các bài trước nó. Trước Giai đoạn 1, bài 14 không có code Java hay ngôn ngữ lập trình nào; minh họa bằng tính tay, bảng, hình, hoặc lệnh terminal đơn giản (`printf`, `xxd`, `wc`, `nc`). Thứ chưa học chỉ được nhắc tên kèm "sẽ học ở bài N".
+
+**Độ dài:** Giai đoạn 1 viết gọn, tập trung vào ý cốt lõi, hình minh họa và bài tập; Đình đã từng học phần này và cần đi nhanh.
+
 Ghi rõ phiên bản mục tiêu ngay từ đầu: Java 21, Spring Boot 3.x, PostgreSQL bản hiện hành, React bản hiện hành… Khi tài liệu chính thức có nhiều phiên bản, đọc đúng phiên bản đó.
 
 ## Bước 2. Nghiên cứu (làm trước khi viết bất cứ dòng nội dung nào)
@@ -61,7 +65,7 @@ Dòng đầu tiên của file:
    - Cuối mỗi mục: một câu "dừng lại và tự hỏi"
 5. **Hiểu nhầm thường gặp:** 3–5 hiểu nhầm, mỗi cái kèm lý do vì sao sai **và nguồn chứng minh**.
 6. **Liên hệ capstone:** kiến thức này dùng ở đâu trong hệ thống đặt sân, gắn mã F-, R-, N- nếu có.
-7. **Câu hỏi phỏng vấn:** 5–8 câu, gồm các câu "Tự kiểm tra" của đề cương. Đáp án gợi ý đặt trong `<details>`, cũng phải có trích dẫn.
+7. **Bài tập:** 5–10 bài đánh số, từ dễ đến khó, ghi mức độ (cơ bản, vận dụng, nâng cao), làm được bằng kiến thức của bài này và các bài trước. **Không kèm đáp án**: Đình làm bài nào thì Claude chấm bài đó. Không viết mục câu hỏi phỏng vấn; câu hỏi phỏng vấn nằm riêng ở `07-interview/question-bank/` do Đình tự tổng hợp.
 8. **Nguồn:** danh sách đánh số, mỗi dòng: `[n] [Tên tài liệu](URL) — mục — phiên bản — truy cập YYYY-MM-DD`. Tên tài liệu là link, không để URL trần.
 9. **Đọc thêm:** sách và tài nguyên trong lộ trình. Sách chỉ ghi tên và chương, không dùng làm nguồn cho khẳng định nếu bạn không đọc được nội dung.
 
@@ -76,6 +80,7 @@ Dòng đầu tiên của file:
 ### Code minh họa
 
 - Chỉ để minh họa khái niệm, dưới 25 dòng, không phải lời giải lab.
+- Chỉ dùng ngôn ngữ đã học tới bài này (xem "Phạm vi kiến thức" ở Bước 1).
 - **Phải chạy thử** trước khi đưa vào (Java: `java File.java` hoặc `jshell`; JavaScript: `node`; SQL: chạy trên PostgreSQL nếu có). Ghi kết quả chạy thật ngay dưới đoạn code.
 - Không chạy được (thiếu môi trường) thì ghi rõ `Chưa chạy thử` ngay trên đoạn code.
 

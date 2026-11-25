@@ -2,7 +2,7 @@
 title: "Git từ bên trong và quy trình nhóm"
 phase: 1
 lesson: 13
-module: "D. Git và công cụ build"
+module: "D. Git"
 status: todo        # todo | doing | done | review
 started:
 finished:

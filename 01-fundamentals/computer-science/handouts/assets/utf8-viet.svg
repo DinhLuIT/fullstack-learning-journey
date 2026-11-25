@@ -63,6 +63,6 @@
   <text class="hot" x="410" y="312" text-anchor="middle">1110xxxx 10xxxxxx 10xxxxxx</text>
   <text class="muted" x="590" y="312" text-anchor="middle">0xxxxxxx</text>
 
-  <text x="340" y="352" text-anchor="middle">4 ký tự → 6 byte. "Việt".length() trong Java = 4</text>
+  <text x="340" y="352" text-anchor="middle">4 ký tự nhưng 6 byte: printf 'Việt' | wc -c in ra 6</text>
   <text class="muted" x="340" y="376" text-anchor="middle">ASCII giữ nguyên 1 byte; U+0800..U+FFFF cần 3 byte</text>
 </svg>

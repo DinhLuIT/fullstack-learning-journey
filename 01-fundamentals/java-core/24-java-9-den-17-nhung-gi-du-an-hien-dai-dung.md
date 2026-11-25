@@ -2,7 +2,7 @@
 title: "Java 9 đến 17: những gì dự án hiện đại dùng"
 phase: 1
 lesson: 24
-module: "E. Java Core"
+module: "E. Java Core và công cụ build"
 status: todo        # todo | doing | done | review
 started:
 finished:

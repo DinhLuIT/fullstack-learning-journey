@@ -10,5 +10,4 @@ Giai đoạn 3 · F. Hiệu năng và kiểm thử
 
 - Các file `NN-*.md`: ghi chú từng bài
 - `labs/`: code chay, mỗi lab có README hướng dẫn chạy
-- `interview-qa.md`: câu hỏi phỏng vấn và câu trả lời của mình
 - `pitfalls.md`: lỗi đã gặp, hiểu nhầm, bài học

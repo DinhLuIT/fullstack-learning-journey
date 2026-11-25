@@ -98,7 +98,7 @@
     { html: '<div class="row">' + group(filled("1110", "0001"), "byte 1") + group(filled("10", "111011"), "byte 2") + group(filled("10", "000111"), "byte 3") + '</div>',
       text: 'Điền từng nhóm vào mẫu. Bit mờ là phần cố định của mẫu, bit đậm là bit của code point.' },
     { html: '<div class="row">' + group('<span class="hex">E1</span>', "1110 0001") + group('<span class="hex">BB</span>', "1011 1011") + group('<span class="hex">87</span>', "1000 0111") + '</div>',
-      text: 'Đổi mỗi byte sang hex: E1 BB 87. Đây đúng là 3 byte Java in ra khi gọi "ệ".getBytes(UTF_8).' },
+      text: 'Đổi mỗi byte sang hex: E1 BB 87. Đây đúng là 3 byte mà lệnh printf trong terminal in ra (xem phần Thử ngay trong tài liệu).' },
     { html: '<div class="row">' + group(filled("1110", "0001"), "1110… : ký tự dài 3 byte") + group(filled("10", "111011"), "10… : byte tiếp nối") + group(filled("10", "000111"), "10… : byte tiếp nối") + '</div>',
       text: 'Chiều ngược lại: bộ giải mã nhìn các bit đầu của byte thứ nhất (1110) là biết ký tự dài 3 byte; byte bắt đầu bằng 10 chỉ có thể là byte tiếp nối. Vì các mẫu không trùng nhau nên đọc từ giữa chuỗi vẫn tìm được đầu ký tự.' }
   ];

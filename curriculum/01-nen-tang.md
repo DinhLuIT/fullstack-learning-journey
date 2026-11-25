@@ -1,6 +1,6 @@
 # Giai đoạn 1: Nền tảng
 
-38 bài, 6 module, đi từ cách máy tính hoạt động đến Linux, mạng, Git, công cụ build, Java Core và SQL. Module A là nền móng cho mọi thứ phía sau: thread, bộ nhớ, cache, I/O đều quay lại đây.
+38 bài, 6 module, đi từ cách máy tính hoạt động đến Linux, mạng, Git, Java Core cùng công cụ build, và SQL. Bài nào cũng chỉ dùng kiến thức của các bài trước nó. Module A là nền móng cho mọi thứ phía sau: thread, bộ nhớ, cache, I/O đều quay lại đây.
 
 **Vì sao học:** Phỏng vấn hỏi nhiều nhất về những thứ nằm dưới framework: HashMap chạy thế nào, transaction và isolation, thread và deadlock, gõ URL thì chuyện gì xảy ra. Hiểu tầng này thì học framework nào cũng nhanh và debug được lỗi khó.
 
@@ -11,8 +11,8 @@ Thời lượng là mức tối đa cho người học mới. Phần đã vững
 | A. Máy tính hoạt động thế nào | 1–3 | 4–5 buổi |
 | B. Linux | 4–8 | 1 tuần |
 | C. Networking | 9–12 | 1 tuần |
-| D. Git và công cụ build | 13–14 | 3 buổi |
-| E. Java Core | 15–31 | 3 tuần |
+| D. Git | 13 | 2 buổi |
+| E. Java Core và công cụ build | 14–31 | 3 tuần |
 | F. SQL và cơ sở dữ liệu | 32–38 | 1,5 tuần |
 
 ## Module A. Máy tính hoạt động thế nào
@@ -24,15 +24,15 @@ Thời lượng là mức tối đa cho người học mới. Phần đã vững
 **Nội dung**
 
 - Hệ nhị phân, thập lục phân, chuyển đổi qua lại; bit, byte, word
-- Số nguyên có dấu và số bù hai; phạm vi của `byte`, `int`, `long` trong Java; tràn số
+- Số nguyên có dấu và số bù hai; phạm vi của số nguyên 8, 16, 32, 64 bit; tràn số
 - Phép toán bit: AND, OR, XOR, dịch trái, dịch phải
-- Số thực theo chuẩn IEEE 754; vì sao không dùng `double` cho tiền, dùng `BigDecimal`
+- Số thực theo chuẩn IEEE 754; vì sao số thực dấu phẩy động không hợp để lưu tiền, và các cách lưu tiền đúng (số nguyên theo đơn vị nhỏ nhất, kiểu thập phân chính xác)
 - Ký tự: ASCII, Unicode, UTF-8, UTF-16; vì sao tiếng Việt hay bị lỗi font
 - Endianness (big-endian, little-endian) ở mức khái niệm
 
-**Thực hành:** viết chương trình Java in biểu diễn nhị phân của số âm; tái hiện tràn `int`; so sánh cộng tiền bằng `double` và `BigDecimal`; đếm số byte của một chuỗi tiếng Việt trong UTF-8.
+**Thực hành (bài tập bằng giấy bút và terminal):** đổi 42, 255, 1000 sang nhị phân và thập lục phân; viết −5 dưới dạng số bù hai 8 bit; tính 127 + 1 với số nguyên có dấu 8 bit; đổi 0.1 sang nhị phân vài chữ số để thấy vì sao không biểu diễn chính xác được; dùng `printf 'Việt' | wc -c` và `printf 'Việt' | xxd` để đếm và xem từng byte UTF-8.
 
-**Tự kiểm tra:** `Integer.MAX_VALUE + 1` bằng bao nhiêu, vì sao? Vì sao `0.1 + 0.2` không bằng `0.3`? Chuỗi "Việt" chiếm bao nhiêu byte trong UTF-8?
+**Tự kiểm tra:** số nguyên có dấu 32 bit lớn nhất cộng thêm 1 bằng bao nhiêu, vì sao? Vì sao `0.1 + 0.2` không bằng `0.3` với số thực dấu phẩy động? Chuỗi "Việt" chiếm bao nhiêu byte trong UTF-8?
 
 ### Bài 2. Kiến trúc máy tính
 
@@ -64,7 +64,7 @@ Thời lượng là mức tối đa cho người học mới. Phần đã vững
 - File system: file descriptor, inode; mọi thứ trong Linux là file
 - Mô hình I/O: blocking, non-blocking, I/O multiplexing (select, epoll) — nền cho Nginx, Netty, virtual thread
 
-**Thực hành:** trên VPS, dùng `ps`, `top`, `/proc` để xem process và thread của một ứng dụng Java đang chạy; dùng `strace` xem các system call khi đọc một file.
+**Thực hành:** trên VPS, dùng `ps`, `top`, `/proc` để xem process và thread của một chương trình đang chạy (ví dụ Nginx hoặc trình soạn thảo); dùng `strace` xem các system call khi đọc một file.
 
 **Tự kiểm tra:** process khác thread thế nào? Context switch tốn kém vì sao? Deadlock xảy ra khi nào, phòng tránh ra sao? Vì sao Nginx phục vụ được hàng nghìn kết nối với ít thread?
 
@@ -84,7 +84,7 @@ Thời lượng là mức tối đa cho người học mới. Phần đã vững
 
 **Thực hành:** tự tạo cấu trúc thư mục dự án chỉ bằng lệnh; theo dõi log thời gian thực bằng `tail -f`.
 
-**Tự kiểm tra:** hard link khác symlink thế nào? Khi gõ `java`, shell tìm chương trình ở đâu?
+**Tự kiểm tra:** hard link khác symlink thế nào? Khi gõ `git`, shell tìm chương trình ở đâu?
 
 ### Bài 5. User, group và phân quyền
 
@@ -172,7 +172,7 @@ Thời lượng là mức tối đa cho người học mới. Phần đã vững
 - UDP: không kết nối, không đảm bảo; dùng cho DNS, video call, game
 - Socket API: `bind`, `listen`, `accept`, `connect`
 
-**Thực hành:** viết TCP echo server và client bằng Java `ServerSocket`/`Socket`; dùng Wireshark bắt gói và chỉ ra 3 bước handshake.
+**Thực hành:** dùng `nc` (netcat) mở một TCP server và một client ở hai terminal, gửi qua lại vài dòng; dùng Wireshark hoặc `tcpdump` bắt gói và chỉ ra 3 bước handshake. (Tự viết server bằng Java để dành cho Giai đoạn 2, bài 5.)
 
 **Tự kiểm tra:** vì sao cần ba bước bắt tay chứ không phải hai? Khi nào chọn UDP thay TCP?
 
@@ -207,7 +207,7 @@ Thời lượng là mức tối đa cho người học mới. Phần đã vững
 
 **Tự kiểm tra:** CORS chặn ở phía nào, trình duyệt hay server? Khi nào chọn SSE thay WebSocket?
 
-## Module D. Git và công cụ build
+## Module D. Git
 
 ### Bài 13. Git từ bên trong và quy trình nhóm
 
@@ -225,7 +225,27 @@ Thời lượng là mức tối đa cho người học mới. Phần đã vững
 
 **Tự kiểm tra:** merge khác rebase thế nào, khi nào không nên rebase? `revert` khác `reset` ra sao?
 
-### Bài 14. Maven và Gradle
+## Module E. Java Core và công cụ build
+
+### Bài 14. Java chạy thế nào và kiểu dữ liệu
+
+**Mục tiêu:** hiểu đường đi từ file `.java` đến lệnh chạy trên CPU và cách Java lưu biến.
+
+**Nội dung**
+
+- JDK, JRE, JVM; biên dịch ra bytecode, JIT
+- Kiểu nguyên thủy và kiểu tham chiếu; wrapper class, autoboxing và cache `Integer` (-128 đến 127)
+- Stack và heap; Java luôn truyền tham trị (pass-by-value), kể cả với object
+- `String` bất biến, String pool, `==` và `equals`; `StringBuilder`
+- Regex: cú pháp cơ bản, `Pattern` và `Matcher`, kiểm tra định dạng (email, số điện thoại)
+- `static`, `final`, khối khởi tạo, thứ tự khởi tạo object
+- Nhìn lại bài 1 bằng Java: phạm vi `byte`, `short`, `int`, `long`; tràn `int`; vì sao dùng `BigDecimal` (hoặc `long` theo đơn vị đồng) cho tiền thay vì `double`
+
+**Thực hành:** dùng `javac` và `javap -c` xem bytecode; viết ví dụ chứng minh pass-by-value; so sánh `Integer` 127 và 128 bằng `==`; viết regex kiểm tra số điện thoại Việt Nam.
+
+**Tự kiểm tra:** Java pass-by-value hay pass-by-reference? Vì sao `String` được thiết kế bất biến?
+
+### Bài 15. Maven và Gradle
 
 **Mục tiêu:** hiểu công cụ build làm gì và tự cấu hình được dự án Java nhiều module.
 
@@ -241,25 +261,6 @@ Thời lượng là mức tối đa cho người học mới. Phần đã vững
 **Thực hành:** tạo dự án Maven hai module (`core` và `app`) cho capstone; cố ý tạo xung đột phiên bản một thư viện và đọc `dependency:tree` để tìm nguyên nhân.
 
 **Tự kiểm tra:** scope `provided` khác `runtime` thế nào? Hai thư viện kéo về hai phiên bản khác nhau của cùng một dependency thì Maven chọn bản nào?
-
-## Module E. Java Core
-
-### Bài 15. Java chạy thế nào và kiểu dữ liệu
-
-**Mục tiêu:** hiểu đường đi từ file `.java` đến lệnh chạy trên CPU và cách Java lưu biến.
-
-**Nội dung**
-
-- JDK, JRE, JVM; biên dịch ra bytecode, JIT
-- Kiểu nguyên thủy và kiểu tham chiếu; wrapper class, autoboxing và cache `Integer` (-128 đến 127)
-- Stack và heap; Java luôn truyền tham trị (pass-by-value), kể cả với object
-- `String` bất biến, String pool, `==` và `equals`; `StringBuilder`
-- Regex: cú pháp cơ bản, `Pattern` và `Matcher`, kiểm tra định dạng (email, số điện thoại)
-- `static`, `final`, khối khởi tạo, thứ tự khởi tạo object
-
-**Thực hành:** dùng `javac` và `javap -c` xem bytecode; viết ví dụ chứng minh pass-by-value; so sánh `Integer` 127 và 128 bằng `==`; viết regex kiểm tra số điện thoại Việt Nam.
-
-**Tự kiểm tra:** Java pass-by-value hay pass-by-reference? Vì sao `String` được thiết kế bất biến?
 
 ### Bài 16. Lập trình hướng đối tượng
 

@@ -1,6 +1,6 @@
 # Ghi lại câu trả lời, đánh giá và câu trả lời hoàn chỉnh
 
-Dùng chung cho `hoc-bai` (mục "Tự kiểm tra" trong file ghi chú của bài) và `on-tap` (file `interview-qa.md` của chủ đề).
+Dùng chung cho `hoc-bai` (file ghi chú của bài) và question bank phỏng vấn (khi Đình yêu cầu).
 
 ## Thứ tự bắt buộc
 
@@ -31,7 +31,7 @@ Không xóa lần trước. Thêm khối `**Lần 2, YYYY-MM-DD: ...**` và ph�
 
 ## Vị trí ghi
 
-- `hoc-bai`: thay chú thích `<!-- Trả lời từng câu... -->` trong mục `## Tự kiểm tra` của file ghi chú bài bằng các khối câu hỏi. Không động vào mục "Ghi chú" và "Sai lầm và hiểu nhầm".
-- `on-tap`: thêm vào `interview-qa.md` của chủ đề chứa bài. Câu hỏi đã có trong file thì thêm "Lần N" như trên.
+- `hoc-bai`: mục `## Tự kiểm tra` của file ghi chú bài (Giai đoạn 2 trở đi), hoặc mục `## Thực hành` khi chấm bài tập ở chế độ nhanh của Giai đoạn 1. Không động vào mục "Ghi chú" và "Sai lầm và hiểu nhầm".
+- Câu hỏi phỏng vấn: chỉ khi Đình yêu cầu, ghi vào file chủ đề trong `07-interview/question-bank/` (xem README ở đó). Câu đã có thì thêm "Lần N".
 
-Cả hai file này là ghi chú cá nhân trong repo, **không** hiển thị trên learning hub.
+Các file này là ghi chú cá nhân trong repo, **không** hiển thị trên learning hub.

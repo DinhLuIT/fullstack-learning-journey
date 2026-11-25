@@ -2,7 +2,7 @@
 title: "Collections từ bên trong"
 phase: 1
 lesson: 22
-module: "E. Java Core"
+module: "E. Java Core và công cụ build"
 status: todo        # todo | doing | done | review
 started:
 finished:

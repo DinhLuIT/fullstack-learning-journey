@@ -31,6 +31,23 @@ grep -rl --include='*.md' -E '^lesson: 18$' 01-*/ | xargs grep -l '^phase: 1$'
 3. `progress.md`: mục "Cần ôn lại" có gì liên quan đến bài này không
 4. `capstone/README.md` nếu phần thực hành nhắc tới capstone hoặc mã F-, R-, N-
 
+## Phạm vi kiến thức
+
+Chỉ dùng kiến thức của bài hiện tại và các bài **trước nó** trong lộ trình. Trước Giai đoạn 1, bài 14 (bài Java đầu tiên) không dùng Java hay ngôn ngữ lập trình nào: minh họa bằng tính tay, bảng, hình, hoặc vài lệnh terminal đơn giản (`printf`, `xxd`, `wc`, `nc`). Cần nhắc tới thứ chưa học thì nói rõ "sẽ học ở bài N" và không giải thích sâu.
+
+## Chế độ nhanh cho Giai đoạn 1 (Nền tảng)
+
+Mặc định cho mọi bài của Giai đoạn 1, trừ khi Đình yêu cầu học đầy đủ. Mục tiêu là đi nhanh qua phần Đình đã từng học.
+
+1. **Cốt lõi:** tóm tắt bài trong 5–10 ý ngắn, mỗi ý một câu, theo đúng phạm vi kiến thức ở trên. Bài đã có tài liệu thì gửi link trang bài trên learning hub.
+2. **Danh sách bài tập:** đánh số, ghi mức độ (cơ bản, vận dụng, nâng cao), lấy từ phần "Thực hành" của đề cương và mục "Bài tập" của tài liệu. Không kèm đáp án.
+3. **Chấm khi Đình nộp:** Đình gửi bài nào thì chấm bài đó (0–2 điểm, đúng gì, sai gì và vì sao, đáp án đúng có nguồn), rồi ghi vào mục "Thực hành" của file ghi chú bài. Bài Đình không làm thì bỏ qua, không nhắc lại, không hỏi vì sao.
+4. **Không bắt buộc:** không chẩn đoán, không tự kiểm tra, không giao lab riêng, không cần `/review-lab`.
+5. **Xong bài:** khi Đình nói xong thì đặt `status: done`, ghi ngày, chạy script tiến độ (mục 6, bước 5).
+6. Đình hỏi sâu phần nào thì giảng phần đó theo vòng ngắn ở mục 4, xong quay lại chế độ nhanh.
+
+Các mục 3 đến 6 dưới đây dùng cho Giai đoạn 2 trở đi, hoặc khi Đình yêu cầu học đầy đủ.
+
 ## 3. Chẩn đoán (2–3 phút)
 
 Nêu mục tiêu bài trong một câu. Sau đó hỏi 2 câu lấy từ phần "Tự kiểm tra", **từng câu một**, chờ Đình trả lời.
@@ -90,6 +107,9 @@ Khi Đình làm xong, đề nghị dùng skill `review-lab`.
 6. Nhắc Đình viết mục "Ghi chú" bằng lời của mình, và gợi ý một commit message, ví dụ `docs(java-core): notes on HashMap internals`.
 
 ## Không được làm
+
+- Dùng kiến thức hay ngôn ngữ chưa học tới (ví dụ code Java trước Giai đoạn 1, bài 14).
+- Tự ghi câu hỏi phỏng vấn vào `07-interview/question-bank/` khi Đình chưa yêu cầu.
 
 - Viết hoặc sửa mục "Ghi chú", "Sai lầm và hiểu nhầm" trong file bài học. Chỉ được nhận xét và chỉ ra chỗ sai. (Mục "Tự kiểm tra" thì được ghi, nhưng chỉ sau khi Đình đã trả lời.)
 - Đưa câu trả lời hoàn chỉnh trước khi Đình tự trả lời.

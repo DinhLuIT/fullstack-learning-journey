@@ -2,7 +2,7 @@
 title: "Concurrency phần 2: công cụ cấp cao"
 phase: 1
 lesson: 30
-module: "E. Java Core"
+module: "E. Java Core và công cụ build"
 status: todo        # todo | doing | done | review
 started:
 finished:

@@ -2,7 +2,7 @@
 title: "Concurrency phần 1: thread và đồng bộ"
 phase: 1
 lesson: 29
-module: "E. Java Core"
+module: "E. Java Core và công cụ build"
 status: todo        # todo | doing | done | review
 started:
 finished:

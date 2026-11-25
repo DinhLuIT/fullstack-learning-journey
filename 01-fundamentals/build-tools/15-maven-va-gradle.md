@@ -1,15 +1,15 @@
 ---
-title: "Java chạy thế nào và kiểu dữ liệu"
+title: "Maven và Gradle"
 phase: 1
 lesson: 15
-module: "E. Java Core"
+module: "E. Java Core và công cụ build"
 status: todo        # todo | doing | done | review
 started:
 finished:
-tags: [fundamentals, java]
+tags: [fundamentals, maven, gradle]
 ---
 
-# Bài 15. Java chạy thế nào và kiểu dữ liệu
+# Bài 15. Maven và Gradle
 
 > Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem [Bài 15 trong curriculum/01-nen-tang.md](../../curriculum/01-nen-tang.md).
 

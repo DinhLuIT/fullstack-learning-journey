@@ -49,7 +49,7 @@ const allHtml = pages.map((f) => fs.readFileSync(f, "utf8")).join("\n");
 const privateFiles = walk(ROOT).filter((f) => {
   const r = path.relative(ROOT, f).split(path.sep).join("/");
   if (/^(site|node_modules|\.git|\.agents|\.claude)\//.test(r)) return false;
-  return /^0[1-7]-[^/]+\/([^/]+\/)?\d{2}-[^/]+\.md$/.test(r) || /(interview-qa|pitfalls|behavioral|ai-workflow|log)\.md$/.test(r) || r === "progress.md" || /\/labs\/[^/]+\/README\.md$/.test(r);
+  return /^0[1-7]-[^/]+\/([^/]+\/)?\d{2}-[^/]+\.md$/.test(r) || /(interview-qa|pitfalls|behavioral|ai-workflow|log)\.md$/.test(r) || r === "progress.md" || r.startsWith("07-interview/question-bank/") || /\/labs\/[^/]+\/README\.md$/.test(r);
 });
 for (const f of privateFiles) {
   const lines = fs.readFileSync(f, "utf8").split("\n").map((l) => l.replace(/^[-*>#\s]+/, "").trim())

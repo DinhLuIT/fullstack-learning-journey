@@ -1,10 +1,11 @@
 # Java Core
 
-Giai đoạn 1 · E. Java Core
+Giai đoạn 1 · E. Java Core và công cụ build
 
 | Bài | Trạng thái |
 | --- | --- |
-| [15. Java chạy thế nào và kiểu dữ liệu](15-java-chay-the-nao-va-kieu-du-lieu.md) | todo |
+| [14. Java chạy thế nào và kiểu dữ liệu](14-java-chay-the-nao-va-kieu-du-lieu.md) | todo |
+| [15. Maven và Gradle](../build-tools/15-maven-va-gradle.md) | todo |
 | [16. Lập trình hướng đối tượng](16-lap-trinh-huong-doi-tuong.md) | todo |
 | [17. Nguyên lý SOLID và thiết kế hướng đối tượng](17-nguyen-ly-solid-va-thiet-ke-huong-doi-tuong.md) | todo |
 | [18. Design pattern nhóm khởi tạo](18-design-pattern-nhom-khoi-tao.md) | todo |
@@ -26,5 +27,4 @@ Giai đoạn 1 · E. Java Core
 
 - Các file `NN-*.md`: ghi chú từng bài
 - `labs/`: code chay, mỗi lab có README hướng dẫn chạy
-- `interview-qa.md`: câu hỏi phỏng vấn và câu trả lời của mình
 - `pitfalls.md`: lỗi đã gặp, hiểu nhầm, bài học

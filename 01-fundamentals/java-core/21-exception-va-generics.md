@@ -2,7 +2,7 @@
 title: "Exception và Generics"
 phase: 1
 lesson: 21
-module: "E. Java Core"
+module: "E. Java Core và công cụ build"
 status: todo        # todo | doing | done | review
 started:
 finished:

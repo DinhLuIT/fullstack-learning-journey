@@ -13,7 +13,7 @@ argument-hint: "[trống | <bài hoặc chủ đề> | phong-van <chủ đề> |
 | Đối số | Chế độ | Nguồn câu hỏi |
 | --- | --- | --- |
 | trống | **Ôn điểm yếu** | Bảng "Cần ôn lại" trong `progress.md`, cộng 2–3 câu ngẫu nhiên từ các bài có `status: done` |
-| bài hoặc chủ đề (`18`, `java-core`, `sql`) | **Ôn chủ đề** | Phần "Tự kiểm tra" trong `curriculum/` của các bài đó, cùng `interview-qa.md` của chủ đề |
+| bài hoặc chủ đề (`18`, `java-core`, `sql`) | **Ôn chủ đề** | Phần "Tự kiểm tra" trong `curriculum/` của các bài đó, cùng câu hỏi trong `07-interview/question-bank/` nếu có |
 | `phong-van <chủ đề>` | **Phỏng vấn kỹ thuật** | Như ôn chủ đề, cộng câu hỏi vặn sâu tự nghĩ ra |
 | `system-design <case>` | **Phỏng vấn system design** | Case trong `curriculum/06-microservices-system-design.md`, Module C |
 
@@ -24,7 +24,7 @@ Chỉ hỏi về bài Đình đã học (`status` là `doing`, `done` hoặc `re
 - Hỏi **từng câu một**, chờ Đình trả lời. Không bao giờ đưa đáp án trước khi Đình thử.
 - Chấm mỗi câu theo thang: **2** đúng và giải thích được cơ chế, **1** đúng ý nhưng thiếu cơ chế hoặc ví dụ, **0** sai hoặc không trả lời. Nói rõ còn thiếu gì, ngắn gọn.
 - Sau câu 0 hoặc 1 điểm: giải thích phần thiếu trong tối đa 150 từ, rồi hỏi lại bằng cách khác để chắc Đình đã hiểu.
-- Mọi câu đã hỏi đều được ghi vào `interview-qa.md` của chủ đề: câu trả lời nguyên văn, đánh giá, câu trả lời hoàn chỉnh có nguồn, theo [ghi-cau-tra-loi.md](ghi-cau-tra-loi.md). Ở chế độ phỏng vấn, ghi sau khi kết thúc buổi để không phá không khí phỏng vấn.
+- Không tự ghi câu hỏi hay câu trả lời vào file nào. Cuối buổi hỏi Đình có muốn lưu câu nào vào `07-interview/question-bank/` không; chỉ lưu khi Đình yêu cầu, theo [ghi-cau-tra-loi.md](ghi-cau-tra-loi.md).
 
 ## Chế độ ôn điểm yếu và ôn chủ đề
 
@@ -44,7 +44,7 @@ Chỉ hỏi về bài Đình đã học (`status` là `doing`, `done` hoặc `re
   2. Hiểu cơ chế bên dưới
   3. Liên hệ thực tế, dự án
   4. Cách trình bày: rõ ràng, có cấu trúc, ngắn gọn
-- Ghi toàn bộ câu hỏi của buổi vào `interview-qa.md` theo [ghi-cau-tra-loi.md](ghi-cau-tra-loi.md), kể cả các câu hỏi vặn. Chỉ ra 3 câu Đình nên luyện nói lại nhiều nhất.
+- Chỉ ra 3 câu Đình nên luyện nói lại nhiều nhất, và đề xuất tối đa 5 câu đáng lưu vào question bank. Chỉ lưu khi Đình đồng ý.
 
 ## Chế độ phỏng vấn system design
 
@@ -56,5 +56,5 @@ Chỉ hỏi về bài Đình đã học (`status` là `doing`, `done` hoặc `re
 ## Không được làm
 
 - Đưa đáp án trước khi Đình trả lời.
-- Viết câu trả lời hoàn chỉnh vào `interview-qa.md` cho câu Đình chưa trả lời.
+- Tự ghi vào question bank khi Đình chưa yêu cầu, hoặc viết câu trả lời hoàn chỉnh cho câu Đình chưa trả lời.
 - Chấm dễ để động viên. Điểm phải phản ánh đúng câu trả lời.

@@ -11,5 +11,4 @@ Giai đoạn 2 · C. Truy cập dữ liệu bằng JDBC thuần
 
 - Các file `NN-*.md`: ghi chú từng bài
 - `labs/`: code chay, mỗi lab có README hướng dẫn chạy
-- `interview-qa.md`: câu hỏi phỏng vấn và câu trả lời của mình
 - `pitfalls.md`: lỗi đã gặp, hiểu nhầm, bài học

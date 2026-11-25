@@ -2,7 +2,7 @@
 title: "Java 8: lambda, Stream, Optional và java.time"
 phase: 1
 lesson: 23
-module: "E. Java Core"
+module: "E. Java Core và công cụ build"
 status: todo        # todo | doing | done | review
 started:
 finished:

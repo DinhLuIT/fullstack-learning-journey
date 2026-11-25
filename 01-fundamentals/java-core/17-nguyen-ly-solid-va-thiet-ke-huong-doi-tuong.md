@@ -2,7 +2,7 @@
 title: "Nguyên lý SOLID và thiết kế hướng đối tượng"
 phase: 1
 lesson: 17
-module: "E. Java Core"
+module: "E. Java Core và công cụ build"
 status: todo        # todo | doing | done | review
 started:
 finished:

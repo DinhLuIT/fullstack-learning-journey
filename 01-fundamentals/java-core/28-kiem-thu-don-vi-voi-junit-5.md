@@ -2,7 +2,7 @@
 title: "Kiểm thử đơn vị với JUnit 5"
 phase: 1
 lesson: 28
-module: "E. Java Core"
+module: "E. Java Core và công cụ build"
 status: todo        # todo | doing | done | review
 started:
 finished:

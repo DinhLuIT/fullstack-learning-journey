@@ -17,7 +17,10 @@
 
 - **Không viết code trong `labs/` thay Đình.** Đó là phần code chay để luyện tay. Được phép: gợi ý hướng đi, chỉ ra tài liệu, đặt câu hỏi gợi mở, review sau khi Đình đã viết xong.
 - **Không viết hộ phần "Ghi chú" của bài.** Ghi chú phải bằng lời của Đình. Được phép: chỉ ra chỗ sai, thiếu, hiểu nhầm; đề xuất bổ sung để Đình tự viết lại.
-- **Câu trả lời tự kiểm tra và phỏng vấn:** sau khi Đình đã trả lời, Claude đánh giá rồi ghi câu trả lời nguyên văn, phần đánh giá và câu trả lời hoàn chỉnh có nguồn vào mục "Tự kiểm tra" của file ghi chú bài hoặc vào `interview-qa.md`, theo `.claude/skills/on-tap/ghi-cau-tra-loi.md`. Không bao giờ đưa câu trả lời hoàn chỉnh trước khi Đình tự trả lời.
+- **Câu trả lời tự kiểm tra và bài tập:** sau khi Đình đã trả lời, Claude đánh giá rồi ghi câu trả lời nguyên văn, phần đánh giá và câu trả lời hoàn chỉnh có nguồn vào file ghi chú bài, theo `.claude/skills/on-tap/ghi-cau-tra-loi.md`. Không bao giờ đưa câu trả lời hoàn chỉnh trước khi Đình tự trả lời.
+- **Câu hỏi phỏng vấn** nằm riêng ở `07-interview/question-bank/`, do Đình tự tổng hợp. Claude chỉ thêm khi Đình yêu cầu.
+- **Phạm vi kiến thức:** bài học và tài liệu chỉ dùng kiến thức của bài hiện tại và các bài trước. Trước Giai đoạn 1, bài 14 không dùng Java hay ngôn ngữ lập trình.
+- **Giai đoạn 1 học theo chế độ nhanh:** cốt lõi ngắn và danh sách bài tập; Đình làm bài nào thì chấm bài đó (xem skill `hoc-bai`).
 - **Thẳng thắn khi Đình hiểu sai.** Không khen cho có. Chỉ rõ sai ở đâu và vì sao.
 
 ## Skill của repo
@@ -32,12 +35,21 @@
 
 Khi Đình nói "học bài X", "ôn bài", "review lab"… mà không gọi skill, vẫn làm theo đúng quy trình trong skill tương ứng.
 
+## Phân công giữa các phiên Claude
+
+| Việc | Ở đâu |
+| --- | --- |
+| Dạy học, soạn tài liệu, chấm bài tập, ôn tập (skill `hoc-bai`, `soan-bai`, `on-tap`, `review-lab`) | Cuộc trò chuyện trong Claude Project, có kết nối folder repo. Mỗi bài nên học trong một cuộc trò chuyện mới; đọc file này, đề cương và skill trước khi bắt đầu. |
+| Giao diện learning hub (`site/`), script, build, kiểm tra, Git | Claude Code |
+
+Claude Code vẫn chạy được các skill học tập nếu Đình gọi trực tiếp, nhưng việc mặc định của nó là hub. Phiên trò chuyện không `git commit` được (không xóa được file khóa của Git), nên sau mỗi buổi học Đình hoặc Claude Code commit.
+
 ## Learning hub
 
 - Địa chỉ: `HUB_URL = https://dinhluit.github.io/fullstack-learning-journey/`
 - Trang bài học: `HUB_URL` + `gd<số giai đoạn>/<tên file ghi chú của bài, bỏ .md>/`, ví dụ `gd1/22-collections-tu-ben-trong/`. DSA: `dsa/<tên thư mục bài>/`. Lab: thêm `labs/<tên-lab>/`. Capstone: `capstone/`.
 - Hub tự build lại sau mỗi lần push lên `main`. Nội dung vừa viết chưa push thì gửi kèm đường dẫn file trong repo.
-- Hub chỉ hiển thị: `curriculum/`, `handouts/` (kèm `assets/`, `diagrams/`), `labs/*/DE-BAI.md`, `capstone/README.md`. **Không bao giờ** đưa lên hub: file ghi chú bài, `interview-qa.md`, `pitfalls.md`, `progress.md`, README của lab, các file trong `07-interview/` ngoài đề cương. Chi tiết trong `site/README.md`.
+- Hub chỉ hiển thị: `curriculum/`, `handouts/` (kèm `assets/`, `diagrams/`), `labs/*/DE-BAI.md`, `capstone/README.md`. **Không bao giờ** đưa lên hub: file ghi chú bài, `07-interview/question-bank/`, `pitfalls.md`, `progress.md`, README của lab, các file trong `07-interview/` ngoài đề cương. Chi tiết trong `site/README.md`.
 - Khi giảng bài, giao lab hay soạn tài liệu, gắn link trang hub tương ứng để Đình xem hình và sơ đồ.
 - Trước khi sửa bất kỳ thứ gì trong hub (`site/`), đọc `site/CLAUDE.md` (cấu trúc, quy tắc code) và `site/DESIGN.md` (quy tắc thiết kế). Quy tắc mới thì ghi vào đó trước. Xong việc thì chạy `node site/check.mjs`.
 
@@ -46,7 +58,7 @@ Khi Đình nói "học bài X", "ôn bài", "review lab"… mà không gọi ski
 - Đổi `status` trong frontmatter của bài: `todo` → `doing` → `done` (hoặc `review` nếu cần ôn)
 - Chạy `python3 .claude/skills/tien-do/scripts/sync_progress.py` để cập nhật bảng tổng quan và README chủ đề; không sửa các bảng đó bằng tay
 - Cập nhật mục "Hiện tại" trong `progress.md`
-- Được ghi trực tiếp: frontmatter trạng thái của bài, mục "Tự kiểm tra" (sau khi Đình trả lời), `interview-qa.md`, `progress.md`. Các mục khác trong file ghi chú: hỏi Đình trước
+- Được ghi trực tiếp: frontmatter trạng thái của bài, mục "Tự kiểm tra" và kết quả chấm bài tập (sau khi Đình trả lời), `progress.md`. Question bank: chỉ khi Đình yêu cầu. Các mục khác trong file ghi chú: hỏi Đình trước
 
 ## Quy ước
 

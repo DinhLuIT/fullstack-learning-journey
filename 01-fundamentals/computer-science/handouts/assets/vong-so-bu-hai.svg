@@ -53,5 +53,5 @@
   <text class="hot" x="308" y="452" text-anchor="end">-128 = 1000 0000</text>
   <text class="hot" x="340" y="490" text-anchor="middle">127 + 1 → -128: tràn số, không báo lỗi</text>
   <text class="muted" x="340" y="514" text-anchor="middle">Khoảng cách giữa các điểm kề nhau được phóng to cho dễ đọc.</text>
-  <text class="muted" x="340" y="532" text-anchor="middle">int giống hệt, chỉ là vòng 2^32 điểm.</text>
+  <text class="muted" x="340" y="532" text-anchor="middle">Số nguyên 32 bit cũng vậy, chỉ là vòng 2^32 điểm.</text>
 </svg>

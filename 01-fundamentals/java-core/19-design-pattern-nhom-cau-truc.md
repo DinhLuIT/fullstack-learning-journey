@@ -2,7 +2,7 @@
 title: "Design pattern nhóm cấu trúc"
 phase: 1
 lesson: 19
-module: "E. Java Core"
+module: "E. Java Core và công cụ build"
 status: todo        # todo | doing | done | review
 started:
 finished:
