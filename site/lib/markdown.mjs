@@ -29,15 +29,20 @@ export function stripFrontmatter(src) {
 // ---------- inline ----------
 const PH_OPEN = "", PH_CLOSE = ""; // ký tự vùng riêng tư làm chỗ giữ cho code inline
 
+const AU_OPEN = "\uE002", AU_CLOSE = "\uE003"; // chỗ giữ cho URL trần
+const BARE_URL = /(?<![\](<\w\/="'])https?:\/\/[^\s<>"'`]+[^\s<>"'`.,;:!?)\]]/g;
+
 export function inline(text, ctx) {
-  const codes = [];
+  const codes = [], autos = [];
   let s = text.replace(/`([^`]+)`/g, (_, c) => { codes.push(c); return PH_OPEN + (codes.length - 1) + PH_CLOSE; });
+  // URL trần (không nằm trong cú pháp link Markdown) thành link bấm được
+  s = s.replace(BARE_URL, (u) => { autos.push(u); return AU_OPEN + (autos.length - 1) + AU_CLOSE; });
   s = escapeHtml(s);
-  s = s.replace(/!\[([^\]]*)\]\(([^)\s]+)\)/g, (_, alt, src) => {
+  s = s.replace(/!\[((?:[^\[\]]|\[[^\]]*\])*)\]\(([^)\s]+)\)/g, (_, alt, src) => {
     const url = ctx.href(src.replace(/&amp;/g, "&"));
     return url === null ? alt : '<img src="' + escapeHtml(url) + '" alt="' + alt + '" loading="lazy">';
   });
-  s = s.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, label, href) => {
+  s = s.replace(/\[((?:[^\[\]]|\[[^\]]*\])*)\]\(([^)\s]+)\)/g, (_, label, href) => {
     const url = ctx.href(href.replace(/&amp;/g, "&"));
     if (url === null) return label;
     const ext = /^https?:/.test(url) ? ' target="_blank" rel="noopener"' : "";
@@ -46,6 +51,7 @@ export function inline(text, ctx) {
   s = s.replace(/&lt;(https?:\/\/[^\s&]+)&gt;/g, (_, u) => '<a href="' + u + '" target="_blank" rel="noopener">' + u + "</a>");
   s = s.replace(/\*\*([^*]+?)\*\*/g, "<strong>$1</strong>");
   s = s.replace(/(^|[\s(])\*([^*\s][^*]*?)\*(?=[\s).,;:!?]|$)/g, "$1<em>$2</em>");
+  s = s.replace(new RegExp(AU_OPEN + "(\\d+)" + AU_CLOSE, "g"), (_, i) => '<a class="url" href="' + escapeHtml(autos[+i]) + '" target="_blank" rel="noopener">' + escapeHtml(autos[+i].replace(/^https?:\/\//, "")) + "</a>");
   s = s.replace(new RegExp(PH_OPEN + "(\\d+)" + PH_CLOSE, "g"), (_, i) => "<code>" + escapeHtml(codes[+i]) + "</code>");
   return s;
 }
@@ -176,14 +182,16 @@ export function renderBlocks(lines, ctx) {
       continue;
     }
     if (RE.htmlLine.test(line)) {
-      out.push(line.trim().replace(/<summary>(.*?)<\/summary>/i, (_, t) => "<summary>" + inline(t, ctx) + "</summary>"));
+      // tiêu đề đáp án có thể chứa thẻ HTML đơn giản: đổi về cú pháp Markdown rồi mới xử lý
+      const md = (t) => t.replace(/<code>(.*?)<\/code>/gi, "`$1`").replace(/<(strong|b)>(.*?)<\/\1>/gi, "**$2**").replace(/<(em|i)>(.*?)<\/\1>/gi, "*$2*");
+      out.push(line.trim().replace(/<summary>(.*?)<\/summary>/i, (_, t) => "<summary>" + inline(md(t), ctx) + "</summary>"));
       i++; continue;
     }
     const para = [];
     while (i < lines.length && lines[i].trim() !== "" && !(para.length && isBlockStart(lines[i], lines[i + 1]))) para.push(lines[i++].trim());
-    const img = para.length === 1 && para[0].match(/^!\[([^\]]*)\]\(([^)\s]+)\)$/);
+    const img = para.length === 1 && para[0].match(/^!\[((?:[^\[\]]|\[[^\]]*\])*)\]\(([^)\s]+)\)$/);
     if (img && ctx.figure) { out.push(ctx.figure(img[1], img[2])); continue; }
-    const only = para.length === 1 && para[0].match(/^\[([^\]]+)\]\(((?:[^)\s]*\/)?diagrams\/[^)\s]+\.html)\)$/);
+    const only = para.length === 1 && para[0].match(/^\[((?:[^\[\]]|\[[^\]]*\])*)\]\(((?:[^)\s]*\/)?diagrams\/[^)\s]+\.html)\)$/);
     if (only && ctx.embed) { out.push(ctx.embed(only[1], only[2])); continue; }
     out.push("<p>" + inline(para.join(" "), ctx) + "</p>");
   }

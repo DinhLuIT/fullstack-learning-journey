@@ -62,7 +62,7 @@ Dòng đầu tiên của file:
 5. **Hiểu nhầm thường gặp:** 3–5 hiểu nhầm, mỗi cái kèm lý do vì sao sai **và nguồn chứng minh**.
 6. **Liên hệ capstone:** kiến thức này dùng ở đâu trong hệ thống đặt sân, gắn mã F-, R-, N- nếu có.
 7. **Câu hỏi phỏng vấn:** 5–8 câu, gồm các câu "Tự kiểm tra" của đề cương. Đáp án gợi ý đặt trong `<details>`, cũng phải có trích dẫn.
-8. **Nguồn:** danh sách đánh số, mỗi dòng: `[n] Tên tài liệu — mục — phiên bản — URL — truy cập YYYY-MM-DD`.
+8. **Nguồn:** danh sách đánh số, mỗi dòng: `[n] [Tên tài liệu](URL) — mục — phiên bản — truy cập YYYY-MM-DD`. Tên tài liệu là link, không để URL trần.
 9. **Đọc thêm:** sách và tài nguyên trong lộ trình. Sách chỉ ghi tên và chương, không dùng làm nguồn cho khẳng định nếu bạn không đọc được nội dung.
 
 ### Quy tắc trích dẫn

@@ -39,6 +39,7 @@ Khi Đình nói "học bài X", "ôn bài", "review lab"… mà không gọi ski
 - Hub tự build lại sau mỗi lần push lên `main`. Nội dung vừa viết chưa push thì gửi kèm đường dẫn file trong repo.
 - Hub chỉ hiển thị: `curriculum/`, `handouts/` (kèm `assets/`, `diagrams/`), `labs/*/DE-BAI.md`, `capstone/README.md`. **Không bao giờ** đưa lên hub: file ghi chú bài, `interview-qa.md`, `pitfalls.md`, `progress.md`, README của lab, các file trong `07-interview/` ngoài đề cương. Chi tiết trong `site/README.md`.
 - Khi giảng bài, giao lab hay soạn tài liệu, gắn link trang hub tương ứng để Đình xem hình và sơ đồ.
+- Trước khi sửa bất kỳ thứ gì trong hub (`site/`), đọc `site/CLAUDE.md` (cấu trúc, quy tắc code) và `site/DESIGN.md` (quy tắc thiết kế). Quy tắc mới thì ghi vào đó trước. Xong việc thì chạy `node site/check.mjs`.
 
 ## Khi cập nhật tiến độ
 

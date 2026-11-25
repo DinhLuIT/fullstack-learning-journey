@@ -8,10 +8,13 @@ import { fileURLToPath } from "node:url";
 import { render, escapeHtml as esc } from "./lib/markdown.mjs";
 import { loadContent } from "./lib/content.mjs";
 import { seaChart } from "./lib/chart.mjs";
+import { STACK } from "./data/stack.mjs";
+import { OWNER } from "./data/owner.mjs";
 
 const SITE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(SITE, "..");
-const REPO = "DinhLuIT/fullstack-learning-journey";
+const REPO = OWNER.repo;
+const HAS_GH = fs.existsSync(path.join(SITE, "assets", "icons", "github.svg")); // tải bằng scripts/fetch-logos.mjs
 const arg = (k, d) => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : d; };
 const BASE = ("/" + arg("--base", "/").replace(/^\/|\/$/g, "") + "/").replace(/\/+/g, "/");
 const OUT = path.resolve(arg("--out", path.join(SITE, "dist")));
@@ -72,7 +75,8 @@ function md(text, srcFile, opts = {}) {
 // ---------- khung trang ----------
 const phaseLabel = (p) => (p.num ? `Giai đoạn ${p.num}` : "DSA");
 function layout({ title, description, body, current, wide = false, crumbs = "~" }) {
-  const nav = phases.map((p) => `<a href="${u(p.url)}"${current === p.id ? ' aria-current="page"' : ""}>${esc(p.num ? `gd${p.num}` : "dsa")}<span>${esc(p.short)}</span></a>`).join("");
+  const menu = phases.map((p) => `<li><a data-ph="${p.id}" href="${u(p.url)}"${current === p.id ? ' aria-current="page"' : ""}><span class="k">${esc(p.num ? `gd${p.num}` : "dsa")}</span>${esc(p.title.replace(/^Giai đoạn \d+: |^DSA: /, ""))}</a></li>`).join("") + `<li><a data-ph="capstone" href="${u("capstone/")}"${current === "capstone" ? ' aria-current="page"' : ""}><span class="k">capstone</span>Dự án xuyên suốt</a></li>`;
+  const inPhase = phases.some((p) => p.id === current) || current === "capstone";
   return `<!doctype html>
 <html lang="vi">
 <head>
@@ -83,16 +87,23 @@ function layout({ title, description, body, current, wide = false, crumbs = "~" 
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap">
 <link rel="stylesheet" href="${u("assets/style.css")}">
-<script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
+<script>try{var d=document.documentElement,t=localStorage.getItem("theme");if(t==="light"||t==="dark")d.dataset.theme=t;var r=localStorage.getItem("hub-tree");if(r)d.dataset.tree=r;if(localStorage.getItem("hub-focus")==="1")d.classList.add("focus")}catch(e){}</script>
 <script type="module" src="${u("assets/app.js")}"></script>
 </head>
 <body>
 <a class="skip" href="#noi-dung">Bỏ qua điều hướng</a>
 <header class="bar">
   <a class="home" href="${u()}"><span class="prompt">dinh@hub</span><span class="path">${esc(crumbs)}</span><span class="caret" aria-hidden="true"></span></a>
-  <nav class="phases" aria-label="Các giai đoạn"><a href="${u("lo-trinh/")}"${current === "roadmap" ? ' aria-current="page"' : ""}>hải-đồ<span>Lộ trình</span></a>${nav}<a href="${u("capstone/")}"${current === "capstone" ? ' aria-current="page"' : ""}>capstone<span>Dự án</span></a></nav>
-  <button class="search-open" type="button" aria-label="Tìm bài học" aria-keyshortcuts="/"><span>tìm</span><kbd>/</kbd></button>
-  <button class="theme" type="button" aria-label="Đổi giao diện sáng tối"><span data-label>auto</span></button>
+  <nav class="top" aria-label="Điều hướng chính">
+    <a class="top-link" href="${u("lo-trinh/")}"${current === "roadmap" ? ' aria-current="page"' : ""}>Hải đồ</a>
+    <details class="menu">
+      <summary class="top-link"${inPhase ? ' data-current="true"' : ""}>Giai đoạn</summary>
+      <ul>${menu}</ul>
+    </details>
+  </nav>
+  <button class="search-open" type="button" aria-label="Tìm bài học" aria-keyshortcuts="/"><span>Tìm</span><kbd>/</kbd></button>
+  <button class="theme" type="button" aria-label="Đổi giao diện sáng tối"><span data-label>Tự động</span></button>
+  <a class="gh" href="https://github.com/${REPO}" target="_blank" rel="noopener" title="Mã nguồn của ${esc(OWNER.name)} trên GitHub: ${esc(REPO)}" aria-label="Mã nguồn của ${esc(OWNER.name)} trên GitHub">${HAS_GH ? '<span class="gh-icon" aria-hidden="true"></span>' : ""}<span class="gh-text">${HAS_GH ? esc(OWNER.github) : "GitHub"}</span></a>
 </header>
 <dialog class="search" aria-label="Tìm bài học" data-index="${u("search.json")}">
   <form method="dialog" class="search-box">
@@ -106,7 +117,8 @@ function layout({ title, description, body, current, wide = false, crumbs = "~" 
 ${body}
 </main>
 <footer class="foot">
-  <p>Học lại FullStack từ nền tảng, ghi lại trên <a href="https://github.com/${REPO}" target="_blank" rel="noopener">GitHub</a>. Tài liệu được biên soạn từ nguồn chính thống, mỗi bài đều có danh sách nguồn.</p>
+  <p class="owner">Hub của <a href="https://github.com/${OWNER.github}" target="_blank" rel="noopener">${esc(OWNER.name)}</a>. ${esc(OWNER.tagline)}</p>
+  <p>Mã nguồn, đề cương và ghi chép: <a href="https://github.com/${REPO}" target="_blank" rel="noopener">github.com/${esc(REPO)}</a>${OWNER.links.map((l) => `, <a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join("")}. Tài liệu được biên soạn từ nguồn chính thống, mỗi bài đều có danh sách nguồn.</p>
 </footer>
 </body>
 </html>`;
@@ -116,6 +128,47 @@ function write(rel, html) {
   const f = path.join(OUT, rel, rel.endsWith(".html") ? "" : "index.html");
   fs.mkdirSync(path.dirname(f), { recursive: true });
   fs.writeFileSync(f, html);
+}
+
+// ---------- công nghệ ----------
+const phaseById = (id) => phases.find((p) => p.id === id);
+function techItem([slug, name, ph], { long = false } = {}) {
+  const p = phaseById(ph);
+  const logo = fs.existsSync(path.join(SITE, "assets", "stack", slug + ".svg")) ? `<img src="${u(`assets/stack/${slug}.svg`)}" alt="" width="16" height="16">` : "";
+  const tip = `Học ở ${phaseLabel(p)}: ${p.title.replace(/^Giai đoạn \d+: |^DSA: /, "")}`;
+  return `<a class="tech" data-ph="${ph}" href="${u(p.url)}" title="${esc(tip)}">${logo}${esc(long ? name : slug)}<span class="visually-hidden">, ${esc(tip)}</span></a>`;
+}
+// dải công nghệ chạy từ phải sang trái ở trang chủ (ngoại lệ chuyển động duy nhất, xem DESIGN.md)
+const SHORT = { "c4-model": "C4", "resilience4j": "R4", "llm-api": "LLM", "github-actions": "GA", "redux-toolkit": "RT", "rtk-query": "RQ" };
+const monogram = (name) => {
+  const words = name.split(/\s+/).filter((w) => !/^\d/.test(w));
+  if (words.length > 1) return (words[0][0] + words[1][0]).toUpperCase();
+  const w = words[0];
+  if (/^[A-Z0-9]{2,3}$/.test(w)) return w;            // SQL, RAG, MCP, UML
+  const caps = w.match(/[A-Z]/g);
+  if (caps && caps.length >= 2) return caps.slice(0, 2).join(""); // JavaScript -> JS
+  return w[0].toUpperCase() + w[1].toLowerCase();     // Java -> Ja
+};
+function mqItem([slug, name, ph], hidden) {
+  const p = phaseById(ph);
+  const tip = `Học ở ${phaseLabel(p)}: ${p.title.replace(/^Giai đoạn \d+: |^DSA: /, "")}`;
+  const has = fs.existsSync(path.join(SITE, "assets", "stack", slug + ".svg"));
+  const logo = has ? `<img src="${u(`assets/stack/${slug}.svg`)}" alt="" width="22" height="22" loading="lazy">` : `<span aria-hidden="true">${esc(SHORT[slug] || monogram(name))}</span>`;
+  return `<li><a class="mq-item" data-ph="${ph}" href="${u(p.url)}" title="${esc(tip)}"${hidden ? ' tabindex="-1"' : ""}><span class="mq-logo${has ? " has-img" : ""}">${logo}</span><span class="mq-name">${esc(name)}</span></a></li>`;
+}
+function stackTerminal() {
+  const pick = (groups) => STACK.filter((g) => groups.includes(g.group)).flatMap((g) => g.items);
+  const rows = [[pick(["ngon-ngu", "backend", "du-lieu", "kien-truc"]), 70], [pick(["frontend", "ai", "devops"]), 55]];
+  const row = ([items, dur], i) => `<div class="mq-row" style="--dur:${dur}s">
+    <ul class="mq-track" aria-label="${i ? "Frontend, AI và DevOps" : "Ngôn ngữ, backend, dữ liệu và kiến trúc"}">${items.map((it) => mqItem(it, false)).join("")}</ul>
+    <ul class="mq-track" aria-hidden="true">${items.map((it) => mqItem(it, true)).join("")}</ul>
+  </div>`;
+  return `<div class="marquee">${rows.map(row).join("")}</div>
+  <p class="marquee-bar"><span class="hint">Mỗi màu là một giai đoạn. Bấm vào một công nghệ để tới giai đoạn học nó.</span><button type="button" class="tool marquee-toggle" aria-pressed="false">Tạm dừng</button></p>`;
+}
+function phaseStack(p) {
+  const items = STACK.flatMap((g) => g.items).filter((it) => it[2] === p.id);
+  return items.length ? `<div class="phase-stack"><p>Công nghệ trong giai đoạn này</p><div class="items">${items.map((it) => techItem(it, { long: true })).join("")}</div></div>` : "";
 }
 
 // ---------- các trang ----------
@@ -128,16 +181,18 @@ function homePage() {
   const rows = phases.map((p) => {
     const docs = p.lessons.filter((l) => l.handout).length;
     const name = p.num ? `gd${p.num}-${p.dir.replace(/^\d+-/, "")}/` : "dsa/";
-    return `<li><a href="${u(p.url)}"><span class="perm">drwxr-xr-x</span><span class="size">${p.lessons.length} bài</span><span class="docs">${docs}/${p.lessons.length} tài liệu</span><span class="name">${esc(name)}</span><span class="desc">${esc(p.id === "dsa" ? "Cấu trúc dữ liệu và giải thuật, chạy song song suốt lộ trình" : p.title.replace(/^Giai đoạn \d+: /, ""))}</span></a></li>`;
+    return `<li><a data-ph="${p.id}" href="${u(p.url)}"><span class="perm">drwxr-xr-x</span><span class="size">${p.lessons.length} bài</span><span class="docs">${docs}/${p.lessons.length} tài liệu</span><span class="name">${esc(name)}</span><span class="desc">${esc(p.id === "dsa" ? "Cấu trúc dữ liệu và giải thuật, chạy song song suốt lộ trình" : p.title.replace(/^Giai đoạn \d+: /, ""))}</span></a></li>`;
   }).join("");
   const body = `
 <section class="session" aria-labelledby="hero">
-  <h1 id="hero" class="hero"><span class="hash-sign" aria-hidden="true"># </span>Nếu học lại Fullstack từ đầu, mình sẽ học những gì?</h1>
+  <h1 id="hero" class="hero">Nếu học lại Fullstack từ đầu, mình sẽ học những gì?</h1>
   <p class="line"><span class="ps">dinh@hub:~$</span> <span class="cmd" data-type>ls -l lo-trinh/</span></p>
   <div class="output">
     <p class="total">total ${total}</p>
     <ul class="ls">${rows}<li><a href="${u("capstone/")}"><span class="perm">-rw-r--r--</span><span class="size">v1–v6</span><span class="docs"></span><span class="name">capstone.md</span><span class="desc">Hệ thống đặt sân thể thao đa cơ sở, lớn dần qua từng giai đoạn</span></a></li></ul>
   </div>
+  <p class="line"><span class="ps">dinh@hub:~$</span> <span class="cmd">ls stack/</span></p>
+  <div class="output">${stackTerminal()}</div>
   <p class="line"><span class="ps">dinh@hub:~$</span> <span class="cmd">cat README</span></p>
   <div class="output readme">
     <p>Mình là Đình. Đây là nơi mình học lại FullStack từ nền tảng: từ cách máy tính lưu một con số đến Spring, React, AI và microservices. Mỗi bài có đề cương, tài liệu biên soạn từ nguồn chính thống kèm trích dẫn, và đề bài lab để tự viết lại những gì framework đang làm hộ.</p>
@@ -157,9 +212,10 @@ function phasePage(p) {
   <ol class="lessons">${g.lessons.map((l) => `<li><a href="${u(l.url)}" data-lesson="${l.url.replace(/\/$/, "")}"><span class="n">${l.n}</span><span class="t">${esc(l.title)}</span>${flags(l)}</a></li>`).join("")}</ol>
 </section>`).join("");
   const extras = p.extras.map((x) => `<section class="group extra"><h2>${esc(x.title)}</h2>${md(x.body, path.join(ROOT, "curriculum", p.file)).html}</section>`).join("");
-  const body = `<article class="doc phase">
+  const body = `<article class="doc phase" data-ph="${p.id}">
   <h1>${esc(p.title)}</h1>
   <p class="phase-progress" data-phase="${p.id}" data-total="${p.lessons.length}"></p>
+  ${phaseStack(p)}
   ${md(p.intro, path.join(ROOT, "curriculum", p.file)).html}
   ${groups}${extras}
 </article>`;
@@ -167,10 +223,14 @@ function phasePage(p) {
 }
 
 function tree(p, current) {
-  return `<nav class="tree" aria-label="Bài trong ${esc(phaseLabel(p))}"><a class="root" href="${u(p.url)}">${esc(p.id)}/</a>${p.groups.map((g) => {
-    const items = g.lessons.map((l, i) => `<li><a href="${u(l.url)}" data-lesson="${l.url.replace(/\/$/, "")}"${l === current ? ' aria-current="page"' : ""}><span class="branch" aria-hidden="true">${i === g.lessons.length - 1 ? "└──" : "├──"}</span><span class="n">${l.n}</span> ${esc(l.title)}</a></li>`).join("");
-    return `${g.title ? `<p class="g">${esc(g.title)}</p>` : ""}<ul>${items}</ul>`;
-  }).join("")}</nav>`;
+  const groups = p.groups.map((g) => {
+    const items = g.lessons.map((l) => `<li><a href="${u(l.url)}" data-lesson="${l.url.replace(/\/$/, "")}"${l === current ? ' aria-current="page"' : ""}><span class="n">${l.n}</span><span class="t">${esc(l.title)}</span></a></li>`).join("");
+    const open = g.lessons.includes(current);
+    return g.title
+      ? `<details class="tg"${open ? " open" : ""}><summary>${esc(g.title.replace(/^Module /, ""))}</summary><ul>${items}</ul></details>`
+      : `<ul>${items}</ul>`;
+  }).join("");
+  return `<nav class="tree" id="lesson-tree" aria-label="Các bài trong ${esc(phaseLabel(p))}"><a class="root" href="${u(p.url)}">${esc(p.title)}</a>${groups}</nav>`;
 }
 
 function lessonPage(l, prev, next) {
@@ -194,7 +254,8 @@ function lessonPage(l, prev, next) {
   let handout = `<div class="empty"><p>Bài này chưa có tài liệu.</p><p>Soạn bằng lệnh <code>/soan-bai ${p.num ? `gd${p.num} ` : "dsa "}${l.n}</code> trong Claude Code. Tài liệu sẽ xuất hiện ở đây sau lần push tiếp theo.</p></div>`;
   let toc = [];
   if (l.handout) {
-    const body = l.handout.body.replace(/\s*Ghi chú của mình nằm ở \[[^\]]*\]\([^)]*\)\.?/, "");
+    // bỏ câu trỏ tới ghi chú cá nhân, và bỏ tiêu đề "# Bài N." của tài liệu vì trang đã có tiêu đề
+    const body = l.handout.body.replace(/\s*Ghi chú của mình nằm ở \[[^\]]*\]\([^)]*\)\.?/, "").replace(/^#\s+Bài\s+\d+\.[^\n]*\n/m, "");
     const r = md(body, l.handout.file, { extra });
     handout = r.html; toc = r.toc.filter((t) => t.level === 2);
   }
@@ -203,10 +264,14 @@ function lessonPage(l, prev, next) {
     : `<div class="empty"><p>Chưa có lab nào được giao.</p><p>Lab được giao trong buổi học bằng <code>/hoc-bai ${p.num ? `gd${p.num} ` : "dsa "}${l.n}</code>.</p></div>`;
   const pager = `<nav class="pager" aria-label="Bài trước và bài sau">${prev ? `<a class="prev" href="${u(prev.url)}"><span>Bài trước</span>${prev.n}. ${esc(prev.title)}</a>` : "<span></span>"}${next ? `<a class="next" href="${u(next.url)}"><span>Bài sau</span>${next.n}. ${esc(next.title)}</a>` : ""}</nav>`;
   const onPage = [{ id: "sec-de-cuong", text: "Đề cương" }, { id: "sec-tai-lieu", text: "Tài liệu" }, ...toc.map((t) => ({ ...t, sub: true })), { id: "sec-lab", text: "Lab" }];
-  const body = `<div class="lesson">
+  const body = `<div class="lesson" data-ph="${p.id}">
 ${tree(p, l)}
 <article class="doc">
-  <p class="where"><a href="${u(p.url)}">${esc(phaseLabel(p))}</a>${l.group ? ` / ${esc(l.group.replace(/^Module /, ""))}` : ""}</p>
+  <div class="lesson-bar">
+    <button type="button" class="tool" data-toggle="tree" aria-controls="lesson-tree" aria-expanded="true">Danh sách bài</button>
+    <p class="where"><a href="${u(p.url)}">${esc(phaseLabel(p))}</a>${l.group ? ` <span aria-hidden="true">/</span> ${esc(l.group.replace(/^Module /, ""))}` : ""}</p>
+    <button type="button" class="tool" data-toggle="focus" aria-pressed="false" aria-keyshortcuts="f">Chế độ tập trung</button>
+  </div>
   <h1><span class="n">Bài ${l.n}.</span> ${esc(l.title)}</h1>
   <div class="progress-ctl" data-lesson="${l.url.replace(/\/$/, "")}" role="group" aria-label="Tiến độ của bạn với bài này">
     <span class="lbl">Tiến độ của bạn</span>
@@ -226,7 +291,7 @@ ${tree(p, l)}
 function labPage(l, lab) {
   const p = l.phase;
   const folder = path.relative(ROOT, path.dirname(lab.file)).split(path.sep).join("/");
-  const body = `<article class="doc lab">
+  const body = `<article class="doc lab" data-ph="${p.id}">
   <p class="where"><a href="${u(p.url)}">${esc(phaseLabel(p))}</a> / <a href="${u(l.url)}">Bài ${l.n}. ${esc(l.title)}</a></p>
   <h1>${esc(lab.title)}</h1>
   ${md(lab.body, lab.file).html}
@@ -328,7 +393,7 @@ function notFound() {
 // ---------- chạy ----------
 fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(path.join(OUT, "assets"), { recursive: true });
-for (const f of fs.readdirSync(path.join(SITE, "assets"))) fs.copyFileSync(path.join(SITE, "assets", f), path.join(OUT, "assets", f));
+fs.cpSync(path.join(SITE, "assets"), path.join(OUT, "assets"), { recursive: true, filter: (src) => !src.endsWith("README.md") });
 fs.writeFileSync(path.join(OUT, ".nojekyll"), "");
 homePage(); roadmapPage(); capstonePage(); notFound();
 for (const p of phases) {

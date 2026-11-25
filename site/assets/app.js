@@ -5,15 +5,16 @@ const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 // ---------- giao diện sáng / tối ----------
 const order = ["auto", "dark", "light"];
+const THEME_NAME = { auto: "Tự động", dark: "Tối", light: "Sáng" };
 const saved = () => { try { return localStorage.getItem("theme") || "auto"; } catch { return "auto"; } };
 function applyTheme(mode) {
   if (mode === "auto") delete root.dataset.theme; else root.dataset.theme = mode;
   try { mode === "auto" ? localStorage.removeItem("theme") : localStorage.setItem("theme", mode); } catch {}
-  document.querySelectorAll(".theme [data-label]").forEach((el) => (el.textContent = mode));
+  document.querySelectorAll(".theme [data-label]").forEach((el) => (el.textContent = THEME_NAME[mode]));
   document.dispatchEvent(new CustomEvent("themechange"));
 }
 document.querySelectorAll(".theme").forEach((btn) => {
-  btn.querySelector("[data-label]").textContent = saved();
+  btn.querySelector("[data-label]").textContent = THEME_NAME[saved()];
   btn.addEventListener("click", () => applyTheme(order[(order.indexOf(saved()) + 1) % order.length]));
 });
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => document.dispatchEvent(new CustomEvent("themechange")));
@@ -330,7 +331,7 @@ if (dataEl) {
     }).join("");
   }
   function openPanel(id, from) {
-    openId = id; if (from) lastIsland = from;
+    openId = id; if (from) lastIsland = from; panel.dataset.ph = id;
     svg.classList.add("focus-mode");
     svg.querySelectorAll(".island").forEach((g) => g.classList.toggle("selected", g.dataset.phase === id));
     renderPanel(id);
@@ -396,4 +397,83 @@ if (dataEl) {
   document.querySelector('[data-progress="reset"]').addEventListener("click", () => {
     if (confirm("Xóa toàn bộ tiến độ đã đánh dấu trên trình duyệt này?")) { Progress.replace({}); msg.textContent = "Đã xóa tiến độ."; }
   });
+}
+
+// ---------- menu Giai đoạn: đóng khi bấm ra ngoài hoặc Esc ----------
+document.querySelectorAll("details.menu").forEach((m) => {
+  document.addEventListener("click", (e) => { if (m.open && !m.contains(e.target)) m.open = false; });
+  m.addEventListener("keydown", (e) => { if (e.key === "Escape") { m.open = false; m.querySelector("summary").focus(); } });
+});
+
+// ---------- trang bài: danh sách bài và chế độ tập trung ----------
+const treeBtn = document.querySelector('[data-toggle="tree"]');
+const focusBtn = document.querySelector('[data-toggle="focus"]');
+const narrow = () => matchMedia("(max-width: 959px)").matches;
+const store = (k, v) => { try { v === null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch {} };
+function syncTreeBtn() {
+  if (!treeBtn) return;
+  const open = narrow() ? root.classList.contains("tree-drawer") : root.dataset.tree !== "closed" && !root.classList.contains("focus");
+  treeBtn.setAttribute("aria-expanded", String(open));
+  treeBtn.textContent = open ? "Ẩn danh sách bài" : "Danh sách bài";
+}
+if (treeBtn) {
+  treeBtn.addEventListener("click", () => {
+    if (narrow()) { root.classList.toggle("tree-drawer"); if (root.classList.contains("tree-drawer")) document.querySelector(".tree a[aria-current]")?.focus(); }
+    else {
+      if (root.classList.contains("focus")) { root.classList.remove("focus"); store("hub-focus", null); focusBtn?.setAttribute("aria-pressed", "false"); root.dataset.tree = "open"; }
+      else root.dataset.tree = root.dataset.tree === "closed" ? "open" : "closed";
+      store("hub-tree", root.dataset.tree);
+    }
+    syncTreeBtn();
+  });
+  document.addEventListener("click", (e) => { if (root.classList.contains("tree-drawer") && !e.target.closest(".tree") && e.target !== treeBtn) { root.classList.remove("tree-drawer"); syncTreeBtn(); } });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && root.classList.contains("tree-drawer")) { root.classList.remove("tree-drawer"); syncTreeBtn(); treeBtn.focus(); } });
+  matchMedia("(max-width: 959px)").addEventListener("change", () => { root.classList.remove("tree-drawer"); syncTreeBtn(); });
+  // cuộn danh sách bài tới bài hiện tại
+  document.querySelector(".tree a[aria-current]")?.scrollIntoView({ block: "center" });
+  window.scrollTo(0, 0);
+  syncTreeBtn();
+}
+if (focusBtn) {
+  const setFocus = (on) => { root.classList.toggle("focus", on); store("hub-focus", on ? "1" : null); focusBtn.setAttribute("aria-pressed", String(on)); syncTreeBtn(); };
+  focusBtn.setAttribute("aria-pressed", String(root.classList.contains("focus")));
+  focusBtn.addEventListener("click", () => setFocus(!root.classList.contains("focus")));
+  document.addEventListener("keydown", (e) => {
+    const typing = /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement?.tagName) || document.activeElement?.isContentEditable;
+    if (e.key === "f" && !typing && !e.metaKey && !e.ctrlKey && !e.altKey && !document.querySelector("dialog[open]")) setFocus(!root.classList.contains("focus"));
+  });
+}
+
+// ---------- chiều cao thật của thanh trên cùng (để hai cột bên không bị che) ----------
+const bar = document.querySelector(".bar");
+if (bar) {
+  const setBar = () => root.style.setProperty("--bar-h", bar.offsetHeight + "px");
+  setBar();
+  if ("ResizeObserver" in window) new ResizeObserver(setBar).observe(bar); else addEventListener("resize", setBar);
+}
+
+// ---------- mục lục: tô sáng mục đang đọc ----------
+const tocLinks = [...document.querySelectorAll(".toc a[href^='#']")];
+if (tocLinks.length) {
+  const targets = tocLinks.map((a) => document.getElementById(decodeURIComponent(a.hash.slice(1)))).filter(Boolean);
+  let ticking = false;
+  const spy = () => {
+    ticking = false;
+    const line = (bar?.offsetHeight || 56) + 24;
+    let cur = targets[0];
+    for (const t of targets) { if (t.getBoundingClientRect().top - line <= 0) cur = t; else break; }
+    tocLinks.forEach((a) => a.setAttribute("aria-current", String(a.hash.slice(1) === cur?.id)));
+  };
+  addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(spy); } }, { passive: true });
+  spy();
+}
+
+// ---------- dải công nghệ: nút tạm dừng (WCAG 2.2.2), nhớ lựa chọn ----------
+const mq = document.querySelector(".marquee");
+const mqBtn = document.querySelector(".marquee-toggle");
+if (mq && mqBtn) {
+  const setPaused = (on) => { mq.classList.toggle("paused", on); mqBtn.setAttribute("aria-pressed", String(on)); mqBtn.textContent = on ? "Chạy tiếp" : "Tạm dừng"; try { on ? localStorage.setItem("hub-marquee", "paused") : localStorage.removeItem("hub-marquee"); } catch {} };
+  let start = false; try { start = localStorage.getItem("hub-marquee") === "paused"; } catch {}
+  setPaused(start);
+  mqBtn.addEventListener("click", () => setPaused(!mq.classList.contains("paused")));
 }
