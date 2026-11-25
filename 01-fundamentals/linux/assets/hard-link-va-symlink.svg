@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 260">
+<title>Hard link và symlink: tên nào trỏ tới đâu</title>
+<style>
+.t{fill:var(--text,#0f2133);font:13px "JetBrains Mono",ui-monospace,monospace}
+.m{fill:var(--muted,#4b6075);font:12px "JetBrains Mono",ui-monospace,monospace}
+.name{fill:var(--surface,#f8fbfd);stroke:var(--line,#c9d6e2)}
+.inode{fill:color-mix(in srgb,var(--accent,#0b5fa8) 16%,transparent);stroke:var(--accent,#0b5fa8);stroke-width:1.5}
+.ar{stroke:var(--muted,#4b6075);stroke-width:1.5;fill:none;marker-end:url(#a)}
+.ard{stroke:var(--muted,#4b6075);stroke-width:1.5;fill:none;stroke-dasharray:5 4;marker-end:url(#a)}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--muted,#4b6075)"/></marker></defs>
+<text class="m" x="20" y="22">Tên (nằm trong thư mục)</text>
+<text class="m" x="380" y="22">Inode và dữ liệu</text>
+<rect class="name" x="20" y="40" width="180" height="40" rx="4"/><text class="t" x="40" y="65">goc.txt</text>
+<rect class="name" x="20" y="110" width="180" height="40" rx="4"/><text class="t" x="40" y="135">cung.txt (hard link)</text>
+<rect class="name" x="20" y="180" width="180" height="40" rx="4"/><text class="t" x="40" y="205">mem.txt (symlink)</text>
+<rect class="inode" x="380" y="60" width="270" height="80" rx="4"/>
+<text class="t" x="396" y="86">inode 876, links = 2</text>
+<text class="t" x="396" y="112">dữ liệu: "xin chao"</text>
+<path class="ar" d="M200 60 L378 84"/>
+<path class="ar" d="M200 130 L378 112"/>
+<path class="ard" d="M110 180 C110 160 110 100 112 82"/>
+<text class="m" x="128" y="172">nội dung = "goc.txt"</text>
+<text class="m" x="20" y="250">Xóa goc.txt: cung.txt vẫn đọc được (links còn 1); mem.txt thành link treo.</text>
+</svg>
