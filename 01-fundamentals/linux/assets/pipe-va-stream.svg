@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 250">
+<title>Pipe nối stdout của lệnh trước vào stdin của lệnh sau; stderr vẫn ra màn hình</title>
+<style>
+.t{fill:var(--text,#0f2133);font:13px "JetBrains Mono",ui-monospace,monospace}
+.m{fill:var(--muted,#4b6075);font:12px "JetBrains Mono",ui-monospace,monospace}
+.cmd{fill:var(--surface,#f8fbfd);stroke:var(--line,#c9d6e2)}
+.pipe{fill:color-mix(in srgb,var(--accent,#0b5fa8) 16%,transparent);stroke:var(--accent,#0b5fa8);stroke-width:1.5}
+.ar{stroke:var(--muted,#4b6075);stroke-width:1.5;fill:none;marker-end:url(#a)}
+.ae{stroke:var(--muted,#4b6075);stroke-width:1.2;fill:none;stroke-dasharray:4 4;marker-end:url(#a)}
+</style>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--muted,#4b6075)"/></marker></defs>
+<text class="m" x="20" y="26">access.log</text>
+<path class="ar" d="M60 34 L60 64"/>
+<rect class="cmd" x="20" y="66" width="150" height="44" rx="4"/><text class="t" x="34" y="93">awk '{print $9}'</text>
+<rect class="pipe" x="180" y="78" width="40" height="20" rx="3"/><text class="t" x="196" y="93">|</text>
+<rect class="cmd" x="230" y="66" width="80" height="44" rx="4"/><text class="t" x="252" y="93">sort</text>
+<rect class="pipe" x="320" y="78" width="40" height="20" rx="3"/><text class="t" x="336" y="93">|</text>
+<rect class="cmd" x="370" y="66" width="110" height="44" rx="4"/><text class="t" x="384" y="93">uniq -c</text>
+<rect class="pipe" x="490" y="78" width="40" height="20" rx="3"/><text class="t" x="506" y="93">|</text>
+<rect class="cmd" x="540" y="66" width="120" height="44" rx="4"/><text class="t" x="554" y="93">sort -rn</text>
+<path class="ar" d="M600 112 L600 150"/><text class="m" x="560" y="170">stdout (1)</text><text class="m" x="560" y="186">ra màn hình</text>
+<path class="ae" d="M95 112 L95 150"/><text class="m" x="40" y="170">stderr (2) của mỗi lệnh</text><text class="m" x="40" y="186">không đi qua pipe, ra màn hình</text>
+<text class="m" x="20" y="226">Mỗi dấu | nối stdout (1) của lệnh bên trái vào stdin (0) của lệnh bên phải.</text>
+</svg>

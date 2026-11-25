@@ -25,7 +25,7 @@ Nội dung bài (viết thẳng vào file bài học) được soạn **theo đ�
 | Đợt 1 | 3 | Hệ điều hành | xong |
 | Đợt 1 | 4 | Shell và hệ thống file | xong |
 | Đợt 1 | 5 | User, group và phân quyền | xong |
-| Đợt 1 | 6 | Xử lý văn bản và pipe | chưa |
+| Đợt 1 | 6 | Xử lý văn bản và pipe | xong |
 | Đợt 2 | 7 | Process, service và lập lịch | chưa |
 | Đợt 2 | 8 | Gói phần mềm, ổ đĩa, mạng và bảo mật server | chưa |
 | Đợt 2 | 9 | Mô hình mạng và địa chỉ IP | chưa |
