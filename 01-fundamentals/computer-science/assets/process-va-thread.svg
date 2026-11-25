@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 330">
+<title>Không gian địa chỉ của process một luồng và process hai luồng</title>
+<style>
+.t{fill:var(--text,#0f2133);font:13px "JetBrains Mono",ui-monospace,monospace}
+.m{fill:var(--muted,#4b6075);font:12px "JetBrains Mono",ui-monospace,monospace}
+.box{fill:var(--surface,#f8fbfd);stroke:var(--line,#c9d6e2)}
+.free{fill:none;stroke:var(--line,#c9d6e2);stroke-dasharray:4 4}
+.stack{fill:color-mix(in srgb,var(--accent,#0b5fa8) 16%,transparent);stroke:var(--accent,#0b5fa8);stroke-width:1.5}
+</style>
+<text class="t" x="60" y="24">Process một luồng</text>
+<rect class="stack" x="60" y="40" width="220" height="44"/><text class="t" x="128" y="67">Stack</text>
+<rect class="free" x="60" y="84" width="220" height="110"/><text class="m" x="140" y="144">(trống)</text>
+<rect class="box" x="60" y="194" width="220" height="44"/><text class="t" x="136" y="221">Heap</text>
+<rect class="box" x="60" y="238" width="220" height="44"/><text class="t" x="112" y="265">Code chương trình</text>
+<text class="t" x="400" y="24">Process hai luồng</text>
+<rect class="stack" x="400" y="40" width="220" height="44"/><text class="t" x="448" y="67">Stack luồng 1</text>
+<rect class="free" x="400" y="84" width="220" height="40"/>
+<rect class="stack" x="400" y="124" width="220" height="44"/><text class="t" x="448" y="151">Stack luồng 2</text>
+<rect class="free" x="400" y="168" width="220" height="26"/>
+<rect class="box" x="400" y="194" width="220" height="44"/><text class="t" x="438" y="221">Heap (dùng chung)</text>
+<rect class="box" x="400" y="238" width="220" height="44"/><text class="t" x="420" y="265">Code (dùng chung)</text>
+<text class="m" x="20" y="314">Mỗi luồng có stack và thanh ghi riêng; heap, code, file đang mở thì dùng chung.</text>
+</svg>
