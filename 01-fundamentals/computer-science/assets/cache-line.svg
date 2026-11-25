@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 230">
+<title>Đọc 1 byte thì CPU nạp cả cache line 64 byte chứa byte đó</title>
+<style>
+.t{fill:var(--text,#0f2133);font:13px "JetBrains Mono",ui-monospace,monospace}
+.m{fill:var(--muted,#4b6075);font:12px "JetBrains Mono",ui-monospace,monospace}
+.cell{fill:var(--surface,#f8fbfd);stroke:var(--line,#c9d6e2)}
+.line{fill:color-mix(in srgb,var(--accent,#0b5fa8) 14%,transparent);stroke:var(--accent,#0b5fa8);stroke-width:1.5}
+.hot{fill:var(--accent,#0b5fa8)}
+.br{fill:none;stroke:var(--muted,#4b6075);stroke-width:1}
+</style>
+<text class="m" x="20" y="22">RAM, mỗi ô là 8 byte; 8 ô tô màu = 1 cache line 64 byte</text>
+<rect class="cell" x="20" y="34" width="60" height="30"/><rect class="cell" x="80" y="34" width="60" height="30"/><rect class="line" x="140" y="34" width="60" height="30"/><rect class="line" x="200" y="34" width="60" height="30"/><rect class="line" x="260" y="34" width="60" height="30"/><rect class="line" x="320" y="34" width="60" height="30"/><rect class="line" x="380" y="34" width="60" height="30"/><rect class="line" x="440" y="34" width="60" height="30"/><rect class="line" x="500" y="34" width="60" height="30"/><rect class="line" x="560" y="34" width="60" height="30"/><rect class="cell" x="620" y="34" width="60" height="30"/>
+<rect class="hot" x="342" y="40" width="7" height="18"/>
+<text class="t" x="296" y="88">byte cần đọc</text>
+<path class="br" d="M140 100 v8 h480 v-8"/>
+<text class="t" x="230" y="128">cả 64 byte được nạp vào L1d</text>
+<text class="m" x="20" y="164">Địa chỉ 0x1234 = 0001 0010 0011 0100</text>
+<text class="m" x="20" y="186">6 bit thấp (0x34 = 52) là vị trí trong line, vì 64 = 2^6</text>
+<text class="m" x="20" y="208">Đưa 6 bit thấp về 0 ra địa chỉ đầu line: 0x1200</text>
+</svg>

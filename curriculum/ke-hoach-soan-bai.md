@@ -21,7 +21,7 @@ Nội dung bài (viết thẳng vào file bài học) được soạn **theo đ�
 | Đợt | Bài | Tên | Tài liệu |
 | --- | --- | --- | --- |
 | Đã xong | 1 | Biểu diễn dữ liệu | xong |
-| Đợt 1 | 2 | Kiến trúc máy tính | chưa |
+| Đợt 1 | 2 | Kiến trúc máy tính | xong |
 | Đợt 1 | 3 | Hệ điều hành | chưa |
 | Đợt 1 | 4 | Shell và hệ thống file | chưa |
 | Đợt 1 | 5 | User, group và phân quyền | chưa |

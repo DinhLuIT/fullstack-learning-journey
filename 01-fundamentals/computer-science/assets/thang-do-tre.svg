@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 250">
+<title>Số chu kỳ CPU để lấy dữ liệu từ từng tầng bộ nhớ trên Pentium M</title>
+<style>
+.t{fill:var(--text,#0f2133);font:14px "JetBrains Mono",ui-monospace,monospace}
+.m{fill:var(--muted,#4b6075);font:12px "JetBrains Mono",ui-monospace,monospace}
+.b{fill:var(--line,#c9d6e2)}
+.hot{fill:var(--accent,#0b5fa8)}
+.axis{stroke:var(--line,#c9d6e2);stroke-width:1}
+</style>
+<text class="m" x="20" y="24">Chu kỳ CPU cho một lần truy cập (trục ngang theo thang log)</text>
+<line class="axis" x1="170" y1="40" x2="170" y2="214"/>
+<text class="t" x="20" y="66">Thanh ghi</text><rect class="b" x="170" y="50" width="40" height="24" rx="3"/><text class="m" x="218" y="66">≤ 1</text>
+<text class="t" x="20" y="108">Cache L1d</text><rect class="b" x="170" y="92" width="116" height="24" rx="3"/><text class="m" x="294" y="108">~3</text>
+<text class="t" x="20" y="150">Cache L2</text><rect class="b" x="170" y="134" width="223" height="24" rx="3"/><text class="m" x="401" y="150">~14</text>
+<text class="t" x="20" y="192">RAM</text><rect class="hot" x="170" y="176" width="421" height="24" rx="3"/><text class="m" x="599" y="192">~240</text>
+<text class="m" x="20" y="238">Ổ đĩa, mạng: chậm hơn RAM nhiều bậc nữa, tự đo trên máy mình.</text>
+</svg>

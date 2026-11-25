@@ -42,13 +42,13 @@ Thời lượng là mức tối đa cho người học mới. Phần đã vững
 
 - CPU: thanh ghi, chu kỳ nạp, giải mã, thực thi lệnh; đa nhân và siêu phân luồng
 - Phân cấp bộ nhớ: thanh ghi, cache L1/L2/L3, RAM, SSD, HDD, mạng; độ trễ tương đối giữa các tầng
-- Tính cục bộ (locality) theo thời gian và không gian; vì sao duyệt mảng nhanh hơn duyệt danh sách liên kết
+- Tính cục bộ (locality) theo thời gian và không gian; vì sao dữ liệu nằm liền nhau được xử lý nhanh hơn dữ liệu nằm rải rác
 - Từ mã nguồn đến mã máy: biên dịch, thông dịch, bytecode và JIT
-- Cache của CPU và vấn đề đồng bộ giữa các nhân (nền cho bài `volatile` sau này)
+- Cache của CPU và cách các nhân giữ dữ liệu nhất quán (MESI); vì sao chỉ cache nhất quán thôi chưa đủ cho lập trình đa luồng (đi tiếp ở bài 29–30)
 
-**Thực hành:** đo thời gian duyệt mảng hai chiều theo hàng và theo cột; đo thời gian duyệt `ArrayList` và `LinkedList` có 1 triệu phần tử. Ghi kết quả và giải thích.
+**Thực hành:** dùng `nproc`, `lscpu`, `getconf` (trên macOS: `sysctl`) xem số nhân, các tầng cache và kích thước cache line của máy mình; đo độ trễ mạng bằng `ping` và tốc độ ghi đĩa bằng `dd`; tự lập bảng độ trễ của máy mình và so với bảng trong tài liệu.
 
-**Tự kiểm tra:** vì sao duyệt theo hàng nhanh hơn theo cột? Cache phía CPU liên quan gì đến việc một thread không thấy thay đổi của thread khác?
+**Tự kiểm tra:** vì sao đọc dữ liệu tuần tự nhanh hơn đọc ngẫu nhiên? Cache line là gì? Khi một nhân ghi vào dữ liệu mà nhân khác đang giữ trong cache thì chuyện gì xảy ra?
 
 ### Bài 3. Hệ điều hành
 
@@ -369,7 +369,7 @@ Thời lượng là mức tối đa cho người học mới. Phần đã vững
 - `Comparable` và `Comparator`; `Iterator` và lỗi `ConcurrentModificationException`
 - Độ phức tạp của các thao tác chính
 
-**Thực hành:** tự cài đặt `MyHashMap` có resize; cài đặt LRU cache bằng `LinkedHashMap`.
+**Thực hành:** tự cài đặt `MyHashMap` có resize; cài đặt LRU cache bằng `LinkedHashMap`; đo thời gian duyệt `ArrayList` và `LinkedList` có 1 triệu phần tử và giải thích bằng tính cục bộ ở bài 2.
 
 **Tự kiểm tra:** điều gì xảy ra khi hai key trùng hash? Vì sao key của `HashMap` nên bất biến?
 
