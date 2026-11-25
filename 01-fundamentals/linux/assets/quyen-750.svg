@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 230">
+<title>Đọc quyền 750: owner rwx, group r-x, others không có quyền</title>
+<style>
+.t{fill:var(--text,#0f2133);font:14px "JetBrains Mono",ui-monospace,monospace}
+.m{fill:var(--muted,#4b6075);font:12px "JetBrains Mono",ui-monospace,monospace}
+.big{fill:var(--text,#0f2133);font:22px "JetBrains Mono",ui-monospace,monospace}
+.on{fill:color-mix(in srgb,var(--accent,#0b5fa8) 18%,transparent);stroke:var(--accent,#0b5fa8);stroke-width:1.5}
+.off{fill:var(--surface,#f8fbfd);stroke:var(--line,#c9d6e2)}
+</style>
+<text class="m" x="40" y="24">owner (chủ file)</text><text class="m" x="250" y="24">group</text><text class="m" x="460" y="24">others (còn lại)</text>
+<rect class="on" x="40" y="36" width="56" height="44"/><text class="big" x="60" y="66">r</text>
+<rect class="on" x="96" y="36" width="56" height="44"/><text class="big" x="116" y="66">w</text>
+<rect class="on" x="152" y="36" width="56" height="44"/><text class="big" x="172" y="66">x</text>
+<rect class="on" x="250" y="36" width="56" height="44"/><text class="big" x="270" y="66">r</text>
+<rect class="off" x="306" y="36" width="56" height="44"/><text class="big" x="326" y="66">-</text>
+<rect class="on" x="362" y="36" width="56" height="44"/><text class="big" x="382" y="66">x</text>
+<rect class="off" x="460" y="36" width="56" height="44"/><text class="big" x="480" y="66">-</text>
+<rect class="off" x="516" y="36" width="56" height="44"/><text class="big" x="536" y="66">-</text>
+<rect class="off" x="572" y="36" width="56" height="44"/><text class="big" x="592" y="66">-</text>
+<text class="m" x="40" y="104">4 + 2 + 1</text><text class="m" x="250" y="104">4 + 0 + 1</text><text class="m" x="460" y="104">0 + 0 + 0</text>
+<text class="t" x="100" y="134">= 7</text><text class="t" x="310" y="134">= 5</text><text class="t" x="520" y="134">= 0</text>
+<text class="m" x="40" y="176">Mỗi nhóm 3 bit: r = 4, w = 2, x = 1. Ba chữ số bát phân 7 5 0 là 111 101 000 ở nhị phân.</text>
+<text class="m" x="40" y="200">Với thư mục: r = liệt kê tên, w = tạo, xóa file bên trong, x = đi qua để mở file bên trong.</text>
+</svg>
