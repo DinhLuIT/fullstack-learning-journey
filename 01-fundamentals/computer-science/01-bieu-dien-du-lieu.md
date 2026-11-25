@@ -11,6 +11,8 @@ tags: [fundamentals, computer-science]
 
 # Bài 1. Biểu diễn dữ liệu
 
+> **Tài liệu bài học:** [handouts/01-bieu-dien-du-lieu.md](handouts/01-bieu-dien-du-lieu.md) (nội dung, hình minh họa, bài tập, nguồn).
+>
 > Đề cương bài (mục tiêu, nội dung, thực hành, câu tự kiểm tra): xem [Bài 1 trong curriculum/01-nen-tang.md](../../curriculum/01-nen-tang.md).
 
 ## Mục tiêu

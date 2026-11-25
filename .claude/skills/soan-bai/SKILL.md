@@ -111,6 +111,17 @@ Làm theo [truc-quan.md](truc-quan.md):
    - Hình: x SVG, y sơ đồ tương tác, z Mermaid; đã đối chiếu nhãn và số liệu trong hình với nguồn
    ```
 
+## Bước 4b. Gắn link vào file ghi chú
+
+Thêm một dòng ở đầu khối trích dẫn của file ghi chú bài (ngay trên dòng "Đề cương bài…"), nếu chưa có:
+
+```markdown
+> **Tài liệu bài học:** [handouts/NN-slug.md](handouts/NN-slug.md) (nội dung, hình minh họa, bài tập, nguồn).
+>
+```
+
+Chỉ thêm dòng này, không sửa phần nào khác của file ghi chú. Cập nhật cột "Tài liệu" trong `curriculum/ke-hoach-soan-bai.md` thành "xong".
+
 ## Bước 5. Báo lại cho Đình
 
 - Link trang bài trên learning hub theo quy ước trong `CLAUDE.md` (mục Learning hub), kèm lưu ý trang cập nhật sau lần push tiếp theo; đường dẫn file tài liệu và phiếu nghiên cứu trong repo
