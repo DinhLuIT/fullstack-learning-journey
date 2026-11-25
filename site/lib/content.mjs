@@ -1,5 +1,5 @@
-// Đọc nội dung công khai của repo: đề cương, tài liệu (handouts), đề bài lab, capstone.
-// Ghi chú cá nhân, câu trả lời phỏng vấn, tiến độ KHÔNG được đọc ở đây.
+// Đọc nội dung công khai của repo: đề cương, file bài học (content: ready), đề bài lab, capstone.
+// Question bank, tiến độ, README của lab KHÔNG được đọc ở đây.
 import fs from "node:fs";
 import path from "node:path";
 import { stripFrontmatter } from "./markdown.mjs";
@@ -63,7 +63,7 @@ export function parseCurriculum(text) {
   return phase;
 }
 
-// Tìm file ghi chú của mỗi bài chỉ để lấy slug và thư mục chủ đề (không đọc nội dung ghi chú)
+// Tìm file bài học của mỗi bài để lấy slug và thư mục chủ đề
 function indexLessons(root, ph) {
   const map = new Map();
   const base = path.join(root, ph.dir);
@@ -76,7 +76,7 @@ function indexLessons(root, ph) {
   }
   for (const f of walk(base)) {
     const rel = path.relative(base, f);
-    if (/(^|\/)(labs|handouts)\//.test(rel) || !/^\d{2}-.*\.md$/.test(path.basename(f))) continue;
+    if (/(^|\/)(labs|handouts|assets|diagrams)\//.test(rel) || !/^\d{2}-.*\.md$/.test(path.basename(f))) continue;
     const head = read(f).slice(0, 400);
     const lm = head.match(/^lesson:\s*(\d+)/m);
     if (lm) map.set(+lm[1], { stem: path.basename(f, ".md"), dir: path.dirname(f) });
@@ -94,9 +94,10 @@ export function loadContent(root) {
       for (const l of g.lessons) {
         const loc = idx.get(l.n);
         if (!loc) throw new Error(`Không tìm thấy thư mục cho ${def.id} bài ${l.n}`);
-        const handoutPath = def.id === "dsa" ? path.join(loc.dir, "handout.md") : path.join(loc.dir, "handouts", loc.stem + ".md");
-        const diagramsDir = def.id === "dsa" ? path.join(loc.dir, "diagrams") : path.join(loc.dir, "handouts", "diagrams");
-        const assetsDir = def.id === "dsa" ? path.join(loc.dir, "assets") : path.join(loc.dir, "handouts", "assets");
+        // nội dung bài nằm ngay trong file bài học (frontmatter content: ready); DSA dùng handout.md trong thư mục bài
+        const handoutPath = def.id === "dsa" ? path.join(loc.dir, "handout.md") : path.join(loc.dir, loc.stem + ".md");
+        const diagramsDir = path.join(loc.dir, "diagrams");
+        const assetsDir = path.join(loc.dir, "assets");
         const labs = [];
         if (def.id !== "dsa") {
           const labsDir = path.join(loc.dir, "labs");
@@ -110,7 +111,11 @@ export function loadContent(root) {
         Object.assign(l, {
           phase: def, group: g.title, stem: loc.stem, topicDir: loc.dir,
           url: `${def.id}/${loc.stem}/`,
-          handout: exists(handoutPath) ? { file: handoutPath, body: stripFrontmatter(read(handoutPath)).body } : null,
+          handout: (() => {
+            if (!exists(handoutPath)) return null;
+            const { data, body } = stripFrontmatter(read(handoutPath));
+            return def.id === "dsa" || data.content === "ready" ? { file: handoutPath, body } : null;
+          })(),
           diagrams: exists(diagramsDir) ? fs.readdirSync(diagramsDir).filter((f) => f.endsWith(".html")).map((f) => path.join(diagramsDir, f)) : [],
           assets: exists(assetsDir) ? fs.readdirSync(assetsDir).filter((f) => /\.(svg|png|jpe?g|webp|gif)$/i.test(f)).map((f) => path.join(assetsDir, f)) : [],
           labs: labs.sort((a, b) => a.slug.localeCompare(b.slug)),

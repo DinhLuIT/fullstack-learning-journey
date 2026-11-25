@@ -8,10 +8,4 @@ tags: [interview]
 
 # Bài 1. CV và GitHub profile
 
-> Đề cương bài: xem [Bài 1 trong curriculum/07-phong-van.md](../curriculum/07-phong-van.md).
-
-## Ghi chú
-
-## Việc đã làm
-
-## Tự kiểm tra
+> Bài này chưa được soạn. Đề cương: [Bài 1 trong curriculum/07-phong-van.md](../curriculum/07-phong-van.md).

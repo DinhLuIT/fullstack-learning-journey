@@ -8,6 +8,6 @@ Giai đoạn 3 · F. Hiệu năng và kiểm thử
 
 ## Cấu trúc
 
-- Các file `NN-*.md`: ghi chú từng bài
+- Các file `NN-*.md`: nội dung từng bài (bài chưa soạn chỉ có một dòng giữ chỗ)
 - `labs/`: code chay, mỗi lab có README hướng dẫn chạy
 - `pitfalls.md`: lỗi đã gặp, hiểu nhầm, bài học

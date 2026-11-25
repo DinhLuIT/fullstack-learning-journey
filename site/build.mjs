@@ -30,9 +30,10 @@ for (const p of phases) published.set(`curriculum/${p.file}`, u(p.url));
 published.set("capstone/README.md", u("capstone/"));
 for (const l of allLessons) {
   if (l.handout) published.set(path.relative(ROOT, l.handout.file), u(l.url));
+  if (l.phase.id !== "dsa") published.set(path.relative(ROOT, path.join(l.topicDir, l.stem + ".md")), u(l.url));
   for (const lab of l.labs) published.set(path.relative(ROOT, lab.file), u(`${l.url}labs/${lab.slug}/`));
 }
-const PRIVATE = /(^|\/)(progress\.md|interview-qa\.md|pitfalls\.md|behavioral\.md|ai-workflow\.md|log\.md|CLAUDE\.md)$|\/labs\/[^/]+\/README\.md$|\/\.research\/|^(0[1-7]-[^/]+\/)([^/]+\/)?\d{2}-[^/]+\.md$/;
+const PRIVATE = /(^|\/)(progress\.md|interview-qa\.md|pitfalls\.md|behavioral\.md|ai-workflow\.md|log\.md|CLAUDE\.md)$|\/labs\/[^/]+\/README\.md$|\/\.research\/|^07-interview\/question-bank\//;
 
 function hrefFor(srcFile, extra = {}) {
   return (href) => {
@@ -251,7 +252,7 @@ function lessonPage(l, prev, next) {
     fs.copyFileSync(f, path.join(outDir, "diagrams", name));
     extra[path.relative(ROOT, f).split(path.sep).join("/")] = u(`${l.url}diagrams/${name}`);
   }
-  let handout = `<div class="empty"><p>Bài này chưa có tài liệu.</p><p>Soạn bằng lệnh <code>/soan-bai ${p.num ? `gd${p.num} ` : "dsa "}${l.n}</code> trong Claude Code. Tài liệu sẽ xuất hiện ở đây sau lần push tiếp theo.</p></div>`;
+  let handout = `<div class="empty"><p>Bài này chưa có tài liệu.</p><p>Nội dung bài được soạn theo đợt và sẽ xuất hiện ở đây sau lần push tiếp theo.</p></div>`;
   let toc = [];
   if (l.handout) {
     // bỏ câu trỏ tới ghi chú cá nhân, và bỏ tiêu đề "# Bài N." của tài liệu vì trang đã có tiêu đề

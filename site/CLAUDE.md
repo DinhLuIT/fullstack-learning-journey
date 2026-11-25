@@ -14,7 +14,7 @@ site/
 ├── check.mjs          # kiểm tra: lộ Markdown, link hỏng, lộ nội dung riêng tư, tương phản màu, số mục thanh trên
 ├── lib/
 │   ├── markdown.mjs   # Markdown sang HTML (khối, inline, nhúng SVG, sơ đồ tương tác, tự nhận URL)
-│   ├── content.mjs    # đọc curriculum/, handouts/, labs/*/DE-BAI.md, capstone/ (không đọc ghi chú cá nhân)
+│   ├── content.mjs    # đọc curriculum/, file bài học (content: ready), labs/*/DE-BAI.md, capstone/
 │   └── chart.mjs      # vẽ hải đồ SVG (đảo, tuyến học, hải lưu DSA, thuyền)
 ├── data/
 │   ├── stack.mjs      # công nghệ theo nhóm, mỗi công nghệ gắn giai đoạn học
@@ -33,13 +33,13 @@ site/
 
 ```
 curriculum/*.md ─┐
-handouts/*.md   ─┤  lib/content.mjs  ──►  build.mjs  ──►  dist/*.html, search.json
+bài học NN-*.md ─┤  lib/content.mjs  ──►  build.mjs  ──►  dist/*.html, search.json
 labs/*/DE-BAI.md ┤   (phases, lessons)     (lib/markdown.mjs, lib/chart.mjs, data/*)
 capstone/README  ┘
 ```
 
 - `loadContent()` trả về các giai đoạn, mỗi giai đoạn có `groups` (module) và `lessons`. Mỗi bài có `url` (`gd1/22-ten-bai/`), `handout`, `labs`, `assets`, `diagrams`.
-- Đường dẫn bài lấy từ **tên file ghi chú** của bài; chỉ đọc frontmatter `lesson:` để ghép, không đọc nội dung ghi chú.
+- Đường dẫn bài lấy từ **tên file bài học**; frontmatter `lesson:` để ghép với đề cương, `content: ready` để biết bài đã có nội dung.
 - Tiến độ của người xem chỉ sống trong trình duyệt (`localStorage`, khóa `hub-progress-v1`, theo `url` của bài).
 
 ## Quy tắc code
@@ -54,7 +54,7 @@ capstone/README  ┘
 
 **Quyền riêng tư (không được phá)**
 
-- Không đọc hay xuất bản: file ghi chú bài (`NN-*.md` trong thư mục chủ đề), `interview-qa.md`, `pitfalls.md`, `progress.md`, README của lab, `handouts/.research/`, `07-interview/` ngoài đề cương. Danh sách nằm ở biểu thức `PRIVATE` trong `build.mjs`; `check.mjs` kiểm tra lại.
+- Không xuất bản: `interview-qa.md`, `pitfalls.md`, `progress.md`, README của lab, `.research/`, `07-interview/` ngoài đề cương. Danh sách nằm ở biểu thức `PRIVATE` trong `build.mjs`; `check.mjs` kiểm tra lại.
 
 **HTML và truy cập**
 

@@ -7,20 +7,20 @@ Trang tĩnh hiển thị tài liệu học công khai của repo, dựng bằng 
 | Nội dung | Nguồn trong repo |
 | --- | --- |
 | Đề cương từng giai đoạn và từng bài | `curriculum/*.md` |
-| Tài liệu bài học do `/soan-bai` soạn | `<giai-đoạn>/<chủ-đề>/handouts/NN-*.md` (DSA: `dsa/NN-*/handout.md`) |
-| Hình minh họa SVG, ảnh | `handouts/assets/` |
-| Sơ đồ tương tác (HTML) | `handouts/diagrams/` |
+| Nội dung bài học do `/soan-bai` soạn | file bài học `<giai-đoạn>/<chủ-đề>/NN-*.md` có frontmatter `content: ready` (DSA: `dsa/NN-*/handout.md`) |
+| Hình minh họa SVG, ảnh | `<chủ-đề>/assets/` |
+| Sơ đồ tương tác (HTML) | `<chủ-đề>/diagrams/` |
 | Đề bài lab | `labs/<tên-lab>/DE-BAI.md` |
 | Yêu cầu capstone | `capstone/README.md` |
 
-**Không bao giờ hiển thị:** file ghi chú từng bài, `interview-qa.md`, `pitfalls.md`, `progress.md`, README của lab, `handouts/.research/`, các file trong `07-interview/` ngoài đề cương. Link tới những file này trong tài liệu sẽ hiện thành chữ thường.
+**Không bao giờ hiển thị:** `interview-qa.md`, `pitfalls.md`, `progress.md`, README của lab, `.research/`, `07-interview/question-bank/`. Link tới những file này trong tài liệu sẽ hiện thành chữ thường. Bài chưa soạn (không có `content: ready`) hiện trạng thái trống.
 
 ## Đường dẫn
 
 | Trang | URL |
 | --- | --- |
 | Giai đoạn | `/gd1/` … `/gd7/`, `/dsa/` |
-| Bài học | `/gd1/22-collections-tu-ben-trong/` (tên thư mục = tên file ghi chú của bài) |
+| Bài học | `/gd1/22-collections-tu-ben-trong/` (tên thư mục = tên file bài học) |
 | Lab | `/gd1/22-collections-tu-ben-trong/labs/my-hashmap/` |
 | Capstone | `/capstone/` |
 
@@ -28,7 +28,7 @@ Trang tĩnh hiển thị tài liệu học công khai của repo, dựng bằng 
 
 - Trang `/lo-trinh/` vẽ lộ trình thành hải đồ: mỗi giai đoạn là một hòn đảo (`lib/chart.mjs`), DSA là dòng hải lưu chạy song song. Bấm vào đảo để mở bảng chi tiết các bài.
 - Mỗi người xem tự đánh dấu tiến độ (chưa học, đang học, đã xong, cần ôn) ở đầu trang bài hoặc trong bảng chi tiết của đảo. Tiến độ lưu trong `localStorage` của trình duyệt (khóa `hub-progress-v1`, theo đường dẫn bài), có nút xuất và nhập file để sao lưu.
-- Đổi tên file ghi chú của một bài sẽ đổi đường dẫn của bài đó, nên tiến độ đã đánh dấu cho bài đó sẽ không còn khớp.
+- Đổi tên file bài học sẽ đổi đường dẫn của bài đó, nên tiến độ đã đánh dấu cho bài đó sẽ không còn khớp.
 - Dòng "Vì sao học" của mỗi đảo lấy từ dòng `**Vì sao học:**` ở đầu file đề cương của giai đoạn.
 
 ## Chạy trên máy

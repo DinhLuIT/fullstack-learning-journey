@@ -8,10 +8,4 @@ tags: [interview]
 
 # Bài 5. Phỏng vấn thử
 
-> Đề cương bài: xem [Bài 5 trong curriculum/07-phong-van.md](../curriculum/07-phong-van.md).
-
-## Ghi chú
-
-## Việc đã làm
-
-## Tự kiểm tra
+> Bài này chưa được soạn. Đề cương: [Bài 5 trong curriculum/07-phong-van.md](../curriculum/07-phong-van.md).

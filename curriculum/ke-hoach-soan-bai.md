@@ -1,6 +1,6 @@
 # Kế hoạch soạn tài liệu
 
-Tài liệu (`handouts/`) được soạn **theo đợt**, mỗi đợt 4–6 bài, luôn đi trước tiến độ học khoảng 1–2 tuần. Không soạn xa hơn: phiên bản thư viện có thể thay đổi, và định dạng còn được chỉnh theo góp ý sau mỗi đợt.
+Nội dung bài (viết thẳng vào file bài học) được soạn **theo đợt**, mỗi đợt 4–6 bài, luôn đi trước tiến độ học khoảng 1–2 tuần. Không soạn xa hơn: phiên bản thư viện có thể thay đổi, và định dạng còn được chỉnh theo góp ý sau mỗi đợt.
 
 ## Cách chạy một đợt
 

@@ -32,7 +32,7 @@ Ghi rõ phiên bản mục tiêu ngay từ đầu: Java 21, Spring Boot 3.x, Pos
 
 1. Với **từng** gạch đầu dòng trong "Nội dung", tìm ít nhất một nguồn hạng A theo [nguon-chinh-thong.md](nguon-chinh-thong.md). Dùng WebSearch để tìm, WebFetch để mở trang.
 2. Mở và đọc phần liên quan của trang. Chỉ trang đã mở thành công mới được đưa vào danh sách nguồn.
-3. Ghi phiếu nghiên cứu vào `<chủ-đề>/handouts/.research/NN-<slug>.md` (file nháp, phục vụ kiểm chứng):
+3. Ghi phiếu nghiên cứu vào `<chủ-đề>/.research/NN-<slug>.md` (file nháp, phục vụ kiểm chứng):
 
    ```markdown
    ## [1] <Tên trang> — <mục> — <phiên bản> — <URL> — truy cập <YYYY-MM-DD>
@@ -45,12 +45,12 @@ Ghi rõ phiên bản mục tiêu ngay từ đầu: Java 21, Spring Boot 3.x, Pos
 
 ## Bước 3. Viết tài liệu
 
-Lưu ở `<giai-đoạn>/<chủ-đề>/handouts/NN-<slug>.md`, cùng slug với file ghi chú của bài (DSA: `dsa/NN-<slug>/handout.md`). Hình ở `handouts/assets/`, sơ đồ tương tác ở `handouts/diagrams/` (DSA: `assets/` và `diagrams/` trong thư mục của bài). Nếu file đã tồn tại, hỏi Đình trước khi ghi đè.
+Viết thẳng vào **file bài học** `<giai-đoạn>/<chủ-đề>/NN-<slug>.md` (Giai đoạn 7: `07-interview/NN-<slug>.md`; DSA: `dsa/NN-<slug>/handout.md`). Giữ nguyên frontmatter, thêm dòng `content: ready`, rồi thay toàn bộ phần thân (bài chưa soạn chỉ có một dòng giữ chỗ). Hình ở `<chủ-đề>/assets/`, sơ đồ tương tác ở `<chủ-đề>/diagrams/`.
 
 Dòng đầu tiên của file:
 
 ```markdown
-> Tài liệu tham khảo do Claude biên soạn từ các nguồn liệt kê ở cuối, ngày <YYYY-MM-DD>, cho <phiên bản>. Ghi chú của mình nằm ở [NN-slug.md](../NN-slug.md).
+> Tài liệu do Claude biên soạn từ các nguồn liệt kê ở cuối, ngày <YYYY-MM-DD>, cho <phiên bản>.
 ```
 
 ### Cấu trúc
@@ -89,7 +89,7 @@ Dòng đầu tiên của file:
 Làm theo [truc-quan.md](truc-quan.md):
 
 - Chọn 2–4 hình cho bài: Mermaid cho luồng đơn giản, SVG vẽ tay cho cấu trúc trong không gian, SVG có hoạt ảnh ngắn cho một thay đổi có chủ đích, sơ đồ tương tác từng bước (HTML) cho quá trình nhiều trạng thái người học cần tự điều khiển. Dùng Archify nếu đã cài.
-- Lưu SVG ở `handouts/assets/`, sơ đồ tương tác ở `handouts/diagrams/`, nhúng vào handout bằng cú pháp trong `truc-quan.md`.
+- Lưu SVG ở `assets/`, sơ đồ tương tác ở `diagrams/`, nhúng vào handout bằng cú pháp trong `truc-quan.md`.
 - Mở bài bằng một tình huống thật; thêm câu hỏi "đoán trước khi đọc" và một thí nghiệm "thử ngay 5 phút" khi phù hợp.
 - Hình và hiệu ứng phải có chủ đích: mỗi cái trả lời được câu "người học hiểu điều gì nhanh hơn nhờ nó?". Không trang trí.
 
@@ -111,16 +111,9 @@ Làm theo [truc-quan.md](truc-quan.md):
    - Hình: x SVG, y sơ đồ tương tác, z Mermaid; đã đối chiếu nhãn và số liệu trong hình với nguồn
    ```
 
-## Bước 4b. Gắn link vào file ghi chú
+## Bước 4b. Cập nhật kế hoạch
 
-Thêm một dòng ở đầu khối trích dẫn của file ghi chú bài (ngay trên dòng "Đề cương bài…"), nếu chưa có:
-
-```markdown
-> **Tài liệu bài học:** [handouts/NN-slug.md](handouts/NN-slug.md) (nội dung, hình minh họa, bài tập, nguồn).
->
-```
-
-Chỉ thêm dòng này, không sửa phần nào khác của file ghi chú. Cập nhật cột "Tài liệu" trong `curriculum/ke-hoach-soan-bai.md` thành "xong".
+Đánh dấu bài là "xong" ở cột "Tài liệu" trong `curriculum/ke-hoach-soan-bai.md`, rồi commit (một commit cho mỗi bài).
 
 ## Bước 5. Báo lại cho Đình
 

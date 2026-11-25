@@ -7,10 +7,10 @@ Hướng dẫn cho `/soan-bai` (và đề bài lab của `/hoc-bai`). Mục tiê
 | Muốn cho thấy | Dùng | Lưu ở |
 | --- | --- | --- |
 | Luồng, trình tự gọi, vòng đời trạng thái đơn giản | Mermaid (sequence, flowchart, state) | ngay trong handout |
-| Cấu trúc trong không gian: bộ nhớ, bucket của HashMap, cây B+Tree, tầng mạng, layer của image | SVG vẽ tay | `handouts/assets/<ten>.svg` |
-| Một thay đổi có chủ đích theo thời gian: con trỏ di chuyển, gói tin đi qua, phần tử được chèn | SVG có hoạt ảnh CSS ngắn | `handouts/assets/<ten>.svg` |
-| Quá trình nhiều bước mà người học cần **tự điều khiển**: event loop, TCP handshake, 3 bước resize HashMap, Saga bù trừ | Sơ đồ tương tác từng bước (HTML) | `handouts/diagrams/<ten>.html` |
-| Kiến trúc hệ thống, sequence nhiều thành phần, ERD, vòng đời phức tạp | Archify nếu đã cài trong Claude Code; không có thì Mermaid hoặc HTML từng bước | `handouts/diagrams/<ten>.html` |
+| Cấu trúc trong không gian: bộ nhớ, bucket của HashMap, cây B+Tree, tầng mạng, layer của image | SVG vẽ tay | `assets/<ten>.svg` |
+| Một thay đổi có chủ đích theo thời gian: con trỏ di chuyển, gói tin đi qua, phần tử được chèn | SVG có hoạt ảnh CSS ngắn | `assets/<ten>.svg` |
+| Quá trình nhiều bước mà người học cần **tự điều khiển**: event loop, TCP handshake, 3 bước resize HashMap, Saga bù trừ | Sơ đồ tương tác từng bước (HTML) | `diagrams/<ten>.html` |
+| Kiến trúc hệ thống, sequence nhiều thành phần, ERD, vòng đời phức tạp | Archify nếu đã cài trong Claude Code; không có thì Mermaid hoặc HTML từng bước | `diagrams/<ten>.html` |
 
 Mỗi tài liệu thường có 2–4 hình. Ít nhất một hình cho khái niệm khó hình dung nhất của bài. Sơ đồ tương tác chỉ dùng khi quá trình có từ 3 trạng thái trở lên thay đổi theo thời gian.
 
@@ -50,7 +50,7 @@ Dùng bảng thời lượng, easing và checklist chất lượng của skill �
 
 ## Archify (nếu đã cài)
 
-Nếu skill `archify` có trong Claude Code, dùng nó cho sơ đồ kiến trúc, sequence nhiều thành phần, ERD, lifecycle. Mô tả sơ đồ dựa trên đúng các khẳng định đã có nguồn trong handout; xuất file HTML vào `handouts/diagrams/`; chọn giao diện tối hoặc sáng gần với bảng màu của hub. Archify chưa cài thì dùng Mermaid hoặc HTML từng bước, không yêu cầu Đình cài.
+Nếu skill `archify` có trong Claude Code, dùng nó cho sơ đồ kiến trúc, sequence nhiều thành phần, ERD, lifecycle. Mô tả sơ đồ dựa trên đúng các khẳng định đã có nguồn trong handout; xuất file HTML vào `diagrams/`; chọn giao diện tối hoặc sáng gần với bảng màu của hub. Archify chưa cài thì dùng Mermaid hoặc HTML từng bước, không yêu cầu Đình cài.
 
 ## Làm bài học hứng thú hơn (không đánh đổi độ chính xác)
 

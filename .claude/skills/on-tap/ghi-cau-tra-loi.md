@@ -1,13 +1,13 @@
 # Ghi lại câu trả lời, đánh giá và câu trả lời hoàn chỉnh
 
-Dùng chung cho `hoc-bai` (file ghi chú của bài) và question bank phỏng vấn (khi Đình yêu cầu).
+Dùng cho việc chấm câu trả lời: trong buổi học (`hoc-bai`, trình bày ngay trong trò chuyện, không ghi file) và trong question bank phỏng vấn (ghi file, chỉ khi Đình yêu cầu).
 
 ## Thứ tự bắt buộc
 
 1. Hỏi một câu, **chờ Đình trả lời**. Không bao giờ đưa đáp án trước.
 2. Đánh giá: điểm 0–2, đúng ở đâu, thiếu gì, sai gì (sai thì nói vì sao sai).
 3. Viết câu trả lời hoàn chỉnh theo nguyên tắc nguồn trong `CLAUDE.md`: khẳng định cụ thể phải dẫn về tài liệu chính thống đã mở trong phiên, hoặc về mục "Nguồn" của handout bài đó. Không có nguồn thì ghi rõ "chưa kiểm chứng".
-4. Ghi vào file theo định dạng dưới đây, rồi báo Đình đã ghi ở đâu.
+4. Trình bày theo định dạng dưới đây. Chỉ ghi vào file khi đó là question bank và Đình đã yêu cầu.
 
 ## Định dạng
 
@@ -31,7 +31,7 @@ Không xóa lần trước. Thêm khối `**Lần 2, YYYY-MM-DD: ...**` và ph�
 
 ## Vị trí ghi
 
-- `hoc-bai`: mục `## Tự kiểm tra` của file ghi chú bài (Giai đoạn 2 trở đi), hoặc mục `## Thực hành` khi chấm bài tập ở chế độ nhanh của Giai đoạn 1. Không động vào mục "Ghi chú" và "Sai lầm và hiểu nhầm".
+- Buổi học (`hoc-bai`): không ghi file. Chấm trong trò chuyện; câu yếu đưa vào "Cần ôn lại" trong `progress.md`.
 - Câu hỏi phỏng vấn: chỉ khi Đình yêu cầu, ghi vào file chủ đề trong `07-interview/question-bank/` (xem README ở đó). Câu đã có thì thêm "Lần N".
 
-Các file này là ghi chú cá nhân trong repo, **không** hiển thị trên learning hub.
+Question bank là ghi chú cá nhân trong repo, **không** hiển thị trên learning hub.

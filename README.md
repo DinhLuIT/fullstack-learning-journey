@@ -34,7 +34,7 @@ Hành trình học lại FullStack từ nền tảng: từ cách máy tính ho�
 ├── curriculum/           # đề cương chi tiết 149 bài
 ├── 00-setup/ ... 07-interview/
 │   └── <chủ-đề>/
-│       ├── NN-ten-bai.md # ghi chú từng bài
+│       ├── NN-ten-bai.md # nội dung từng bài
 │       ├── labs/         # code chay
 │       ├── interview-qa.md
 │       └── pitfalls.md

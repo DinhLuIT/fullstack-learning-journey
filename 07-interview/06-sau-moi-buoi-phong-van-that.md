@@ -8,10 +8,4 @@ tags: [interview]
 
 # Bài 6. Sau mỗi buổi phỏng vấn thật
 
-> Đề cương bài: xem [Bài 6 trong curriculum/07-phong-van.md](../curriculum/07-phong-van.md).
-
-## Ghi chú
-
-## Việc đã làm
-
-## Tự kiểm tra
+> Bài này chưa được soạn. Đề cương: [Bài 6 trong curriculum/07-phong-van.md](../curriculum/07-phong-van.md).
